@@ -1,0 +1,13 @@
+# Power BI source file (large binary — commit intentionally if needed)
+# ___דוח תברואה.pbix
+
+# Extracted PBIX internals (raw binary/intermediate files)
+pbix_extracted/contents/
+pbix_extracted/report.zip
+pbix_extracted/datamodel_strings.txt
+pbix_extracted/datamodel_utf16.txt
+
+# Keep analysis scripts and outputs
+# pbix_extracted/*.py  → tracked
+# pbix_extracted/layout.json → tracked
+# pbix_extracted/visuals_full.txt → tracked

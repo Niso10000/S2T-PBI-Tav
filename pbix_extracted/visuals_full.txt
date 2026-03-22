@@ -1,0 +1,1152 @@
+=== FULL VISUAL DETAILS PER PAGE ===
+
+
+============================================================
+PAGE: ראשי
+============================================================
+
+============================================================
+PAGE: דוח הנהלה
+============================================================
+Page Filters: [{"name": "Filter1f609059dde00717a114", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "DimDate"}}, "Property": "Date"}}, "type": "RelativeDate", "howCreated": 1}, {"name": "Filterf171f59457f8da014188", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "TAV_Users"}}, "Property": "Mail"}}, "type": "Categorical", "howCreated": 1, "objects": {}}]
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע_It']
+  Display: V_TAV_FactDailyRoute.ציון ממוצע_It -> ציון ממוצע
+
+  Visual: [card] ציון ממוצע
+  Tables: ['incidents']
+  Fields: ['incidents.ציון ממוצע לפניות']
+
+  Visual: [slicer] שם נפה
+  Tables: ['V_TAV_Regions']
+  Fields: ['V_TAV_Regions.RegionName']
+  Visual Filters: [{"name": "Filter76ef3890b1b539a1bcc4", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "V_TAV_Regions"}}, "Property": "RegionName"}}, "filter": {"Version": 2, "From": [{"Name": "v", "Entity": "V_TAV_Regions", "Type": 0}], "Where": [{"Condition": {"Not": {"Expression": {"In": {"Expressions": [{"Column": {"Expression": {"SourceRef": {"Source": "v"}}, "Property": "RegionName"}}], "Values": [[{"Literal": {"Value": "null"}}]]}}}}}]}, "type": "Categorical", "howCreated": 0, "objects"
+  Slicer Field: V_TAV_Regions.RegionName
+
+  Visual: [slicer] תאריך
+  Tables: ['DimDate']
+  Fields: ['DimDate.Date']
+  Slicer Field: DimDate.Date
+
+  Visual: [card] ממוצע משוקלל נפתי
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.ממוצע משוקלל']
+
+  Visual: [card] ממוצע משוקלל כלל הנפות
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.ממןצע משוקלל כלל הנפות']
+
+  Visual: [card] אחוז שינוי ממוצע משוקלל נפתי
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.אחוז שינוי ממוצע משוקלל']
+
+  Visual: [card] (no title)
+  Tables: ['DimDate']
+  Fields: ['DimDate.טווח תאריכים']
+
+  Visual: [pivotTable] (no title)
+  Tables: ['V_TAV_Regions', 'V_TAV_FactDailyRoute', 'incidents', 'TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע_It', 'incidents.ציון ממוצע לפניות', 'V_TAV_Regions.ממוצע משוקלל', 'V_TAV_Regions.אחוז שינוי ממוצע משוקלל', 'V_TAV_FactDailyRoute.אחוז שינוי ציון ממוצע_It', 'incidents.אחוז שינוי ציון ממוצע לפניות', 'TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr', 'TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ציון ממוצע_Gr', 'V_TAV_Regions.RegionName']
+  Visual Filters: [{"name": "Filterb4b8e5763193856aab93", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "V_TAV_Regions"}}, "Property": "RegionName"}}, "type": "Categorical", "howCreated": 0, "objects": {"general": [{"properties": {"isInvertedSelectionMode": {"expr": {"Literal": {"Value": "true"}}}}}]}, "isHiddenInViewMode": false}]
+  Display: V_TAV_FactDailyRoute.ציון ממוצע_It -> ציון ממוצע רכבי קבלן
+  Display: V_TAV_FactDailyRoute.אחוז שינוי ציון ממוצע_It -> אחוז שינוי ציון ממוצע רכבי קבלן
+  Display: TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr -> ציון ממוצע פריקת אשפה
+  Display: TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ציון ממוצע_Gr -> אחוז שינוי ציון ממוצע פריקת אשפה
+  Display: V_TAV_Regions.RegionName -> שם נפה
+
+  Visual: [card] ציון ממוצע
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr']
+
+  Visual: [slicer] הצג נתוני יום קודם
+  Tables: ['DimDate']
+  Fields: ['DimDate.is_yesterday']
+  Slicer Field: DimDate.is_yesterday
+
+============================================================
+PAGE: דוח הנהלה עם טיאוט 
+============================================================
+Page Filters: [{"name": "Filter1f609059dde00717a114", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "DimDate"}}, "Property": "Date"}}, "type": "RelativeDate", "howCreated": 1}, {"name": "Filterf171f59457f8da014188", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "TAV_Users"}}, "Property": "Mail"}}, "type": "Categorical", "howCreated": 1, "objects": {}}]
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע_It']
+  Display: V_TAV_FactDailyRoute.ציון ממוצע_It -> ציון ממוצע
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_Ge_FactDailyRoute']
+  Fields: ['V_TAV_Ge_FactDailyRoute.ציון ממוצע_Ge']
+  Visual Filters: [{"name": "Filter63fb9d5f687d7fc974b3", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "V_TAV_Ge_Devices"}}, "Property": "DeviceName"}}, "type": "Categorical", "howCreated": 1, "objects": {}}]
+
+  Visual: [card] ציון ממוצע
+  Tables: ['incidents']
+  Fields: ['incidents.ציון ממוצע לפניות']
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.ציון ממוצע_GB']
+  Display: V_TAV_GB_FactDailyRoute.ציון ממוצע_GB -> ציון ממוצע
+
+  Visual: [slicer] שם נפה
+  Tables: ['V_TAV_Regions']
+  Fields: ['V_TAV_Regions.RegionName']
+  Visual Filters: [{"name": "Filter76ef3890b1b539a1bcc4", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "V_TAV_Regions"}}, "Property": "RegionName"}}, "filter": {"Version": 2, "From": [{"Name": "v", "Entity": "V_TAV_Regions", "Type": 0}], "Where": [{"Condition": {"Not": {"Expression": {"In": {"Expressions": [{"Column": {"Expression": {"SourceRef": {"Source": "v"}}, "Property": "RegionName"}}], "Values": [[{"Literal": {"Value": "null"}}]]}}}}}]}, "type": "Categorical", "howCreated": 0, "objects"
+  Slicer Field: V_TAV_Regions.RegionName
+
+  Visual: [slicer] תאריך
+  Tables: ['DimDate']
+  Fields: ['DimDate.Date']
+  Slicer Field: DimDate.Date
+
+  Visual: [card] ממוצע משוקלל נפתי
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.ממוצע משוקלל']
+
+  Visual: [card] ממוצע משוקלל כלל הנפות
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.ממןצע משוקלל כלל הנפות']
+
+  Visual: [card] אחוז שינוי ממוצע משוקלל נפתי
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.אחוז שינוי ממוצע משוקלל']
+
+  Visual: [card] (no title)
+  Tables: ['DimDate']
+  Fields: ['DimDate.טווח תאריכים']
+
+  Visual: [pivotTable] (no title)
+  Tables: ['V_TAV_Regions', 'V_TAV_FactDailyRoute', 'V_TAV_GB_FactDailyRoute', 'V_TAV_Ge_FactDailyRoute', 'incidents', 'TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['V_TAV_Regions.RegionName', 'V_TAV_FactDailyRoute.ציון ממוצע_It', 'V_TAV_GB_FactDailyRoute.ציון ממוצע_GB', 'V_TAV_Ge_FactDailyRoute.ציון ממוצע_Ge', 'incidents.ציון ממוצע לפניות', 'V_TAV_Regions.ממוצע משוקלל', 'V_TAV_Regions.אחוז שינוי ממוצע משוקלל', 'V_TAV_FactDailyRoute.אחוז שינוי ציון ממוצע_It', 'V_TAV_GB_FactDailyRoute.אחוז שינוי ציון ממוצע_Gb', 'V_TAV_Ge_FactDailyRoute.אחוז שינוי ציון ממוצע_Ge', 'incidents.אחוז שינוי ציון ממוצע לפניות', 'TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr', 'TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ציון ממוצע_Gr']
+  Visual Filters: [{"name": "Filterb4b8e5763193856aab93", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "V_TAV_Regions"}}, "Property": "RegionName"}}, "type": "Categorical", "howCreated": 0, "objects": {"general": [{"properties": {"isInvertedSelectionMode": {"expr": {"Literal": {"Value": "true"}}}}}]}, "isHiddenInViewMode": false}]
+  Display: V_TAV_Regions.RegionName -> שם נפה
+  Display: V_TAV_FactDailyRoute.ציון ממוצע_It -> ציון ממוצע רכבי קבלן
+  Display: V_TAV_FactDailyRoute.אחוז שינוי ציון ממוצע_It -> אחוז שינוי ציון ממוצע רכבי קבלן
+  Display: V_TAV_Ge_FactDailyRoute.ציון ממוצע_Ge -> ציון ממוצע טיאוט
+  Display: V_TAV_Ge_FactDailyRoute.אחוז שינוי ציון ממוצע_Ge -> אחוז שינוי ציון ממוצע טיאוט
+
+  Visual: [card] ציון ממוצע
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr']
+
+============================================================
+PAGE: דוח הנהלה עם פינוי אשפה
+============================================================
+Page Filters: [{"name": "Filter1f609059dde00717a114", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "DimDate"}}, "Property": "Date"}}, "type": "RelativeDate", "howCreated": 1}, {"name": "Filterf171f59457f8da014188", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "TAV_Users"}}, "Property": "Mail"}}, "type": "Categorical", "howCreated": 1, "objects": {}}]
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע_It']
+  Display: V_TAV_FactDailyRoute.ציון ממוצע_It -> ציון ממוצע
+
+  Visual: [card] ציון ממוצע
+  Tables: ['incidents']
+  Fields: ['incidents.ציון ממוצע לפניות']
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.ציון ממוצע_GB']
+  Display: V_TAV_GB_FactDailyRoute.ציון ממוצע_GB -> ציון ממוצע
+
+  Visual: [slicer] שם נפה
+  Tables: ['V_TAV_Regions']
+  Fields: ['V_TAV_Regions.RegionName']
+  Visual Filters: [{"name": "Filter76ef3890b1b539a1bcc4", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "V_TAV_Regions"}}, "Property": "RegionName"}}, "filter": {"Version": 2, "From": [{"Name": "v", "Entity": "V_TAV_Regions", "Type": 0}], "Where": [{"Condition": {"Not": {"Expression": {"In": {"Expressions": [{"Column": {"Expression": {"SourceRef": {"Source": "v"}}, "Property": "RegionName"}}], "Values": [[{"Literal": {"Value": "null"}}]]}}}}}]}, "type": "Categorical", "howCreated": 0, "objects"
+  Slicer Field: V_TAV_Regions.RegionName
+
+  Visual: [slicer] תאריך
+  Tables: ['DimDate']
+  Fields: ['DimDate.Date']
+  Slicer Field: DimDate.Date
+
+  Visual: [card] ממוצע משוקלל נפתי
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.ממוצע משוקלל']
+
+  Visual: [card] ממוצע משוקלל כלל הנפות
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.ממןצע משוקלל כלל הנפות']
+
+  Visual: [card] אחוז שינוי ממוצע משוקלל נפתי
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.אחוז שינוי ממוצע משוקלל']
+
+  Visual: [card] (no title)
+  Tables: ['DimDate']
+  Fields: ['DimDate.טווח תאריכים']
+
+  Visual: [pivotTable] (no title)
+  Tables: ['V_TAV_Regions', 'V_TAV_FactDailyRoute', 'V_TAV_GB_FactDailyRoute', 'incidents', 'TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['V_TAV_Regions.RegionName', 'V_TAV_FactDailyRoute.ציון ממוצע_It', 'V_TAV_GB_FactDailyRoute.ציון ממוצע_GB', 'incidents.ציון ממוצע לפניות', 'V_TAV_Regions.ממוצע משוקלל', 'V_TAV_Regions.אחוז שינוי ממוצע משוקלל', 'V_TAV_FactDailyRoute.אחוז שינוי ציון ממוצע_It', 'V_TAV_GB_FactDailyRoute.אחוז שינוי ציון ממוצע_Gb', 'incidents.אחוז שינוי ציון ממוצע לפניות', 'TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr', 'TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ציון ממוצע_Gr']
+  Visual Filters: [{"name": "Filterb4b8e5763193856aab93", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "V_TAV_Regions"}}, "Property": "RegionName"}}, "type": "Categorical", "howCreated": 0, "objects": {"general": [{"properties": {"isInvertedSelectionMode": {"expr": {"Literal": {"Value": "true"}}}}}]}, "isHiddenInViewMode": false}]
+  Display: V_TAV_Regions.RegionName -> שם נפה
+  Display: V_TAV_FactDailyRoute.ציון ממוצע_It -> ציון ממוצע רכבי קבלן
+  Display: V_TAV_FactDailyRoute.אחוז שינוי ציון ממוצע_It -> אחוז שינוי ציון ממוצע רכבי קבלן
+  Display: V_TAV_GB_FactDailyRoute.ציון ממוצע_GB -> ציון ממוצע פינוי אשפה
+  Display: V_TAV_GB_FactDailyRoute.אחוז שינוי ציון ממוצע_Gb -> אחוז שינוי ציון ממוצע פינוי אשפה
+
+  Visual: [card] ציון ממוצע
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr']
+
+  Visual: [slicer] הצג נתוני יום קודם
+  Tables: ['DimDate']
+  Fields: ['DimDate.is_yesterday']
+  Slicer Field: DimDate.is_yesterday
+
+============================================================
+PAGE: דוח נפתי
+============================================================
+Page Filters: [{"name": "Filter1f609059dde00717a114", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "DimDate"}}, "Property": "Date"}}, "type": "RelativeDate", "howCreated": 1}, {"name": "Filterf171f59457f8da014188", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "TAV_Users"}}, "Property": "Mail"}}, "type": "Categorical", "howCreated": 1, "objects": {}}]
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע_It']
+  Display: V_TAV_FactDailyRoute.ציון ממוצע_It -> ציון ממוצע
+
+  Visual: [tableEx] רכבי קבלן
+  Tables: ['V_TAV_Platforms', 'V_TAV_FactDailyRoute', 'V_TAV_Regions']
+  Fields: ['KIKARDOM\\yehudit_ei V_TAV_Platforms.Label', 'V_TAV_FactDailyRoute.שעות עבודה_It', 'V_TAV_FactDailyRoute.שעות שהיה_It', 'V_TAV_FactDailyRoute.אחוז שעות שהיה_It', "V_TAV_FactDailyRoute.קילומטראז'_It", 'Sum(V_TAV_FactDailyRoute.QtyPolygonExit)', 'V_TAV_FactDailyRoute.כמות עצירות_It', 'V_TAV_FactDailyRoute.ציון ממוצע_It', 'V_TAV_FactDailyRoute.StartTime', 'V_TAV_FactDailyRoute.EndTime', 'V_TAV_FactDailyRoute.Date', 'V_TAV_FactDailyRoute.לוחית זיהוי', 'V_TAV_FactDailyRoute.Recommendations', 'V_TAV_Regions.RegionName']
+  Display: Sum(KIKARDOM\yehudit_ei V_TAV_FactDailyRoute.QtyPolygonExit) -> כמות יציאות מפוליגון
+  Display: KIKARDOM\yehudit_ei V_TAV_Platforms.Label -> רכב
+  Display: V_TAV_FactDailyRoute.כמות העצירות -> כמות עצירות
+  Display: V_TAV_FactDailyRoute.קילומטראז'_It -> 'קילומטראז
+  Display: KIKARDOM\yehudit_ei V_TAV_FactDailyRoute.שעות עבודה -> שעות עבודה
+
+  Visual: [tableEx] פניות ציבור ומוקד
+  Tables: ['pws_departments', 'incidents', 'pws_casestatus', 'pws_casesubjects', 'pws_quarters', 'pws_slastatus', 'V_TAV_Regions']
+  Fields: ['pws_departments.pws_name', 'incidents.createdon', 'incidents.description', 'pws_casestatus.סטטוס', 'pws_casesubjects.pws_name', 'pws_quarters.pws_name', 'pws_slastatus.Label.LocalizedLabels.Label', 'V_TAV_Regions.RegionName', 'incidents.ציון ממוצע לפניות']
+  Display: pws_departments.pws_name -> מחלקה
+  Display: incidents.createdon -> תאריך
+  Display: incidents.description -> תאור הפניה
+  Display: pws_casesubjects.pws_name -> נושא הפניה
+  Display: pws_quarters.pws_name -> רובע
+
+  Visual: [card] ציון ממוצע
+  Tables: ['incidents']
+  Fields: ['incidents.ציון ממוצע לפניות']
+
+  Visual: [slicer] שם נפה
+  Tables: ['V_TAV_Regions']
+  Fields: ['V_TAV_Regions.RegionName']
+  Slicer Field: V_TAV_Regions.RegionName
+
+  Visual: [slicer] תאריך
+  Tables: ['DimDate']
+  Fields: ['DimDate.Date']
+  Slicer Field: DimDate.Date
+
+  Visual: [unknown] (no title)
+
+  Visual: [card] (no title)
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.אחוז שינוי ציון ממוצע_It']
+
+  Visual: [card] ציון ממוצע כל הנפות
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע כל הנפות_It']
+
+  Visual: [unknown] (no title)
+
+  Visual: [card] (no title)
+  Tables: ['incidents']
+  Fields: ['incidents.אחוז שינוי ציון ממוצע לפניות']
+
+  Visual: [card] ציון ממוצע כל הנפות
+  Tables: ['incidents']
+  Fields: ['incidents.ציון ממוצע כל הנפות לפניות']
+
+  Visual: [card] ממוצע משוקלל נפתי
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.ממוצע משוקלל']
+
+  Visual: [card] ממוצע משוקלל כלל הנפות
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.ממןצע משוקלל כלל הנפות']
+
+  Visual: [card] אחוז שינוי ממוצע משוקלל נפתי
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.אחוז שינוי ממוצע משוקלל']
+
+  Visual: [card] (no title)
+  Tables: ['DimDate']
+  Fields: ['DimDate.טווח תאריכים']
+
+  Visual: [tableEx] (no title)
+  Tables: ['V_TAV_Regions', 'TAV_Gr_Fact_GarbageDisposal', 'DimDate']
+  Fields: ['V_TAV_Regions.RegionName', 'TAV_Gr_Fact_GarbageDisposal.שכונה', 'DimDate.Date', 'TAV_Gr_Fact_GarbageDisposal.נהג', 'TAV_Gr_Fact_GarbageDisposal.מוביל', "TAV_Gr_Fact_GarbageDisposal.מס' תעודה", "TAV_Gr_Fact_GarbageDisposal.מס' רכב", 'TAV_Gr_Fact_GarbageDisposal.שעת כניסה', 'TAV_Gr_Fact_GarbageDisposal.שעת יציאה', 'TAV_Gr_Fact_GarbageDisposal.סה"כ טונג\' אשפה', 'TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr']
+  Display: V_TAV_Regions.RegionName -> שם נפה
+  Display: DimDate.Date -> תאריך
+  Display: TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr -> ציון ממוצע
+
+  Visual: [card] ציון ממוצע
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr']
+
+  Visual: [unknown] (no title)
+
+  Visual: [card] (no title)
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ציון ממוצע_Gr']
+
+  Visual: [card] ציון ממוצע כל הנפות
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.ציון ממוצע כל הנפות_Gr']
+
+  Visual: [slicer] הצג נתוני יום קודם
+  Tables: ['DimDate']
+  Fields: ['DimDate.is_yesterday']
+  Slicer Field: DimDate.is_yesterday
+
+============================================================
+PAGE: דוח נפתי עם טיאוט
+============================================================
+Page Filters: [{"name": "Filter1f609059dde00717a114", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "DimDate"}}, "Property": "Date"}}, "type": "RelativeDate", "howCreated": 1}, {"name": "Filterf171f59457f8da014188", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "TAV_Users"}}, "Property": "Mail"}}, "type": "Categorical", "howCreated": 1, "objects": {}}]
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע_It']
+  Display: V_TAV_FactDailyRoute.ציון ממוצע_It -> ציון ממוצע
+
+  Visual: [tableEx] רכבי קבלן
+  Tables: ['V_TAV_Platforms', 'V_TAV_FactDailyRoute', 'V_TAV_Regions']
+  Fields: ['KIKARDOM\\yehudit_ei V_TAV_Platforms.Label', 'V_TAV_FactDailyRoute.שעות עבודה_It', 'V_TAV_FactDailyRoute.שעות שהיה_It', 'V_TAV_FactDailyRoute.אחוז שעות שהיה_It', "V_TAV_FactDailyRoute.קילומטראז'_It", 'Sum(V_TAV_FactDailyRoute.QtyPolygonExit)', 'V_TAV_FactDailyRoute.כמות עצירות_It', 'V_TAV_FactDailyRoute.ציון ממוצע_It', 'V_TAV_FactDailyRoute.StartTime', 'V_TAV_FactDailyRoute.EndTime', 'V_TAV_FactDailyRoute.Date', 'V_TAV_FactDailyRoute.לוחית זיהוי', 'V_TAV_FactDailyRoute.Recommendations', 'V_TAV_Regions.RegionName']
+  Display: Sum(KIKARDOM\yehudit_ei V_TAV_FactDailyRoute.QtyPolygonExit) -> כמות יציאות מפוליגון
+  Display: KIKARDOM\yehudit_ei V_TAV_Platforms.Label -> רכב
+  Display: V_TAV_FactDailyRoute.כמות העצירות -> כמות עצירות
+  Display: V_TAV_FactDailyRoute.קילומטראז'_It -> 'קילומטראז
+  Display: KIKARDOM\yehudit_ei V_TAV_FactDailyRoute.שעות עבודה -> שעות עבודה
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_Ge_FactDailyRoute']
+  Fields: ['V_TAV_Ge_FactDailyRoute.ציון ממוצע_Ge']
+  Visual Filters: [{"name": "Filter63fb9d5f687d7fc974b3", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "V_TAV_Ge_Devices"}}, "Property": "DeviceName"}}, "type": "Categorical", "howCreated": 1, "objects": {}}]
+
+  Visual: [tableEx] טיאוט
+  Tables: ['V_TAV_Ge_Devices', 'V_TAV_Ge_FactDailyRoute']
+  Fields: ['V_TAV_Ge_Devices.ContractorName_N', 'V_TAV_Ge_FactDailyRoute.Nafa', 'V_TAV_Ge_Devices.DeviceName', 'V_TAV_Ge_FactDailyRoute.שעות עבודה_Ge', 'V_TAV_Ge_FactDailyRoute.שעות שהיה_Ge', 'V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge', "V_TAV_Ge_FactDailyRoute.קילומטראז'_Ge", 'V_TAV_Ge_FactDailyRoute.כמות עצירות ארוכות_Ge', 'V_TAV_Ge_FactDailyRoute.כמות יציאות מפוליגון_Ge', 'V_TAV_Ge_FactDailyRoute.ציון ממוצע_Ge', 'V_TAV_Ge_FactDailyRoute.Date', 'V_TAV_Ge_FactDailyRoute.StartTime', 'V_TAV_Ge_FactDailyRoute.EndTime', 'V_TAV_Ge_FactDailyRoute.Recommendations']
+  Visual Filters: [{"name": "Filter0db9116e8c159e2768c6", "expression": {"Measure": {"Expression": {"SourceRef": {"Entity": "V_TAV_Ge_FactDailyRoute"}}, "Property": "אחוז שעות שהיה_Ge"}}, "type": "Advanced", "howCreated": 0, "isHiddenInViewMode": false, "ordinal": 0}, {"name": "Filterbc66d688b82010b2c6de", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "V_TAV_Ge_FactDailyRoute"}}, "Property": "Recommendations"}}, "type": "Categorical", "howCreated": 0, "isHiddenInViewMode": false, "ordinal": 1},
+  Display: V_TAV_Ge_FactDailyRoute.שעות_עבודה -> שעות עבודה
+  Display: V_TAV_Ge_FactDailyRoute.שעות שהיה_Ge -> שעות שהיה
+  Display: V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge -> אחוז שעות שהיה
+  Display: V_TAV_Ge_FactDailyRoute.קילומטראז'_Ge -> קילומטראז'
+  Display: V_TAV_Ge_FactDailyRoute.כמות עצירות ארוכות_Ge -> כמות עצירות ארוכות
+
+  Visual: [tableEx] פניות ציבור ומוקד
+  Tables: ['pws_departments', 'incidents', 'pws_casestatus', 'pws_casesubjects', 'pws_quarters', 'pws_slastatus', 'V_TAV_Regions']
+  Fields: ['pws_departments.pws_name', 'incidents.createdon', 'incidents.description', 'pws_casestatus.סטטוס', 'pws_casesubjects.pws_name', 'pws_quarters.pws_name', 'pws_slastatus.Label.LocalizedLabels.Label', 'V_TAV_Regions.RegionName']
+  Display: pws_departments.pws_name -> מחלקה
+  Display: incidents.createdon -> תאריך
+  Display: incidents.description -> תאור הפניה
+  Display: pws_casesubjects.pws_name -> נושא הפניה
+  Display: pws_quarters.pws_name -> רובע
+
+  Visual: [card] ציון ממוצע
+  Tables: ['incidents']
+  Fields: ['incidents.ציון ממוצע לפניות']
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.ציון ממוצע_GB']
+  Display: V_TAV_GB_FactDailyRoute.ציון ממוצע_GB -> ציון ממוצע
+
+  Visual: [tableEx] פינוי אשפה
+  Tables: ['V_TAV_GB_TrucksInformation', 'V_TAV_GB_FactDailyRoute', 'V_TAV_Regions']
+  Fields: ['V_TAV_GB_TrucksInformation.nvTruckNumber', 'V_TAV_GB_FactDailyRoute.כמות פחים מתוכננת', 'V_TAV_GB_FactDailyRoute.כמות פחים שבוצעה', 'V_TAV_GB_FactDailyRoute.אחוז ביצוע מול תכנון', 'V_TAV_GB_FactDailyRoute.ציון ממוצע_GB', 'V_TAV_GB_FactDailyRoute.RouteDate', 'V_TAV_GB_FactDailyRoute.nvRouteStatusName', 'V_TAV_GB_FactDailyRoute.nvDriverName', 'V_TAV_GB_FactDailyRoute.כמות פחים ריקים שרוקנו', 'V_TAV_GB_FactDailyRoute.Recommendation', 'V_TAV_Regions.RegionName']
+  Display: V_TAV_GB_FactDailyRoute.ציון ממוצע_GB -> ציון
+  Display: V_TAV_GB_FactDailyRoute.RouteDate -> תאריך
+  Display: V_TAV_GB_TrucksInformation.nvTruckNumber -> לוחית זיהוי
+  Display: V_TAV_GB_FactDailyRoute.nvDriverName -> שם נהג
+  Display: V_TAV_GB_FactDailyRoute.nvRouteStatusName -> סטטוס מסלול
+
+  Visual: [slicer] שם נפה
+  Tables: ['V_TAV_Regions']
+  Fields: ['V_TAV_Regions.RegionName']
+  Slicer Field: V_TAV_Regions.RegionName
+
+  Visual: [slicer] תאריך
+  Tables: ['DimDate']
+  Fields: ['DimDate.Date']
+  Slicer Field: DimDate.Date
+
+  Visual: [unknown] (no title)
+
+  Visual: [card] (no title)
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.אחוז שינוי ציון ממוצע_It']
+
+  Visual: [card] ציון ממוצע כל הנפות
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע כל הנפות_It']
+
+  Visual: [unknown] (no title)
+
+  Visual: [card] (no title)
+  Tables: ['V_TAV_Ge_FactDailyRoute']
+  Fields: ['V_TAV_Ge_FactDailyRoute.אחוז שינוי ציון ממוצע_Ge']
+
+  Visual: [card] ציון ממוצע כל הנפות
+  Tables: ['V_TAV_Ge_FactDailyRoute']
+  Fields: ['V_TAV_Ge_FactDailyRoute.ציון ממוצע כל הנפות_Ge']
+
+  Visual: [unknown] (no title)
+
+  Visual: [card] (no title)
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.אחוז שינוי ציון ממוצע_Gb']
+
+  Visual: [card] ציון ממוצע כל הנפות
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.ציון ממוצע כל הנפות_Gb']
+
+  Visual: [unknown] (no title)
+
+  Visual: [card] (no title)
+  Tables: ['incidents']
+  Fields: ['incidents.אחוז שינוי ציון ממוצע לפניות']
+
+  Visual: [card] ציון ממוצע כל הנפות
+  Tables: ['incidents']
+  Fields: ['incidents.ציון ממוצע כל הנפות לפניות']
+
+  Visual: [card] ממוצע משוקלל נפתי
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.ממוצע משוקלל']
+
+  Visual: [card] ממוצע משוקלל כלל הנפות
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.ממןצע משוקלל כלל הנפות']
+
+  Visual: [card] אחוז שינוי ממוצע משוקלל נפתי
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.אחוז שינוי ממוצע משוקלל']
+
+  Visual: [card] (no title)
+  Tables: ['DimDate']
+  Fields: ['DimDate.טווח תאריכים']
+
+  Visual: [tableEx] (no title)
+  Tables: ['V_TAV_Regions', 'TAV_Gr_Fact_GarbageDisposal', 'DimDate']
+  Fields: ['V_TAV_Regions.RegionName', 'TAV_Gr_Fact_GarbageDisposal.שכונה', 'DimDate.Date', 'TAV_Gr_Fact_GarbageDisposal.נהג', 'TAV_Gr_Fact_GarbageDisposal.מוביל', "TAV_Gr_Fact_GarbageDisposal.מס' תעודה", "TAV_Gr_Fact_GarbageDisposal.מס' רכב", 'TAV_Gr_Fact_GarbageDisposal.שעת כניסה', 'TAV_Gr_Fact_GarbageDisposal.שעת יציאה', 'TAV_Gr_Fact_GarbageDisposal.סה"כ טונג\' אשפה']
+  Display: V_TAV_Regions.RegionName -> שם נפה
+  Display: DimDate.Date -> תאריך
+
+  Visual: [card] ציון ממוצע
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr']
+
+  Visual: [unknown] (no title)
+
+  Visual: [card] (no title)
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ציון ממוצע_Gr']
+
+  Visual: [card] ציון ממוצע כל הנפות
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.ציון ממוצע כל הנפות_Gr']
+
+============================================================
+PAGE: דוח נפתי עם פינוי אשפה
+============================================================
+Page Filters: [{"name": "Filter1f609059dde00717a114", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "DimDate"}}, "Property": "Date"}}, "type": "RelativeDate", "howCreated": 1}, {"name": "Filterf171f59457f8da014188", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "TAV_Users"}}, "Property": "Mail"}}, "type": "Categorical", "howCreated": 1, "objects": {}}]
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע_It']
+  Display: V_TAV_FactDailyRoute.ציון ממוצע_It -> ציון ממוצע
+
+  Visual: [tableEx] רכבי קבלן
+  Tables: ['V_TAV_Platforms', 'V_TAV_FactDailyRoute', 'V_TAV_Regions']
+  Fields: ['KIKARDOM\\yehudit_ei V_TAV_Platforms.Label', 'V_TAV_FactDailyRoute.שעות עבודה_It', 'V_TAV_FactDailyRoute.שעות שהיה_It', 'V_TAV_FactDailyRoute.אחוז שעות שהיה_It', "V_TAV_FactDailyRoute.קילומטראז'_It", 'Sum(V_TAV_FactDailyRoute.QtyPolygonExit)', 'V_TAV_FactDailyRoute.כמות עצירות_It', 'V_TAV_FactDailyRoute.ציון ממוצע_It', 'V_TAV_FactDailyRoute.StartTime', 'V_TAV_FactDailyRoute.EndTime', 'V_TAV_FactDailyRoute.Date', 'V_TAV_FactDailyRoute.לוחית זיהוי', 'V_TAV_FactDailyRoute.Recommendations', 'V_TAV_Regions.RegionName']
+  Display: Sum(KIKARDOM\yehudit_ei V_TAV_FactDailyRoute.QtyPolygonExit) -> כמות יציאות מפוליגון
+  Display: KIKARDOM\yehudit_ei V_TAV_Platforms.Label -> רכב
+  Display: V_TAV_FactDailyRoute.כמות העצירות -> כמות עצירות
+  Display: V_TAV_FactDailyRoute.קילומטראז'_It -> 'קילומטראז
+  Display: KIKARDOM\yehudit_ei V_TAV_FactDailyRoute.שעות עבודה -> שעות עבודה
+
+  Visual: [tableEx] פניות ציבור ומוקד
+  Tables: ['pws_departments', 'incidents', 'pws_casestatus', 'pws_casesubjects', 'pws_quarters', 'pws_slastatus', 'V_TAV_Regions']
+  Fields: ['pws_departments.pws_name', 'incidents.createdon', 'incidents.description', 'pws_casestatus.סטטוס', 'pws_casesubjects.pws_name', 'pws_quarters.pws_name', 'pws_slastatus.Label.LocalizedLabels.Label', 'V_TAV_Regions.RegionName', 'incidents.ציון ממוצע לפניות']
+  Display: pws_departments.pws_name -> מחלקה
+  Display: incidents.createdon -> תאריך
+  Display: incidents.description -> תאור הפניה
+  Display: pws_casesubjects.pws_name -> נושא הפניה
+  Display: pws_quarters.pws_name -> רובע
+
+  Visual: [card] ציון ממוצע
+  Tables: ['incidents']
+  Fields: ['incidents.ציון ממוצע לפניות']
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.ציון ממוצע_GB']
+  Display: V_TAV_GB_FactDailyRoute.ציון ממוצע_GB -> ציון ממוצע
+
+  Visual: [tableEx] פינוי אשפה
+  Tables: ['V_TAV_GB_TrucksInformation', 'V_TAV_GB_FactDailyRoute', 'V_TAV_Regions']
+  Fields: ['V_TAV_GB_TrucksInformation.nvTruckNumber', 'V_TAV_GB_FactDailyRoute.כמות פחים מתוכננת', 'V_TAV_GB_FactDailyRoute.כמות פחים שבוצעה', 'V_TAV_GB_FactDailyRoute.אחוז ביצוע מול תכנון', 'V_TAV_GB_FactDailyRoute.ציון ממוצע_GB', 'V_TAV_GB_FactDailyRoute.RouteDate', 'V_TAV_GB_FactDailyRoute.nvRouteStatusName', 'V_TAV_GB_FactDailyRoute.nvDriverName', 'V_TAV_GB_FactDailyRoute.כמות פחים ריקים שרוקנו', 'V_TAV_GB_FactDailyRoute.Recommendation', 'V_TAV_Regions.RegionName']
+  Display: V_TAV_GB_FactDailyRoute.ציון ממוצע_GB -> ציון
+  Display: V_TAV_GB_FactDailyRoute.RouteDate -> תאריך
+  Display: V_TAV_GB_TrucksInformation.nvTruckNumber -> לוחית זיהוי
+  Display: V_TAV_GB_FactDailyRoute.nvDriverName -> שם נהג
+  Display: V_TAV_GB_FactDailyRoute.nvRouteStatusName -> סטטוס מסלול
+
+  Visual: [slicer] שם נפה
+  Tables: ['V_TAV_Regions']
+  Fields: ['V_TAV_Regions.RegionName']
+  Slicer Field: V_TAV_Regions.RegionName
+
+  Visual: [slicer] תאריך
+  Tables: ['DimDate']
+  Fields: ['DimDate.Date']
+  Slicer Field: DimDate.Date
+
+  Visual: [unknown] (no title)
+
+  Visual: [card] (no title)
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.אחוז שינוי ציון ממוצע_It']
+
+  Visual: [card] ציון ממוצע כל הנפות
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע כל הנפות_It']
+
+  Visual: [unknown] (no title)
+
+  Visual: [card] (no title)
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.אחוז שינוי ציון ממוצע_Gb']
+
+  Visual: [card] ציון ממוצע כל הנפות
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.ציון ממוצע כל הנפות_Gb']
+
+  Visual: [unknown] (no title)
+
+  Visual: [card] (no title)
+  Tables: ['incidents']
+  Fields: ['incidents.אחוז שינוי ציון ממוצע לפניות']
+
+  Visual: [card] ציון ממוצע כל הנפות
+  Tables: ['incidents']
+  Fields: ['incidents.ציון ממוצע כל הנפות לפניות']
+
+  Visual: [card] ממוצע משוקלל נפתי
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.ממוצע משוקלל']
+
+  Visual: [card] ממוצע משוקלל כלל הנפות
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.ממןצע משוקלל כלל הנפות']
+
+  Visual: [card] אחוז שינוי ממוצע משוקלל נפתי
+  Tables: ['V_TAV_Regions']
+  Fields: ['נפות.אחוז שינוי ממוצע משוקלל']
+
+  Visual: [card] (no title)
+  Tables: ['DimDate']
+  Fields: ['DimDate.טווח תאריכים']
+
+  Visual: [tableEx] (no title)
+  Tables: ['V_TAV_Regions', 'TAV_Gr_Fact_GarbageDisposal', 'DimDate']
+  Fields: ['V_TAV_Regions.RegionName', 'TAV_Gr_Fact_GarbageDisposal.שכונה', 'DimDate.Date', 'TAV_Gr_Fact_GarbageDisposal.נהג', 'TAV_Gr_Fact_GarbageDisposal.מוביל', "TAV_Gr_Fact_GarbageDisposal.מס' תעודה", "TAV_Gr_Fact_GarbageDisposal.מס' רכב", 'TAV_Gr_Fact_GarbageDisposal.שעת כניסה', 'TAV_Gr_Fact_GarbageDisposal.שעת יציאה', 'TAV_Gr_Fact_GarbageDisposal.סה"כ טונג\' אשפה', 'TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr']
+  Display: V_TAV_Regions.RegionName -> שם נפה
+  Display: DimDate.Date -> תאריך
+  Display: TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr -> ציון ממוצע
+
+  Visual: [card] ציון ממוצע
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr']
+
+  Visual: [unknown] (no title)
+
+  Visual: [card] (no title)
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ציון ממוצע_Gr']
+
+  Visual: [card] ציון ממוצע כל הנפות
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.ציון ממוצע כל הנפות_Gr']
+
+  Visual: [slicer] הצג נתוני יום קודם
+  Tables: ['DimDate']
+  Fields: ['DimDate.is_yesterday']
+  Slicer Field: DimDate.is_yesterday
+
+============================================================
+PAGE: רכבי קבלן
+============================================================
+Page Filters: [{"name": "Filter5c25803606c403161f62", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "DimDate"}}, "Property": "Date"}}, "type": "RelativeDate", "howCreated": 1}]
+
+  Visual: [pivotTable] (no title)
+  Tables: ['V_TAV_FactDailyRoute', 'V_TAV_Platforms', 'DimDate', 'V_TAV_Regions']
+  Fields: ['KIKARDOM\\yehudit_ei V_TAV_FactDailyRoute.אחוז שעות שהיה', 'Sum(KIKARDOM\\yehudit_ei V_TAV_FactDailyRoute.QtyPolygonExit)', 'KIKARDOM\\yehudit_ei V_TAV_FactDailyRoute.שעות עבודה', 'KIKARDOM\\yehudit_ei V_TAV_FactDailyRoute.שעות שהיה', 'KIKARDOM\\yehudit_ei V_TAV_Platforms.Label', 'V_TAV_FactDailyRoute.כמות העצירות', "V_TAV_FactDailyRoute.קילומטראז'_It", 'V_TAV_FactDailyRoute.ציון ממוצע_It', 'DimDate.Date.Variation.Date Hierarchy.Year', 'DimDate.Date.Variation.Date Hierarchy.Month', 'DimDate.Date.Variation.Date Hierarchy.Day', 'V_TAV_Regions.RegionName']
+  Display: Sum(KIKARDOM\yehudit_ei V_TAV_FactDailyRoute.QtyPolygonExit) -> כמות יציאות מפוליגון
+  Display: KIKARDOM\yehudit_ei V_TAV_Platforms.Label -> רכב
+  Display: V_TAV_FactDailyRoute.כמות העצירות -> כמות עצירות
+  Display: V_TAV_FactDailyRoute.קילומטראז'_It -> 'קילומטראז
+  Display: KIKARDOM\yehudit_ei V_TAV_FactDailyRoute.שעות עבודה -> שעות עבודה
+
+  Visual: [lineChart] ציון ממוצע לפי תאריך
+  Tables: ['V_TAV_FactDailyRoute', 'DimDate']
+  Fields: ['V_TAV_FactDailyRoute.שעות עבודה_It', 'V_TAV_FactDailyRoute.שעות שהיה_It', 'DimDate.Date.Variation.Date Hierarchy.Year', 'DimDate.Date.Variation.Date Hierarchy.Month', 'DimDate.Date.Variation.Date Hierarchy.Day', 'V_TAV_FactDailyRoute.ציון ממוצע_It']
+  Display: V_TAV_FactDailyRoute.שעות עבודה_It -> שעות עבודה
+  Display: V_TAV_FactDailyRoute.שעות שהיה_It -> שעות שהיה
+
+  Visual: [clusteredBarChart] ציון ממוצע לפי נפה
+  Tables: ['V_TAV_FactDailyRoute', 'V_TAV_Regions']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע_It', 'V_TAV_Regions.RegionName']
+  Display: V_TAV_FactDailyRoute.ציון ממוצע_It -> ציון ממוצע
+
+  Visual: [card] כמות יציאות מפוליגון
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['Sum(V_TAV_FactDailyRoute.QtyPolygonExit)']
+  Display: Sum(V_TAV_FactDailyRoute.QtyPolygonExit) -> יציאות מפוליגון
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע_It']
+  Display: V_TAV_FactDailyRoute.ציון ממוצע_It -> ציון ממוצע
+
+  Visual: [card] אחוז שעות שהיה
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.אחוז שעות שהיה_It']
+  Display: V_TAV_FactDailyRoute.אחוז שעות שהיה_It -> אחוז שעות שהיה
+
+  Visual: [card] שעות עבודה
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.שעות עבודה_It']
+  Display: V_TAV_FactDailyRoute.שעות עבודה_It -> שעות עבודה
+
+  Visual: [card] (no title)
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['KIKARDOM\\yehudit_ei V_TAV_FactDailyRoute.תאריכים']
+  Display: KIKARDOM\yehudit_ei V_TAV_FactDailyRoute.תאריכים -> טווח תאריכים
+
+  Visual: [slicer] תאריך
+  Tables: ['DimDate']
+  Fields: ['DimDate.Date']
+  Slicer Field: DimDate.Date
+
+  Visual: [slicer] שם רכב
+  Tables: ['V_TAV_Platforms']
+  Fields: ['V_TAV_Platforms.Label']
+  Slicer Field: V_TAV_Platforms.Label
+
+  Visual: [slicer] לוחית זיהוי
+  Tables: ['V_TAV_Platforms']
+  Fields: ['V_TAV_Platforms.לוחית רישוי']
+  Slicer Field: V_TAV_Platforms.לוחית רישוי
+
+  Visual: [slicer] שם נפה
+  Tables: ['V_TAV_Regions']
+  Fields: ['V_TAV_Regions.RegionName']
+  Slicer Field: V_TAV_Regions.RegionName
+
+  Visual: [clusteredBarChart] רכבים עם ציון ממוצע גבוה
+  Tables: ['V_TAV_FactDailyRoute', 'V_TAV_Platforms']
+  Fields: ['V_TAV_FactDailyRoute.ציון ממוצע_It', 'V_TAV_Platforms.לוחית רישוי']
+  Visual Filters: [{"expression": {"Column": {"Expression": {"SourceRef": {"Entity": "V_TAV_Platforms"}}, "Property": "Label"}}, "filter": {"Version": 2, "From": [{"Name": "subquery", "Expression": {"Subquery": {"Query": {"Version": 2, "From": [{"Name": "v1", "Entity": "V_TAV_Platforms", "Type": 0}, {"Name": "v", "Entity": "V_TAV_FactDailyRoute", "Type": 0}], "Select": [{"Column": {"Expression": {"SourceRef": {"Source": "v1"}}, "Property": "Label"}, "Name": "field"}], "OrderBy": [{"Direction": 2, "Expression": {"
+  Display: V_TAV_FactDailyRoute.ציון ממוצע_It -> ציון ממוצע
+
+  Visual: [tableEx] (no title)
+  Tables: ['V_TAV_Platforms', 'V_TAV_FactDailyRoute', 'V_TAV_Regions']
+  Fields: ['KIKARDOM\\yehudit_ei V_TAV_Platforms.Label', 'V_TAV_FactDailyRoute.שעות עבודה_It', 'V_TAV_FactDailyRoute.שעות שהיה_It', 'V_TAV_FactDailyRoute.אחוז שעות שהיה_It', "V_TAV_FactDailyRoute.קילומטראז'_It", 'Sum(V_TAV_FactDailyRoute.QtyPolygonExit)', 'V_TAV_FactDailyRoute.כמות עצירות_It', 'V_TAV_FactDailyRoute.ציון ממוצע_It', 'V_TAV_FactDailyRoute.StartTime', 'V_TAV_FactDailyRoute.EndTime', 'V_TAV_FactDailyRoute.Date', 'V_TAV_FactDailyRoute.לוחית זיהוי', 'V_TAV_FactDailyRoute.Recommendations', 'V_TAV_Regions.RegionName']
+  Display: Sum(KIKARDOM\yehudit_ei V_TAV_FactDailyRoute.QtyPolygonExit) -> כמות יציאות מפוליגון
+  Display: KIKARDOM\yehudit_ei V_TAV_Platforms.Label -> רכב
+  Display: V_TAV_FactDailyRoute.כמות העצירות -> כמות עצירות
+  Display: V_TAV_FactDailyRoute.קילומטראז'_It -> 'קילומטראז
+  Display: KIKARDOM\yehudit_ei V_TAV_FactDailyRoute.שעות עבודה -> שעות עבודה
+
+  Visual: [card] כמות עצירות ארוכות
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.כמות עצירות_It']
+
+  Visual: [slicer] הצג נתוני יום קודם
+  Tables: ['DimDate']
+  Fields: ['DimDate.is_yesterday']
+  Slicer Field: DimDate.is_yesterday
+
+============================================================
+PAGE: טיאוט
+============================================================
+
+  Visual: [pivotTable] (no title)
+  Tables: ['V_TAV_Ge_FactDailyRoute', 'V_TAV_Ge_Devices', 'DimDate', 'V_TAV_Regions']
+  Fields: ['V_TAV_Ge_FactDailyRoute.שעות_עבודה', 'V_TAV_Ge_FactDailyRoute.שעות שהיה_Ge', 'V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge', 'V_TAV_Ge_Devices.DeviceName', 'V_TAV_Ge_FactDailyRoute.כמות יציאות מפוליגון_Ge', 'V_TAV_Ge_FactDailyRoute.כמות עצירות ארוכות_Ge', "V_TAV_Ge_FactDailyRoute.קילומטראז'_Ge", 'V_TAV_Ge_FactDailyRoute.כמות עגלות פעילות_Ge', 'V_TAV_Ge_FactDailyRoute.אחוז עגלות פעילות_Ge', 'V_TAV_Ge_FactDailyRoute.ממוצע שעות עבודה לעגלה_Ge', 'V_TAV_Ge_Devices.ContractorName_N', 'DimDate.Date.Variation.Date Hierarchy.Year', 'DimDate.Date.Variation.Date Hierarchy.Month', 'DimDate.Date.Variation.Date Hierarchy.Day', 'V_TAV_Ge_FactDailyRoute.ציון ממוצע_Ge', 'V_TAV_Regions.RegionName']
+  Display: V_TAV_Ge_FactDailyRoute.שעות_עבודה -> שעות עבודה
+  Display: V_TAV_Ge_FactDailyRoute.שעות שהיה_Ge -> שעות שהיה
+  Display: V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge -> אחוז שעות שהיה
+  Display: V_TAV_Ge_FactDailyRoute.קילומטראז'_Ge -> קילומטראז'
+  Display: V_TAV_Ge_FactDailyRoute.כמות עצירות ארוכות_Ge -> כמות עצירות ארוכות
+
+  Visual: [donutChart] ציון ממוצע לפי קבלן 
+  Tables: ['V_TAV_Ge_Devices', 'V_TAV_Ge_FactDailyRoute']
+  Fields: ['V_TAV_Ge_Devices.ContractorName_N', 'V_TAV_Ge_FactDailyRoute.שעות שהיה_Ge', 'V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge', 'V_TAV_Ge_FactDailyRoute.ציון ממוצע_Ge']
+  Display: V_TAV_Ge_Devices.ContractorName_N -> קבלן
+  Display: V_TAV_Ge_FactDailyRoute.שעות שהיה_Ge -> שעות שהיה
+  Display: V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge -> אחוז שעות שהיה
+
+  Visual: [lineChart] ציון ממוצע לפי תאריך
+  Tables: ['V_TAV_Ge_FactDailyRoute', 'DimDate']
+  Fields: ['V_TAV_Ge_FactDailyRoute.ציון ממוצע_Ge', 'DimDate.Date.Variation.Date Hierarchy.Year', 'DimDate.Date.Variation.Date Hierarchy.Month', 'DimDate.Date.Variation.Date Hierarchy.Day']
+
+  Visual: [clusteredBarChart]  עגלות עם כמות יציאות מפוליגון גבוהה
+  Tables: ['V_TAV_Ge_Devices', 'V_TAV_Ge_FactDailyRoute']
+  Fields: ['V_TAV_Ge_Devices.DeviceName', 'V_TAV_Ge_FactDailyRoute.כמות יציאות מפוליגון_Ge']
+  Visual Filters: [{"expression": {"Column": {"Expression": {"SourceRef": {"Entity": "V_TAV_Ge_Devices"}}, "Property": "DeviceName"}}, "filter": {"Version": 2, "From": [{"Name": "subquery", "Expression": {"Subquery": {"Query": {"Version": 2, "From": [{"Name": "v1", "Entity": "V_TAV_Ge_Devices", "Type": 0}, {"Name": "v", "Entity": "V_TAV_Ge_FactDailyRoute", "Type": 0}], "Select": [{"Column": {"Expression": {"SourceRef": {"Source": "v1"}}, "Property": "DeviceName"}, "Name": "field"}], "OrderBy": [{"Direction": 2, "
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_Ge_FactDailyRoute']
+  Fields: ['V_TAV_Ge_FactDailyRoute.ציון ממוצע_Ge']
+
+  Visual: [card] יציאות מפוליגון
+  Tables: ['V_TAV_Ge_FactDailyRoute']
+  Fields: ['V_TAV_Ge_FactDailyRoute.כמות יציאות מפוליגון_Ge']
+  Display: V_TAV_Ge_FactDailyRoute.כמות יציאות מפוליגון_Ge -> יציאות מפוליגון
+
+  Visual: [card] אחוז שעות שהיה
+  Tables: ['V_TAV_Ge_FactDailyRoute']
+  Fields: ['V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge']
+  Display: V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge -> אחוז שעות שהיה
+
+  Visual: [card] שעות עבודה
+  Tables: ['V_TAV_Ge_FactDailyRoute']
+  Fields: ['V_TAV_Ge_FactDailyRoute.שעות עבודה_Ge']
+  Display: V_TAV_Ge_FactDailyRoute.שעות עבודה_Ge -> שעות עבודה
+
+  Visual: [card] (no title)
+  Tables: ['V_TAV_FactDailyRoute']
+  Fields: ['KIKARDOM\\yehudit_ei V_TAV_FactDailyRoute.תאריכים']
+  Display: KIKARDOM\yehudit_ei V_TAV_FactDailyRoute.תאריכים -> טווח תאריכים
+
+  Visual: [slicer] תאריך
+  Tables: ['DimDate']
+  Fields: ['DimDate.Date']
+  Slicer Field: DimDate.Date
+
+  Visual: [slicer] שם קבלן
+  Tables: ['V_TAV_Ge_Devices']
+  Fields: ['V_TAV_Ge_Devices.ContractorName_N']
+  Slicer Field: V_TAV_Ge_Devices.ContractorName_N
+  Display: V_TAV_Ge_Devices.ContractorName_N -> שם קבלן
+
+  Visual: [slicer] עגלה
+  Tables: ['V_TAV_Ge_Devices']
+  Fields: ['V_TAV_Ge_Devices.DeviceName']
+  Slicer Field: V_TAV_Ge_Devices.DeviceName
+  Display: V_TAV_Ge_Devices.DeviceName -> שם עגלה
+
+  Visual: [slicer] נפה
+  Tables: ['V_TAV_Ge_Devices']
+  Fields: ['V_TAV_Ge_Devices.Nafa']
+  Slicer Field: V_TAV_Ge_Devices.Nafa
+  Display: V_TAV_Ge_Devices.Nafa -> שם נפה
+
+  Visual: [tableEx] (no title)
+  Tables: ['V_TAV_Ge_Devices', 'V_TAV_Ge_FactDailyRoute', 'V_TAV_Regions']
+  Fields: ['V_TAV_Ge_Devices.ContractorName_N', 'V_TAV_Ge_Devices.DeviceName', 'V_TAV_Ge_FactDailyRoute.שעות עבודה_Ge', 'V_TAV_Ge_FactDailyRoute.שעות שהיה_Ge', 'V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge', "V_TAV_Ge_FactDailyRoute.קילומטראז'_Ge", 'V_TAV_Ge_FactDailyRoute.כמות עצירות ארוכות_Ge', 'V_TAV_Ge_FactDailyRoute.כמות יציאות מפוליגון_Ge', 'V_TAV_Ge_FactDailyRoute.ציון ממוצע_Ge', 'V_TAV_Ge_FactDailyRoute.Date', 'V_TAV_Ge_FactDailyRoute.StartTime', 'V_TAV_Ge_FactDailyRoute.EndTime', 'V_TAV_Ge_FactDailyRoute.Recommendations', 'V_TAV_Regions.RegionName']
+  Display: V_TAV_Ge_FactDailyRoute.שעות_עבודה -> שעות עבודה
+  Display: V_TAV_Ge_FactDailyRoute.שעות שהיה_Ge -> שעות שהיה
+  Display: V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge -> אחוז שעות שהיה
+  Display: V_TAV_Ge_FactDailyRoute.קילומטראז'_Ge -> קילומטראז'
+  Display: V_TAV_Ge_FactDailyRoute.כמות עצירות ארוכות_Ge -> כמות עצירות ארוכות
+
+============================================================
+PAGE: פינוי אשפה
+============================================================
+
+  Visual: [card] כמות פחים שבוצעה
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.כמות פחים שבוצעה']
+
+  Visual: [card] כמות פחים מתוכננת
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.כמות פחים מתוכננת']
+
+  Visual: [pivotTable] (no title)
+  Tables: ['DimDate', 'V_TAV_GB_FactDailyRoute', 'V_TAV_GB_TrucksInformation', 'V_TAV_Regions']
+  Fields: ['DimDate.Date.Variation.Date Hierarchy.Year', 'DimDate.Date.Variation.Date Hierarchy.Month', 'DimDate.Date.Variation.Date Hierarchy.Day', 'V_TAV_GB_FactDailyRoute.כמות פחים מתוכננת', 'V_TAV_GB_FactDailyRoute.כמות פחים שבוצעה', 'V_TAV_GB_FactDailyRoute.אחוז ביצוע מול תכנון', 'V_TAV_GB_FactDailyRoute.ציון ממוצע_GB', 'V_TAV_GB_TrucksInformation.nvTruckNumber', 'V_TAV_GB_FactDailyRoute.כמות מסלולים', 'V_TAV_GB_FactDailyRoute.כמות פחים ריקים שרוקנו', 'V_TAV_Regions.RegionName']
+  Display: V_TAV_GB_FactDailyRoute.ציון ממוצע_GB -> ציון ממוצע
+
+  Visual: [card] ציון ממוצע
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.ציון ממוצע_GB']
+  Display: V_TAV_GB_FactDailyRoute.ציון ממוצע_GB -> ציון ממוצע
+
+  Visual: [lineChart] ציון ממוצע לפי תאריך
+  Tables: ['V_TAV_FactDailyRoute', 'DimDate', 'V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_FactDailyRoute.שעות עבודה_It', 'V_TAV_FactDailyRoute.שעות שהיה_It', 'DimDate.Date.Variation.Date Hierarchy.Year', 'DimDate.Date.Variation.Date Hierarchy.Month', 'DimDate.Date.Variation.Date Hierarchy.Day', 'V_TAV_GB_FactDailyRoute.ציון ממוצע_GB']
+  Display: V_TAV_FactDailyRoute.שעות עבודה_It -> שעות עבודה
+  Display: V_TAV_FactDailyRoute.שעות שהיה_It -> שעות שהיה
+
+  Visual: [clusteredBarChart] ציון ממוצע לפי נפה
+  Tables: ['V_TAV_GB_FactDailyRoute', 'V_TAV_Regions']
+  Fields: ['V_TAV_GB_FactDailyRoute.ציון ממוצע_GB', 'V_TAV_Regions.RegionName']
+
+  Visual: [card] אחוז ביצוע מול תכנון
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.אחוז ביצוע מול תכנון']
+
+  Visual: [card] (no title)
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.טווח תאריכים_Gb']
+
+  Visual: [slicer] תאריך
+  Tables: ['DimDate']
+  Fields: ['DimDate.Date']
+  Slicer Field: DimDate.Date
+
+  Visual: [slicer] שם נפה
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.nvRegionName']
+  Slicer Field: V_TAV_GB_FactDailyRoute.nvRegionName
+
+  Visual: [slicer] ל"ז משאית
+  Tables: ['V_TAV_GB_TrucksInformation']
+  Fields: ['V_TAV_GB_TrucksInformation.nvTruckNumber']
+  Slicer Field: V_TAV_GB_TrucksInformation.nvTruckNumber
+
+  Visual: [slicer] סטטוס
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.nvRouteStatusName']
+  Slicer Field: V_TAV_GB_FactDailyRoute.nvRouteStatusName
+
+  Visual: [donutChart] כמות מסלולים לפי סטטוס
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.nvRouteStatusName', 'V_TAV_GB_FactDailyRoute.כמות מסלולים']
+
+  Visual: [clusteredBarChart] אחוז ביצוע מול תכנון לפי משאית
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.אחוז ביצוע מול תכנון', 'V_TAV_GB_FactDailyRoute.nvTruckNumber']
+
+  Visual: [slicer] שם נהג
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.nvDriverName']
+  Slicer Field: V_TAV_GB_FactDailyRoute.nvDriverName
+
+  Visual: [tableEx] (no title)
+  Tables: ['V_TAV_GB_TrucksInformation', 'V_TAV_GB_FactDailyRoute', 'V_TAV_Regions']
+  Fields: ['V_TAV_GB_TrucksInformation.nvTruckNumber', 'V_TAV_GB_FactDailyRoute.כמות פחים מתוכננת', 'V_TAV_GB_FactDailyRoute.כמות פחים שבוצעה', 'V_TAV_GB_FactDailyRoute.אחוז ביצוע מול תכנון', 'V_TAV_GB_FactDailyRoute.ציון ממוצע_GB', 'V_TAV_GB_FactDailyRoute.RouteDate', 'V_TAV_GB_FactDailyRoute.nvRouteStatusName', 'V_TAV_GB_FactDailyRoute.nvDriverName', 'V_TAV_GB_FactDailyRoute.כמות פחים ריקים שרוקנו', 'V_TAV_Regions.RegionName', 'V_TAV_GB_FactDailyRoute.Recommendation', 'V_TAV_GB_FactDailyRoute.EndTime', 'V_TAV_GB_FactDailyRoute.BeginTime', 'V_TAV_GB_FactDailyRoute.אחוז פחים ריקים שרוקנו']
+  Display: V_TAV_GB_FactDailyRoute.ציון ממוצע_GB -> ציון
+  Display: V_TAV_GB_FactDailyRoute.RouteDate -> תאריך
+  Display: V_TAV_GB_TrucksInformation.nvTruckNumber -> לוחית זיהוי
+  Display: V_TAV_GB_FactDailyRoute.nvDriverName -> שם נהג
+  Display: V_TAV_GB_FactDailyRoute.nvRouteStatusName -> סטטוס מסלול
+
+  Visual: [card] כמות פחים ריקים שרוקנו
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.כמות פחים ריקים שרוקנו']
+
+  Visual: [card] אחוז פחים ריקים שרוקנו
+  Tables: ['V_TAV_GB_FactDailyRoute']
+  Fields: ['V_TAV_GB_FactDailyRoute.אחוז פחים ריקים שרוקנו']
+
+  Visual: [slicer] הצג נתוני יום קודם
+  Tables: ['DimDate']
+  Fields: ['DimDate.is_yesterday']
+  Slicer Field: DimDate.is_yesterday
+
+============================================================
+PAGE: פריקת אשפה
+============================================================
+
+  Visual: [pivotTable] (no title)
+  Tables: ['DimDate', 'V_TAV_Regions', 'TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['DimDate.Date.Variation.Date Hierarchy.Year', 'DimDate.Date.Variation.Date Hierarchy.Month', 'DimDate.Date.Variation.Date Hierarchy.Day', 'V_TAV_Regions.RegionName', 'TAV_Gr_Fact_GarbageDisposal.שכונה', 'TAV_Gr_Fact_GarbageDisposal.סה"כ טונג\' אשפה', "TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ממוצע טונג' אשפה", 'TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr', 'TAV_Gr_Fact_GarbageDisposal.כמות פריקות', 'TAV_Gr_Fact_GarbageDisposal.Measure']
+  Display: TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr -> ציון ממוצע
+  Display: Sum(TAV_Regions_Gr.ממוצע טונג' אשפה יומי) -> ממוצע יומי טונג' אשפה
+  Display: TAV_Gr_Fact_GarbageDisposal.Measure -> ממוצע קבוע לטונג' אשפה
+
+  Visual: [clusteredBarChart] ציון ממוצע לפי נפה
+  Tables: ['V_TAV_Regions', 'V_TAV_Ge_FactDailyRoute', 'TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['V_TAV_Regions.RegionName', 'V_TAV_Ge_FactDailyRoute.שעות שהיה_Ge', 'V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge', 'TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr']
+  Display: V_TAV_Ge_FactDailyRoute.שעות שהיה_Ge -> שעות שהיה
+  Display: V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge -> אחוז שעות שהיה
+
+  Visual: [lineChart] טונג'' אשפה לפי תאריך 
+  Tables: ['DimDate', 'TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['DimDate.Date.Variation.Date Hierarchy.Year', 'DimDate.Date.Variation.Date Hierarchy.Month', 'DimDate.Date.Variation.Date Hierarchy.Day', 'TAV_Gr_Fact_GarbageDisposal.סה"כ טונג\' אשפה']
+
+  Visual: [card] ציון ממוצע
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr']
+
+  Visual: [card] טונג'' אשפה
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.סה"כ טונג\' אשפה']
+
+  Visual: [card] כמות פריקות
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.כמות פריקות']
+
+  Visual: [card] (no title)
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.טווח תאריכים_Gr']
+
+  Visual: [slicer] תאריך
+  Tables: ['DimDate']
+  Fields: ['DimDate.Date']
+  Slicer Field: DimDate.Date
+
+  Visual: [slicer] מספר רכב
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ["TAV_Gr_Fact_GarbageDisposal.מס' רכב"]
+  Slicer Field: TAV_Gr_Fact_GarbageDisposal.מס' רכב
+
+  Visual: [slicer] שכונה
+  Tables: ['TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.שכונה']
+  Slicer Field: TAV_Gr_Fact_GarbageDisposal.שכונה
+
+  Visual: [slicer] נפה
+  Tables: ['TAV_Regions_Gr']
+  Fields: ['TAV_Regions_Gr.RegionName']
+  Slicer Field: TAV_Regions_Gr.RegionName
+
+  Visual: [tableEx] (no title)
+  Tables: ['V_TAV_Regions', 'TAV_Gr_Fact_GarbageDisposal', 'DimDate']
+  Fields: ['V_TAV_Regions.RegionName', 'TAV_Gr_Fact_GarbageDisposal.שכונה', 'DimDate.Date', 'TAV_Gr_Fact_GarbageDisposal.נהג', 'TAV_Gr_Fact_GarbageDisposal.מוביל', "TAV_Gr_Fact_GarbageDisposal.מס' תעודה", "TAV_Gr_Fact_GarbageDisposal.מס' רכב", 'TAV_Gr_Fact_GarbageDisposal.שעת כניסה', 'TAV_Gr_Fact_GarbageDisposal.שעת יציאה', 'TAV_Gr_Fact_GarbageDisposal.סה"כ טונג\' אשפה', 'TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr', 'TAV_Gr_Fact_GarbageDisposal.קוד_פנימי']
+  Display: V_TAV_Regions.RegionName -> שם נפה
+  Display: DimDate.Date -> תאריך
+  Display: TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr -> ציון ממוצע
+  Display: TAV_Gr_Fact_GarbageDisposal.קוד_פנימי -> קוד פנימי
+
+  Visual: [clusteredColumnChart] כמות פריקות לפי יום בשבוע
+  Tables: ['V_TAV_Ge_FactDailyRoute', 'TAV_Gr_Fact_GarbageDisposal']
+  Fields: ['V_TAV_Ge_FactDailyRoute.שעות שהיה_Ge', 'V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge', 'TAV_Gr_Fact_GarbageDisposal.יום', 'TAV_Gr_Fact_GarbageDisposal.כמות פריקות']
+  Display: V_TAV_Ge_FactDailyRoute.שעות שהיה_Ge -> שעות שהיה
+  Display: V_TAV_Ge_FactDailyRoute.אחוז שעות שהיה_Ge -> אחוז שעות שהיה
+
+  Visual: [slicer] הצג נתוני יום קודם
+  Tables: ['DimDate']
+  Fields: ['DimDate.is_yesterday']
+  Slicer Field: DimDate.is_yesterday
+
+============================================================
+PAGE: פניות
+============================================================
+
+  Visual: [card] פניות פתוחות
+  Tables: ['incidents']
+  Fields: ['incidents.כמות פניות פתוחות']
+
+  Visual: [card] ציון ממוצע
+  Tables: ['incidents']
+  Fields: ['incidents.ציון ממוצע לפניות']
+  Display: incidents.ציון ממוצע כל הנפות לפניות -> ציון ממוצע לכל הנפות
+
+  Visual: [card] אחוז פניות חורגות
+  Tables: ['incidents']
+  Fields: ['incidents.אחוז פניות חורגות']
+
+  Visual: [pivotTable] (no title)
+  Tables: ['incidents', 'DimDate', 'pws_caselogs', 'V_TAV_Regions']
+  Fields: ['incidents.כמות פניות', 'incidents.כמות פניות חורגות', 'incidents.כמות פניות פתוחות', 'incidents.כמות פניות סגורות', 'incidents.כמות פניות מתגלגלות', 'incidents.אחוז פניות חורגות', 'incidents.ציון ממוצע לפניות', 'DimDate.Date.Variation.Date Hierarchy.Year', 'DimDate.Date.Variation.Date Hierarchy.Month', 'DimDate.Date.Variation.Date Hierarchy.Day', 'pws_caselogs.כמות פניות שנפתחו מחדש', 'pws_caselogs.אחוז פניות שנפתחו מחדש', 'V_TAV_Regions.RegionName']
+  Display: incidents.כמות פניות פתוחות -> פניות פתוחות
+  Display: incidents.כמות פניות סגורות -> פניות סגורות
+  Display: incidents.כמות פניות מתגלגלות -> פניות מתגלגלות
+  Display: incidents.כמות פניות חורגות -> פניות חורגות
+  Display: incidents.ציון ממוצע לפניות -> ציון ממוצע
+
+  Visual: [card] פניות סגורות
+  Tables: ['incidents']
+  Fields: ['incidents.כמות פניות סגורות']
+
+  Visual: [clusteredBarChart] כמות פניות לפי מחלקה
+  Tables: ['pws_departments', 'incidents']
+  Fields: ['pws_departments.pws_name', 'incidents.כמות פניות']
+
+  Visual: [card] כמות פניות
+  Tables: ['incidents']
+  Fields: ['incidents.כמות פניות']
+
+  Visual: [slicer] תאריך
+  Tables: ['DimDate']
+  Fields: ['DimDate.Date']
+  Slicer Field: DimDate.Date
+
+  Visual: [slicer] סוג פניה
+  Tables: ['incidents']
+  Fields: ['incidents.סוג פניה']
+  Visual Filters: [{"name": "Filterb9ff9d318f1e02bb8da3", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "incidents"}}, "Property": "סוג פניה"}}, "filter": {"Version": 2, "From": [{"Name": "i", "Entity": "incidents", "Type": 0}], "Where": [{"Condition": {"In": {"Expressions": [{"Column": {"Expression": {"SourceRef": {"Source": "i"}}, "Property": "סוג פניה"}}], "Values": [[{"Literal": {"Value": "'פניות מוקד'"}}], [{"Literal": {"Value": "'פניות ציבור'"}}]]}}}]}, "type": "Categorical", "howCreated"
+  Slicer Field: incidents.סוג פניה
+
+  Visual: [slicer] שם מחלקה
+  Tables: ['pws_departments']
+  Fields: ['pws_departments.pws_name']
+  Visual Filters: [{"name": "Filterfaea7cf6645e8a3d18a5", "expression": {"Column": {"Expression": {"SourceRef": {"Entity": "pws_departments"}}, "Property": "_pws_divisionid_value"}}, "filter": {"Version": 2, "From": [{"Name": "p", "Entity": "pws_departments", "Type": 0}], "Where": [{"Condition": {"In": {"Expressions": [{"Column": {"Expression": {"SourceRef": {"Source": "p"}}, "Property": "_pws_divisionid_value"}}], "Values": [[{"Literal": {"Value": "'<DIVISION-GUID>'"}}]]}}}]}, "type": "Categ
+  Slicer Field: pws_departments.pws_name
+
+  Visual: [slicer] שם רובע
+  Tables: ['pws_quarters']
+  Fields: ['pws_quarters.pws_name']
+  Slicer Field: pws_quarters.pws_name
+
+  Visual: [slicer] שם נפה
+  Tables: ['V_TAV_Regions']
+  Fields: ['V_TAV_Regions.RegionName']
+  Slicer Field: V_TAV_Regions.RegionName
+
+  Visual: [lineChart] ציון ממוצע לפי תאריך
+  Tables: ['DimDate', 'incidents']
+  Fields: ['DimDate.Date.Variation.Date Hierarchy.Year', 'DimDate.Date.Variation.Date Hierarchy.Month', 'DimDate.Date.Variation.Date Hierarchy.Day', 'incidents.ציון ממוצע לפניות']
+
+  Visual: [clusteredBarChart] פניות פתוחות לפי נושא הפניה
+  Tables: ['pws_casesubjects', 'incidents']
+  Fields: ['pws_casesubjects.pws_name', 'incidents.כמות פניות פתוחות']
+
+  Visual: [tableEx] (no title)
+  Tables: ['pws_departments', 'incidents', 'pws_casestatus', 'pws_casesubjects', 'pws_quarters', 'pws_slastatus', 'V_TAV_Regions']
+  Fields: ['pws_departments.pws_name', 'incidents.createdon', 'incidents.description', 'pws_casestatus.סטטוס', 'pws_casesubjects.pws_name', 'pws_quarters.pws_name', 'pws_slastatus.Label.LocalizedLabels.Label', 'V_TAV_Regions.RegionName']
+  Display: pws_departments.pws_name -> מחלקה
+  Display: incidents.createdon -> תאריך
+  Display: incidents.description -> תאור הפניה
+  Display: pws_casesubjects.pws_name -> נושא הפניה
+  Display: pws_quarters.pws_name -> רובע
+
+  Visual: [slicer] סטטוס
+  Tables: ['pws_casestatus']
+  Fields: ['pws_casestatus.סטטוס']
+  Slicer Field: pws_casestatus.סטטוס
+
+  Visual: [card] אחוז פניות שנפתחו מחדש
+  Tables: ['pws_caselogs']
+  Fields: ['pws_caselogs.אחוז פניות שנפתחו מחדש']
+
+  Visual: [slicer] הצג נתוני יום קודם
+  Tables: ['DimDate']
+  Fields: ['DimDate.is_yesterday']
+  Slicer Field: DimDate.is_yesterday
+
+============================================================
+PAGE: ארועים
+============================================================
+
+  Visual: [tableEx] (no title)
+  Tables: ['\u200f\u200fEventsData']
+  Fields: ['\u200f\u200fEventsData.תאריך הארוע', '\u200f\u200fEventsData.סוג ארוע', '\u200f\u200fEventsData.שם ארוע', '\u200f\u200fEventsData.תאור משאבים תבוראתיים נדרשים', '\u200f\u200fEventsData.משעה', '\u200f\u200fEventsData.עד שעה', '\u200f\u200fEventsData.מנהל נפה', '\u200f\u200fEventsData.שם שכונה', '\u200f\u200fEventsData.כתובת', '\u200f\u200fEventsData.מוסר ההודעה', '\u200f\u200fEventsData.נפה', '\u200f\u200fEventsData.איש קשר מטעם הארוע', '\u200f\u200fEventsData.צפי משתמשים', '\u200f\u200fEventsData.הערות']
+  Display: V_TAV_Ge_FactDailyRoute.שעות_עבודה -> שעות עבודה
+
+  Visual: [clusteredBarChart] כמות אירועים לפי סוג האירוע
+  Tables: ['\u200f\u200fEventsData']
+  Fields: ['\u200f\u200fEventsData.סוג ארוע', '\u200f\u200fEventsData.כמות ארועים']
+
+  Visual: [clusteredColumnChart] כמות אירועים לפי נפה
+  Tables: ['\u200f\u200fEventsData']
+  Fields: ['\u200f\u200fEventsData.כמות ארועים', '\u200f\u200fEventsData.נפה']
+
+  Visual: [slicer] מוסר ההודעה
+  Tables: ['\u200f\u200fEventsData']
+  Fields: ['\u200f\u200fEventsData.מוסר ההודעה']
+  Slicer Field: ‏‏EventsData.מוסר ההודעה
+
+  Visual: [slicer] סוג ארוע, שם ארוע
+  Tables: ['\u200f\u200fEventsData']
+  Fields: ['\u200f\u200fEventsData.סוג ארוע', '\u200f\u200fEventsData.שם ארוע']
+  Slicer Field: ‏‏EventsData.סוג ארוע
+  Slicer Field: ‏‏EventsData.שם ארוע
+
+  Visual: [slicer] שכונה
+  Tables: ['\u200f\u200fEventsData']
+  Fields: ['\u200f\u200fEventsData.שם שכונה']
+  Slicer Field: ‏‏EventsData.שם שכונה
+
+  Visual: [slicer] נפה
+  Tables: ['\u200f\u200fEventsData']
+  Fields: ['\u200f\u200fEventsData.נפה']
+  Slicer Field: ‏‏EventsData.נפה
+
+  Visual: [slicer] תאריך
+  Tables: ['\u200f\u200fEventsData']
+  Fields: ['\u200f\u200fEventsData.תאריך הארוע']
+  Slicer Field: ‏‏EventsData.תאריך הארוע
+
+  Visual: [slicer] מנהל נפה
+  Tables: ['\u200f\u200fEventsData']
+  Fields: ['\u200f\u200fEventsData.מנהל נפה']
+  Slicer Field: ‏‏EventsData.מנהל נפה
+
+  Visual: [card] כמות ארועים
+  Tables: ['\u200f\u200fEventsData']
+  Fields: ['\u200f\u200fEventsData.כמות ארועים']
+
+  Visual: [lineChart] כמות ארועים לפי תאריך
+  Tables: ['\u200f\u200fEventsData', 'DimDate']
+  Fields: ['\u200f\u200fEventsData.כמות ארועים', 'DimDate.Date.Variation.Date Hierarchy.Year', 'DimDate.Date.Variation.Date Hierarchy.Month', 'DimDate.Date.Variation.Date Hierarchy.Day']
+
+============================================================
+PAGE: ציונים והמלצות
+============================================================
+
+  Visual: [tableEx] (no title)
+  Tables: ['TAV_Marks']
+  Fields: ['TAV_Marks.Provider', 'TAV_Marks.Rule', 'TAV_Marks.Events', 'Sum(TAV_Marks.Rule_Int)', 'Sum(TAV_Marks.Mark)']
+  Display: V_TAV_Ge_FactDailyRoute.שעות_עבודה -> שעות עבודה
+  Display: TAV_Marks.Provider -> ספק
+  Display: TAV_Marks.Events -> ארוע
+  Display: TAV_Marks.Rule -> כלל
+  Display: Sum(TAV_Marks.Rule_Int) -> ערך מספרי לכלל
+
+  Visual: [slicer] ספק
+  Tables: ['TAV_Providers']
+  Fields: ['TAV_Providers.Provider']
+  Slicer Field: TAV_Providers.Provider
+
+  Visual: [tableEx] (no title)
+  Tables: ['TAV_Recommendations']
+  Fields: ['TAV_Recommendations.Provider', 'TAV_Recommendations.Events', 'TAV_Recommendations.Rule', 'TAV_Recommendations.Rule_Int', 'TAV_Recommendations.Recommendation']
+  Display: V_TAV_Ge_FactDailyRoute.שעות_עבודה -> שעות עבודה
+  Display: TAV_Recommendations.Provider -> ספק
+  Display: TAV_Recommendations.Events -> ארוע
+  Display: TAV_Recommendations.Rule -> כלל
+  Display: TAV_Recommendations.Rule_Int -> ערך מספרי לכלל
+
+============================================================
+PAGE: Page 2
+============================================================
+
+  Visual: [pivotTable] (no title)
+  Tables: ['TAV_Regions_Gr', 'TAV_Gr_Fact_GarbageDisposal', 'DimDate', 'V_TAV_Regions']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.שכונה', "Sum(TAV_Regions_Gr.ממוצע טונג' אשפה יומי)", "TAV_Gr_Fact_GarbageDisposal.ממוצע טונג' יומי", "TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ממוצע טונג' אשפה", 'DimDate.Date.Variation.Date Hierarchy.Year', 'DimDate.Date.Variation.Date Hierarchy.Month', 'DimDate.Date.Variation.Date Hierarchy.Day', 'TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr', 'V_TAV_Regions.RegionName']
+
+  Visual: [tableEx] (no title)
+  Tables: ['TAV_Gr_Fact_GarbageDisposal', 'TAV_Regions_Gr', 'DimDate']
+  Fields: ['TAV_Gr_Fact_GarbageDisposal.נהג', "TAV_Gr_Fact_GarbageDisposal.מס' רכב", 'TAV_Gr_Fact_GarbageDisposal.שכונה', 'TAV_Gr_Fact_GarbageDisposal.סה"כ משקל אשפה', 'TAV_Gr_Fact_GarbageDisposal.סה"כ טונג\' אשפה', "TAV_Gr_Fact_GarbageDisposal.ממוצע טונג' יומי", 'TAV_Gr_Fact_GarbageDisposal.תאריך', "TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ממוצע טונג' אשפה", "Sum(TAV_Regions_Gr.ממוצע טונג' אשפה יומי)", 'DimDate.Date']
+
+=== REPORT LEVEL FILTERS ===
+[
+  {
+    "name": "Filter4cc128425ffd35f32236",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "TAV_Users"
+          }
+        },
+        "Property": "RegionName"
+      }
+    },
+    "type": "Advanced",
+    "howCreated": 1
+  },
+  {
+    "name": "Filterbdce4c21a5ac03c080b3",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Regions"
+          }
+        },
+        "Property": "IsVisable"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 1,
+    "objects": {},
+    "isHiddenInViewMode": true
+  }
+]

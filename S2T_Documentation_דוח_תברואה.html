@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S2T Documentation — דוח תברואה</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #222638;
+    --border: #2e3250;
+    --accent: #5b8dee;
+    --accent2: #7c5cfc;
+    --green: #3ecf8e;
+    --yellow: #f5c842;
+    --red: #f26c6c;
+    --orange: #f59e42;
+    --text: #e2e6f0;
+    --text-muted: #7a82a0;
+    --text-dim: #4a5070;
+    --code-bg: #141622;
+    --fact: #5b8dee22;
+    --fact-border: #5b8dee;
+    --dim: #3ecf8e22;
+    --dim-border: #3ecf8e;
+    --ref: #f59e4222;
+    --ref-border: #f59e42;
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ── SIDEBAR ── */
+  nav {
+    width: 260px;
+    min-width: 260px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 24px 0;
+    flex-shrink: 0;
+  }
+
+  nav .logo {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+
+  nav .logo span {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  nav .logo strong {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  nav a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 20px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+  }
+
+  nav a:hover, nav a.active {
+    color: var(--text);
+    background: var(--surface2);
+    border-left-color: var(--accent);
+  }
+
+  nav .section-label {
+    padding: 14px 20px 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  nav .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--text-dim);
+    flex-shrink: 0;
+  }
+
+  /* ── MAIN ── */
+  main {
+    flex: 1;
+    padding: 40px 48px;
+    max-width: 1100px;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .page-header .subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .meta-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+
+  .meta-card .label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+  }
+
+  .meta-card .value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    margin-bottom: 56px;
+    scroll-margin-top: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  h2 .sec-num {
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 24px 0 12px;
+  }
+
+  h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 20px 0 8px;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+  }
+
+  p {
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  strong { color: var(--text); }
+
+  /* ── DOMAIN CARDS ── */
+  .domain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+
+  .domain-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    border-left: 4px solid;
+  }
+
+  .domain-card.ituran { border-left-color: #5b8dee; }
+  .domain-card.ge { border-left-color: #3ecf8e; }
+  .domain-card.gb { border-left-color: #f59e42; }
+  .domain-card.gr { border-left-color: #f26c6c; }
+  .domain-card.crm { border-left-color: #a78bfa; }
+  .domain-card.events { border-left-color: #f5c842; }
+
+  .domain-card .domain-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .domain-card .domain-heb {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    direction: rtl;
+    text-align: right;
+  }
+
+  .domain-card .domain-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+  }
+
+  .pill.blue { background: #5b8dee22; color: #5b8dee; border: 1px solid #5b8dee44; }
+  .pill.green { background: #3ecf8e22; color: #3ecf8e; border: 1px solid #3ecf8e44; }
+  .pill.orange { background: #f59e4222; color: #f59e42; border: 1px solid #f59e4244; }
+  .pill.red { background: #f26c6c22; color: #f26c6c; border: 1px solid #f26c6c44; }
+  .pill.purple { background: #a78bfa22; color: #a78bfa; border: 1px solid #a78bfa44; }
+  .pill.yellow { background: #f5c84222; color: #f5c842; border: 1px solid #f5c84244; }
+  .pill.gray { background: #7a82a022; color: #7a82a0; border: 1px solid #7a82a044; }
+
+  /* ── TABLES ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin: 12px 0 24px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    background: var(--surface2);
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 10px 14px;
+    text-align: left;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--surface2); }
+
+  tbody td {
+    padding: 9px 14px;
+    color: var(--text-muted);
+    vertical-align: top;
+  }
+
+  tbody td:first-child {
+    color: var(--text);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* Type badges */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .badge.fact { background: var(--fact); color: var(--fact-border); border: 1px solid var(--fact-border)44; }
+  .badge.dim { background: var(--dim); color: var(--dim-border); border: 1px solid var(--dim-border)44; }
+  .badge.ref { background: var(--ref); color: var(--ref-border); border: 1px solid var(--ref-border)44; }
+  .badge.auto { background: #7a82a022; color: #7a82a0; border: 1px solid #7a82a044; }
+  .badge.meas { background: #a78bfa22; color: #a78bfa; border: 1px solid #a78bfa44; }
+  .badge.yes { background: #3ecf8e22; color: #3ecf8e; }
+  .badge.no { background: #7a82a022; color: #7a82a0; }
+  .badge.warn { background: #f5c84222; color: #f5c842; border: 1px solid #f5c84244; }
+  .badge.high { background: #f26c6c22; color: #f26c6c; border: 1px solid #f26c6c44; }
+  .badge.med { background: #f59e4222; color: #f59e42; border: 1px solid #f59e4244; }
+  .badge.low { background: #3ecf8e22; color: #3ecf8e; border: 1px solid #3ecf8e44; }
+
+  code {
+    font-family: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
+    font-size: 12px;
+    background: var(--code-bg);
+    color: #7dd3fc;
+    padding: 1px 6px;
+    border-radius: 4px;
+    border: 1px solid #2e3250;
+  }
+
+  /* ── CALLOUTS ── */
+  .callout {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .callout.warning {
+    background: #f5c84211;
+    border: 1px solid #f5c84244;
+    color: #f5c842cc;
+  }
+
+  .callout.info {
+    background: #5b8dee11;
+    border: 1px solid #5b8dee44;
+    color: #5b8deebb;
+  }
+
+  .callout.success {
+    background: #3ecf8e11;
+    border: 1px solid #3ecf8e44;
+    color: #3ecf8ebb;
+  }
+
+  .callout .icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* ── MEASURE PATTERN CARDS ── */
+  .measure-pattern {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .measure-pattern .mp-left {
+    flex: 1;
+  }
+
+  .measure-pattern .mp-name {
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 13px;
+    color: #7dd3fc;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .measure-pattern .mp-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .measure-pattern .mp-pattern {
+    flex-shrink: 0;
+  }
+
+  /* ── PAGE CARDS ── */
+  .page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .page-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .page-card .pg-num {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .page-card .pg-body {}
+
+  .page-card .pg-name-heb {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    direction: rtl;
+    text-align: right;
+    margin-bottom: 2px;
+  }
+
+  .page-card .pg-name-en {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .page-card .pg-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ── LINEAGE ── */
+  .lineage-block {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #c9d1d9;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  .lineage-block .l-root { color: #f59e42; font-weight: 700; }
+  .lineage-block .l-table { color: #7dd3fc; }
+  .lineage-block .l-measure { color: #3ecf8e; }
+  .lineage-block .l-visual { color: #a78bfa; }
+  .lineage-block .l-note { color: #7a82a0; }
+
+  /* ── RISK TABLE ── */
+  tr.risk-high td:first-child { color: #f26c6c; }
+  tr.risk-med td:first-child { color: #f59e42; }
+  tr.risk-low td:first-child { color: #3ecf8e; }
+
+  /* ── CUSTOM VISUAL CARDS ── */
+  .cv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .cv-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .cv-card .cv-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .cv-card .cv-author {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .cv-card .cv-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #3e4260; }
+
+  /* ── COLLAPSIBLE ── */
+  details {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+  }
+
+  summary {
+    padding: 12px 16px;
+    cursor: pointer;
+    background: var(--surface);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  summary::before {
+    content: '▶';
+    font-size: 10px;
+    color: var(--text-muted);
+    transition: transform 0.2s;
+  }
+
+  details[open] summary::before { transform: rotate(90deg); }
+  details[open] summary { border-bottom: 1px solid var(--border); }
+
+  .details-body {
+    padding: 16px;
+    background: var(--bg);
+  }
+
+  /* ── SUFFIX LEGEND ── */
+  .suffix-legend {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+
+  .suffix-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+
+  .suffix-item .s-code {
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  /* print */
+  @media print {
+    nav { display: none; }
+    main { padding: 20px; max-width: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ SIDEBAR ═══════════════════════════ -->
+<nav>
+  <div class="logo">
+    <span>S2T Documentation</span>
+    <strong>דוח תברואה</strong>
+  </div>
+
+  <div class="section-label">Structure</div>
+  <a href="#overview"><div class="dot"></div> 1. Overview</a>
+  <a href="#datamodel"><div class="dot"></div> 2. Data Model</a>
+  <a href="#tables"><div class="dot" style="background:#5b8dee"></div>&nbsp;&nbsp;Tables</a>
+  <a href="#columns"><div class="dot" style="background:#3ecf8e"></div>&nbsp;&nbsp;Columns</a>
+  <a href="#relationships"><div class="dot"></div> 3. Relationships</a>
+
+  <div class="section-label">Logic</div>
+  <a href="#measures"><div class="dot"></div> 4. Measures (DAX)</a>
+  <a href="#calccols"><div class="dot"></div> 5. Calc. Columns</a>
+  <a href="#pq"><div class="dot"></div> 6. Power Query</a>
+
+  <div class="section-label">Report</div>
+  <a href="#pages"><div class="dot"></div> 7. Report Pages</a>
+  <a href="#visuals"><div class="dot"></div>&nbsp;&nbsp;Key Visuals</a>
+  <a href="#lineage"><div class="dot"></div> 8. Data Lineage</a>
+
+  <div class="section-label">Analysis</div>
+  <a href="#observations"><div class="dot"></div> 9. Observations</a>
+  <a href="#risks"><div class="dot"></div> 10. Risks</a>
+  <a href="#improvements"><div class="dot"></div> 11. Improvements</a>
+
+  <div class="section-label">Appendix</div>
+  <a href="#customvisuals"><div class="dot"></div> Custom Visuals</a>
+  <a href="#rls"><div class="dot"></div> RLS Config</a>
+</nav>
+
+<!-- ═══════════════════════════ MAIN ═══════════════════════════ -->
+<main>
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <h1>📊 S2T Technical Documentation</h1>
+    <div class="subtitle">דוח תברואה — Municipal Sanitation Operations Report</div>
+    <div class="meta-grid">
+      <div class="meta-card">
+        <div class="label">Source File</div>
+        <div class="value">___דוח תברואה.pbix</div>
+      </div>
+      <div class="meta-card">
+        <div class="label">PBI Version</div>
+        <div class="value">Desktop OnPrem · 2023.05 · v1.28</div>
+      </div>
+      <div class="meta-card">
+        <div class="label">DataModel</div>
+        <div class="value" style="color:#f5c842">⚠ XPress9 Compressed</div>
+      </div>
+      <div class="meta-card">
+        <div class="label">Analysis Date</div>
+        <div class="value">2026-03-22</div>
+      </div>
+      <div class="meta-card">
+        <div class="label">Pages</div>
+        <div class="value">15 pages · 336 visuals</div>
+      </div>
+      <div class="meta-card">
+        <div class="label">Tables in Model</div>
+        <div class="value">26 tables</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 1. OVERVIEW ══════════ -->
+  <section id="overview">
+    <h2><span class="sec-num">1</span> Overview</h2>
+
+    <p>This is a <strong>municipal sanitation operations monitoring report</strong> in Hebrew. It tracks, measures, and scores multiple sanitation service domains across geographic regions (<strong>נפות = districts</strong>). Each domain has its own data source, with scores normalized for cross-domain comparison.</p>
+
+    <div class="callout info">
+      <div class="icon">ℹ️</div>
+      <div><strong>Confidence levels:</strong> High for structure &amp; report layer · Medium for measure logic (inferred from names) · Low for DAX expressions &amp; relationship cardinality (DataModel binary inaccessible)</div>
+    </div>
+
+    <h3>Operational Domains</h3>
+    <div class="domain-grid">
+      <div class="domain-card ituran">
+        <div class="domain-name">Contractor Vehicles</div>
+        <div class="domain-heb">רכבי קבלן</div>
+        <div class="domain-meta">
+          <span class="pill blue">Ituran GPS</span>
+          <span class="pill gray">suffix: _It</span>
+        </div>
+      </div>
+      <div class="domain-card ge">
+        <div class="domain-name">Street Sweeping</div>
+        <div class="domain-heb">טיאוט</div>
+        <div class="domain-meta">
+          <span class="pill green">GE Devices</span>
+          <span class="pill gray">suffix: _Ge</span>
+        </div>
+      </div>
+      <div class="domain-card gb">
+        <div class="domain-name">Garbage Collection</div>
+        <div class="domain-heb">פינוי אשפה</div>
+        <div class="domain-meta">
+          <span class="pill orange">GB System</span>
+          <span class="pill gray">suffix: _Gb / _GB</span>
+        </div>
+      </div>
+      <div class="domain-card gr">
+        <div class="domain-name">Garbage Disposal</div>
+        <div class="domain-heb">פריקת אשפה</div>
+        <div class="domain-meta">
+          <span class="pill red">Weighbridge Site</span>
+          <span class="pill gray">suffix: _Gr</span>
+        </div>
+      </div>
+      <div class="domain-card crm">
+        <div class="domain-name">Public Complaints</div>
+        <div class="domain-heb">פניות</div>
+        <div class="domain-meta">
+          <span class="pill purple">CRM / Dataverse (pws_)</span>
+        </div>
+      </div>
+      <div class="domain-card events">
+        <div class="domain-name">Sanitation Events</div>
+        <div class="domain-heb">ארועים</div>
+        <div class="domain-meta">
+          <span class="pill yellow">Standalone Table</span>
+        </div>
+      </div>
+    </div>
+
+    <h3>Key Subject Areas</h3>
+    <ul style="color:var(--text-muted); padding-left:20px; line-height:2">
+      <li>Daily operational scoring per region and per vehicle/cart/truck</li>
+      <li>Performance trends over time (% score change vs. prior period)</li>
+      <li>Execution vs. planning compliance (bins collected vs. planned)</li>
+      <li>Garbage tonnage monitoring at disposal sites</li>
+      <li>Public complaint SLA tracking (open / closed / overdue / reopened)</li>
+      <li>Events and sanitation incident logging</li>
+    </ul>
+  </section>
+
+  <!-- ══════════ 2. DATA MODEL ══════════ -->
+  <section id="datamodel">
+    <h2><span class="sec-num">2</span> Data Model</h2>
+
+    <section id="tables">
+      <h3>2.1 Tables (26 total)</h3>
+
+      <div class="suffix-legend">
+        <div class="suffix-item"><span class="s-code" style="color:#5b8dee">Fact</span> <span style="color:var(--text-muted)">Transactional / Event data</span></div>
+        <div class="suffix-item"><span class="s-code" style="color:#3ecf8e">Dim</span> <span style="color:var(--text-muted)">Lookup / Descriptor data</span></div>
+        <div class="suffix-item"><span class="s-code" style="color:#f59e42">Ref</span> <span style="color:var(--text-muted)">Reference / Configuration</span></div>
+        <div class="suffix-item"><span class="s-code" style="color:#a78bfa">Meas</span> <span style="color:var(--text-muted)">Measures-only table (no columns)</span></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Table Name</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Granularity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>V_TAV_FactDailyRoute</code></td><td><span class="badge fact">Fact</span></td><td>Ituran GPS — contractor vehicle daily routes</td><td>1 row / vehicle / day</td></tr>
+            <tr><td><code>V_TAV_Ge_FactDailyRoute</code></td><td><span class="badge fact">Fact</span></td><td>GE Devices — sweeping cart daily routes</td><td>1 row / cart / day</td></tr>
+            <tr><td><code>V_TAV_GB_FactDailyRoute</code></td><td><span class="badge fact">Fact</span></td><td>GB System — garbage collection route execution</td><td>1 row / route / day</td></tr>
+            <tr><td><code>TAV_Gr_Fact_GarbageDisposal</code></td><td><span class="badge fact">Fact</span></td><td>Disposal site — garbage dumping records</td><td>1 row / vehicle entry to site</td></tr>
+            <tr><td><code>incidents</code></td><td><span class="badge fact">Fact</span></td><td>CRM service requests / public complaints</td><td>1 row / complaint</td></tr>
+            <tr><td><code>‏‏EventsData</code> <span class="badge warn">⚠ invisible chars</span></td><td><span class="badge fact">Fact</span></td><td>Sanitation events/incidents</td><td>1 row / event</td></tr>
+            <tr><td><code>pws_caselogs</code></td><td><span class="badge fact">Fact</span></td><td>Complaint re-open logs</td><td>1 row / case log</td></tr>
+            <tr><td><code>DimDate</code></td><td><span class="badge dim">Dim</span></td><td>Date dimension — primary time axis</td><td>1 row / calendar day</td></tr>
+            <tr><td><code>V_TAV_Platforms</code></td><td><span class="badge dim">Dim</span></td><td>Ituran — vehicle name &amp; license plate</td><td>1 row / vehicle</td></tr>
+            <tr><td><code>V_TAV_Ge_Devices</code></td><td><span class="badge dim">Dim</span></td><td>GE — sweeping cart name, contractor, district</td><td>1 row / device</td></tr>
+            <tr><td><code>V_TAV_GB_TrucksInformation</code></td><td><span class="badge dim">Dim</span></td><td>GB — truck identification info</td><td>1 row / truck</td></tr>
+            <tr><td><code>V_TAV_Regions</code></td><td><span class="badge dim">Dim</span></td><td>Geographic districts (נפות) + RLS visibility + hosts weighted-avg measures</td><td>1 row / region</td></tr>
+            <tr><td><code>TAV_Regions_CRM</code></td><td><span class="badge dim">Dim</span></td><td>CRM-linked region dimension</td><td>1 row / region</td></tr>
+            <tr><td><code>TAV_Regions_Gr</code></td><td><span class="badge dim">Dim</span></td><td>Disposal site region dimension</td><td>1 row / region</td></tr>
+            <tr><td><code>pws_departments</code></td><td><span class="badge dim">Dim</span></td><td>CRM — complaint departments</td><td>1 row / department</td></tr>
+            <tr><td><code>pws_quarters</code></td><td><span class="badge dim">Dim</span></td><td>CRM — neighborhood/quarter lookup</td><td>1 row / quarter</td></tr>
+            <tr><td><code>pws_casestatus</code></td><td><span class="badge dim">Dim</span></td><td>CRM — case status lookup</td><td>1 row / status</td></tr>
+            <tr><td><code>pws_slastatus</code></td><td><span class="badge dim">Dim</span></td><td>CRM — SLA status lookup</td><td>1 row / SLA status</td></tr>
+            <tr><td><code>pws_casesubjects</code></td><td><span class="badge dim">Dim</span></td><td>CRM — complaint topic/subject lookup</td><td>1 row / subject</td></tr>
+            <tr><td><code>TAV_Providers</code></td><td><span class="badge dim">Dim</span></td><td>Contractor/service provider master list</td><td>1 row / provider</td></tr>
+            <tr><td><code>TAV_Users</code></td><td><span class="badge dim">Dim</span></td><td>System users (email + assigned region) — RLS basis</td><td>1 row / user</td></tr>
+            <tr><td><code>TAV_Marks</code></td><td><span class="badge ref">Ref</span></td><td>Scoring rules and marks per provider</td><td>1 row / rule / provider</td></tr>
+            <tr><td><code>TAV_Recommendations</code></td><td><span class="badge ref">Ref</span></td><td>Recommendations linked to rules and providers</td><td>1 row / recommendation</td></tr>
+            <tr><td><code>מדדי רכבים</code></td><td><span class="badge meas">Meas</span></td><td>"Vehicle Metrics" — DAX measures group table</td><td>—</td></tr>
+            <tr><td><code>מדדי טיאוט</code></td><td><span class="badge meas">Meas</span></td><td>"Sweeping Metrics" — DAX measures group table</td><td>—</td></tr>
+            <tr><td><code>LocalDateTable_c2183...</code></td><td><span class="badge auto">Auto</span></td><td>Power BI auto-created internal date table</td><td>1 row / day</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- COLUMNS -->
+    <section id="columns">
+      <h3>2.2 Columns &amp; Measures</h3>
+
+      <details>
+        <summary>📅 DimDate</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Column</th><th>Type</th><th>Calculated</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td><code>Date</code></td><td>Date</td><td><span class="badge no">No</span></td><td>Calendar date — primary join key for all fact tables</td></tr>
+                <tr><td><code>is_yesterday</code></td><td>Boolean</td><td><span class="badge yes">Yes</span></td><td>Flag for "yesterday" slicer toggle (Date = TODAY()-1)</td></tr>
+                <tr><td><code>טווח תאריכים</code></td><td>Text</td><td><span class="badge yes">Yes</span></td><td>Calculated label showing selected date range (MIN/MAX concatenation)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🚗 V_TAV_FactDailyRoute — Ituran Contractor Vehicles</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Column / Measure</th><th>Type</th><th>Calc?</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td><code>Date</code></td><td>Date</td><td><span class="badge no">No</span></td><td>Route date</td></tr>
+                <tr><td><code>StartTime</code></td><td>DateTime</td><td><span class="badge no">No</span></td><td>Work shift start time</td></tr>
+                <tr><td><code>EndTime</code></td><td>DateTime</td><td><span class="badge no">No</span></td><td>Work shift end time</td></tr>
+                <tr><td><code>QtyPolygonExit</code></td><td>Integer</td><td><span class="badge no">No</span></td><td>Count of exits outside defined work polygon</td></tr>
+                <tr><td><code>לוחית זיהוי</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Vehicle license plate identifier</td></tr>
+                <tr><td><code>Recommendations</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Recommendation text for the route</td></tr>
+                <tr style="background:#5b8dee08"><td><code>ציון ממוצע_It</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Average score — Ituran vehicles</td></tr>
+                <tr style="background:#5b8dee08"><td><code>ציון ממוצע כל הנפות_It</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Average score — all regions (context removed)</td></tr>
+                <tr style="background:#5b8dee08"><td><code>אחוז שינוי ציון ממוצע_It</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>% change in score vs. prior period</td></tr>
+                <tr style="background:#5b8dee08"><td><code>שעות עבודה_It</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Total working hours</td></tr>
+                <tr style="background:#5b8dee08"><td><code>שעות שהיה_It</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Hours vehicle was inside work polygon</td></tr>
+                <tr style="background:#5b8dee08"><td><code>אחוז שעות שהיה_It</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>% of time inside work polygon = שהיה ÷ עבודה</td></tr>
+                <tr style="background:#5b8dee08"><td><code>כמות עצירות_It</code></td><td>Integer</td><td><span class="badge meas">Measure</span></td><td>Number of stops recorded</td></tr>
+                <tr style="background:#5b8dee08"><td><code>קילומטראז'_It</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Total kilometrage driven</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🧹 V_TAV_Ge_FactDailyRoute — GE Sweeping Carts</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Column / Measure</th><th>Type</th><th>Calc?</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td><code>Date</code></td><td>Date</td><td><span class="badge no">No</span></td><td>Route date</td></tr>
+                <tr><td><code>StartTime / EndTime</code></td><td>DateTime</td><td><span class="badge no">No</span></td><td>Work start/end time</td></tr>
+                <tr><td><code>Nafa</code></td><td>Text</td><td><span class="badge no">No</span></td><td>District/region name (native to GE source)</td></tr>
+                <tr><td><code>Recommendations</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Recommendation text</td></tr>
+                <tr><td><code>שעות_עבודה</code> <span class="badge warn">⚠ duplicate?</span></td><td>Decimal</td><td>?</td><td>Working hours — alternative name (underscore vs space inconsistency)</td></tr>
+                <tr style="background:#3ecf8e08"><td><code>ציון ממוצע_Ge</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Average score — GE sweeping</td></tr>
+                <tr style="background:#3ecf8e08"><td><code>ציון ממוצע כל הנפות_Ge</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Average score all regions</td></tr>
+                <tr style="background:#3ecf8e08"><td><code>אחוז שינוי ציון ממוצע_Ge</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>% change in score</td></tr>
+                <tr style="background:#3ecf8e08"><td><code>שעות עבודה_Ge / שעות שהיה_Ge</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Working hours / hours in polygon</td></tr>
+                <tr style="background:#3ecf8e08"><td><code>אחוז שעות שהיה_Ge</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>% time in polygon</td></tr>
+                <tr style="background:#3ecf8e08"><td><code>כמות יציאות מפוליגון_Ge</code></td><td>Integer</td><td><span class="badge meas">Measure</span></td><td>Polygon exit count (outside work area)</td></tr>
+                <tr style="background:#3ecf8e08"><td><code>כמות עצירות ארוכות_Ge</code></td><td>Integer</td><td><span class="badge meas">Measure</span></td><td>Long stops count</td></tr>
+                <tr style="background:#3ecf8e08"><td><code>קילומטראז'_Ge</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Kilometrage</td></tr>
+                <tr style="background:#3ecf8e08"><td><code>כמות עגלות פעילות_Ge / אחוז עגלות פעילות_Ge</code></td><td>Integer/Decimal</td><td><span class="badge meas">Measure</span></td><td>Active carts count / %</td></tr>
+                <tr style="background:#3ecf8e08"><td><code>ממוצע שעות עבודה לעגלה_Ge</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Average work hours per cart</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🚛 V_TAV_GB_FactDailyRoute — GB Garbage Collection</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Column / Measure</th><th>Type</th><th>Calc?</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td><code>RouteDate</code></td><td>Date</td><td><span class="badge no">No</span></td><td>Route date</td></tr>
+                <tr><td><code>BeginTime / EndTime</code></td><td>DateTime</td><td><span class="badge no">No</span></td><td>Route start/end times</td></tr>
+                <tr><td><code>nvTruckNumber</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Truck number/plate</td></tr>
+                <tr><td><code>nvDriverName</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Driver name</td></tr>
+                <tr><td><code>nvRegionName</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Region name (native to GB source)</td></tr>
+                <tr><td><code>nvRouteStatusName</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Route status (completed / planned / etc.)</td></tr>
+                <tr><td><code>Recommendation</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Route recommendation</td></tr>
+                <tr style="background:#f59e4208"><td><code>ציון ממוצע_GB</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Average score — GB collection <span class="badge warn">_GB vs _Gb inconsistency</span></td></tr>
+                <tr style="background:#f59e4208"><td><code>אחוז ביצוע מול תכנון</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>% execution vs. plan = actual bins ÷ planned bins</td></tr>
+                <tr style="background:#f59e4208"><td><code>כמות פחים מתוכננת / שבוצעה</code></td><td>Integer</td><td><span class="badge meas">Measure</span></td><td>Planned vs. actual bin count</td></tr>
+                <tr style="background:#f59e4208"><td><code>כמות פחים ריקים שרוקנו / אחוז</code></td><td>Integer/Decimal</td><td><span class="badge meas">Measure</span></td><td>Empty bins collected count / %</td></tr>
+                <tr style="background:#f59e4208"><td><code>כמות מסלולים</code></td><td>Integer</td><td><span class="badge meas">Measure</span></td><td>Number of routes (COUNTROWS / DISTINCTCOUNT)</td></tr>
+                <tr style="background:#f59e4208"><td><code>טווח תאריכים_Gb</code></td><td>Text</td><td><span class="badge meas">Measure</span></td><td>Date range label</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🏭 TAV_Gr_Fact_GarbageDisposal — Disposal Site</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Column / Measure</th><th>Type</th><th>Calc?</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td><code>תאריך</code></td><td>Date</td><td><span class="badge no">No</span></td><td>Disposal date</td></tr>
+                <tr><td><code>יום</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Day of week</td></tr>
+                <tr><td><code>שכונה</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Neighborhood of origin</td></tr>
+                <tr><td><code>נהג</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Driver name</td></tr>
+                <tr><td><code>מוביל</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Hauling contractor</td></tr>
+                <tr><td><code>מס' תעודה</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Disposal certificate number</td></tr>
+                <tr><td><code>מס' רכב</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Vehicle number</td></tr>
+                <tr><td><code>שעת כניסה / שעת יציאה</code></td><td>DateTime</td><td><span class="badge no">No</span></td><td>Entry/exit time at disposal site</td></tr>
+                <tr><td><code>קוד_פנימי</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Internal code</td></tr>
+                <tr><td><code>סה"כ טונג' אשפה</code></td><td>Decimal</td><td><span class="badge no">No</span></td><td>Total garbage tons per visit</td></tr>
+                <tr><td><code>סה"כ משקל אשפה</code></td><td>Decimal</td><td><span class="badge no">No</span></td><td>Total garbage weight</td></tr>
+                <tr style="background:#f26c6c08"><td><code>ציון ממוצע_Gr / ציון ממוצע כל הנפות_Gr</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Average score / score all regions</td></tr>
+                <tr style="background:#f26c6c08"><td><code>כמות פריקות</code></td><td>Integer</td><td><span class="badge meas">Measure</span></td><td>Number of disposal events</td></tr>
+                <tr style="background:#f26c6c08"><td><code>ממוצע טונג' יומי</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Daily average tons (AVERAGEX per day)</td></tr>
+                <tr style="background:#f26c6c08"><td><code>אחוז שינוי ממוצע טונג' אשפה</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>% change in average tons</td></tr>
+                <tr style="background:#f26c6c08"><td><code>Measure</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Fixed benchmark / reference average tons (reference line in chart)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>📋 incidents — CRM Public Complaints</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Column / Measure</th><th>Type</th><th>Calc?</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td><code>createdon</code></td><td>DateTime</td><td><span class="badge no">No</span></td><td>Complaint creation date</td></tr>
+                <tr><td><code>description</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Complaint text/body</td></tr>
+                <tr><td><code>סוג פניה</code></td><td>Text</td><td><span class="badge no">No</span></td><td>Complaint type — values: 'פניות מוקד', 'פניות ציבור'</td></tr>
+                <tr style="background:#a78bfa08"><td><code>ציון ממוצע לפניות</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Average score for complaints</td></tr>
+                <tr style="background:#a78bfa08"><td><code>כמות פניות</code></td><td>Integer</td><td><span class="badge meas">Measure</span></td><td>Total complaints count (COUNTROWS)</td></tr>
+                <tr style="background:#a78bfa08"><td><code>כמות פניות פתוחות / סגורות</code></td><td>Integer</td><td><span class="badge meas">Measure</span></td><td>Open / closed complaints (COUNTROWS filtered)</td></tr>
+                <tr style="background:#a78bfa08"><td><code>כמות פניות חורגות</code></td><td>Integer</td><td><span class="badge meas">Measure</span></td><td>SLA-breaching overdue complaints</td></tr>
+                <tr style="background:#a78bfa08"><td><code>כמות פניות מתגלגלות</code></td><td>Integer</td><td><span class="badge meas">Measure</span></td><td>Rolling/recurring complaints</td></tr>
+                <tr style="background:#a78bfa08"><td><code>אחוז פניות חורגות</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>% overdue = חורגות ÷ כמות פניות</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🗺 V_TAV_Regions — Geographic Regions + Weighted KPIs</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Column / Measure</th><th>Type</th><th>Calc?</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td><code>RegionName</code></td><td>Text</td><td><span class="badge no">No</span></td><td>District/region name — join key across all fact tables</td></tr>
+                <tr><td><code>IsVisable</code></td><td>Boolean</td><td><span class="badge no">No</span></td><td>Visibility flag — used as hidden RLS row filter</td></tr>
+                <tr style="background:#5b8dee08"><td><code>ממוצע משוקלל</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Composite weighted average across all domains for selected region</td></tr>
+                <tr style="background:#5b8dee08"><td><code>ממוצע משוקלל כלל הנפות</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>Same — all regions (context removed)</td></tr>
+                <tr style="background:#5b8dee08"><td><code>אחוז שינוי ממוצע משוקלל</code></td><td>Decimal</td><td><span class="badge meas">Measure</span></td><td>% change in weighted average vs. prior period</td></tr>
+                <tr style="background:#5b8dee08"><td><code>כותרת דוח נפתי</code></td><td>Text</td><td><span class="badge meas">Measure</span></td><td>Dynamic page title using SELECTEDVALUE(RegionName)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+    </section>
+  </section>
+
+  <!-- ══════════ 3. RELATIONSHIPS ══════════ -->
+  <section id="relationships">
+    <h2><span class="sec-num">3</span> Relationships</h2>
+
+    <div class="callout warning">
+      <div class="icon">⚠️</div>
+      <div>Cardinality and cross-filter direction are <strong>inferred from visual co-usage</strong> — cannot be confirmed from the compressed DataModel binary. Treat as assumptions.</div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>From Table</th>
+            <th>To Table (Fact)</th>
+            <th>Join Columns</th>
+            <th>Cardinality</th>
+            <th>Business Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>DimDate</code></td><td><code>V_TAV_FactDailyRoute</code></td><td>Date → Date</td><td>1:M →</td><td>Date filter on vehicle routes</td></tr>
+          <tr><td><code>DimDate</code></td><td><code>V_TAV_Ge_FactDailyRoute</code></td><td>Date → Date</td><td>1:M →</td><td>Date filter on sweeping routes</td></tr>
+          <tr><td><code>DimDate</code></td><td><code>V_TAV_GB_FactDailyRoute</code></td><td>Date → RouteDate</td><td>1:M →</td><td>Date filter on collection routes</td></tr>
+          <tr><td><code>DimDate</code></td><td><code>TAV_Gr_Fact_GarbageDisposal</code></td><td>Date → תאריך</td><td>1:M →</td><td>Date filter on disposal records</td></tr>
+          <tr><td><code>DimDate</code></td><td><code>incidents</code></td><td>Date → createdon</td><td>1:M →</td><td>Date filter on complaints</td></tr>
+          <tr><td><code>DimDate</code></td><td><code>‏‏EventsData</code></td><td>Date → תאריך הארוע</td><td>1:M →</td><td>Date filter on events</td></tr>
+          <tr><td><code>V_TAV_Regions</code></td><td><code>V_TAV_FactDailyRoute</code></td><td>RegionName → region key</td><td>1:M →</td><td>Region drill-down on vehicles; RLS anchor</td></tr>
+          <tr><td><code>V_TAV_Regions</code></td><td><code>V_TAV_Ge_FactDailyRoute</code></td><td>RegionName → Nafa</td><td>1:M →</td><td>Cross-source join on district name</td></tr>
+          <tr><td><code>V_TAV_Regions</code></td><td><code>V_TAV_GB_FactDailyRoute</code></td><td>RegionName → nvRegionName</td><td>1:M →</td><td>Region filter on collection</td></tr>
+          <tr><td><code>V_TAV_Regions</code></td><td><code>TAV_Gr_Fact_GarbageDisposal</code></td><td>RegionName → region key</td><td>1:M →</td><td>Region filter on disposal</td></tr>
+          <tr><td><code>V_TAV_Regions</code></td><td><code>incidents</code></td><td>RegionName → region key</td><td>1:M →</td><td>Region filter on complaints</td></tr>
+          <tr><td><code>V_TAV_Platforms</code></td><td><code>V_TAV_FactDailyRoute</code></td><td>vehicle key</td><td>1:M →</td><td>Vehicle info → daily routes</td></tr>
+          <tr><td><code>V_TAV_Ge_Devices</code></td><td><code>V_TAV_Ge_FactDailyRoute</code></td><td>device key</td><td>1:M →</td><td>Cart info → daily routes</td></tr>
+          <tr><td><code>V_TAV_GB_TrucksInformation</code></td><td><code>V_TAV_GB_FactDailyRoute</code></td><td>nvTruckNumber</td><td>1:M →</td><td>Truck info → collection routes</td></tr>
+          <tr><td><code>TAV_Regions_Gr</code></td><td><code>TAV_Gr_Fact_GarbageDisposal</code></td><td>region key</td><td>1:M →</td><td>Disposal site region dimension</td></tr>
+          <tr><td><code>pws_departments</code></td><td><code>incidents</code></td><td>dept key</td><td>1:M →</td><td>Department lookup</td></tr>
+          <tr><td><code>pws_quarters</code></td><td><code>incidents</code></td><td>quarter key</td><td>1:M →</td><td>Neighborhood lookup</td></tr>
+          <tr><td><code>pws_casestatus</code></td><td><code>incidents</code></td><td>status key</td><td>1:M →</td><td>Case status lookup</td></tr>
+          <tr><td><code>pws_slastatus</code></td><td><code>incidents</code></td><td>SLA key</td><td>1:M →</td><td>SLA status lookup</td></tr>
+          <tr><td><code>pws_casesubjects</code></td><td><code>incidents</code></td><td>subject key</td><td>1:M →</td><td>Complaint topic lookup</td></tr>
+          <tr><td><code>TAV_Providers</code></td><td><code>TAV_Marks</code></td><td>Provider</td><td>1:M →</td><td>Provider → scoring rules</td></tr>
+          <tr><td><code>TAV_Providers</code></td><td><code>TAV_Recommendations</code></td><td>Provider</td><td>1:M →</td><td>Provider → recommendations</td></tr>
+          <tr><td><code>TAV_Users</code></td><td><code>V_TAV_Regions</code></td><td>RegionName</td><td>M:1 (both?)</td><td>RLS: user → assigned region(s)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════ 4. MEASURES ══════════ -->
+  <section id="measures">
+    <h2><span class="sec-num">4</span> Measures (DAX)</h2>
+
+    <div class="callout warning">
+      <div class="icon">⚠️</div>
+      <div>DAX expressions are <strong>not accessible</strong> — DataModel is XPress9-compressed. All logic below is <strong>inferred</strong> from measure names, display names, and visual usage patterns.</div>
+    </div>
+
+    <h3>4.1 Scoring Pattern — Repeated Across 4 Systems</h3>
+    <p>Every domain implements the same three-measure triplet. This pattern is duplicated 4× (It, Ge, Gb, Gr) plus complaints:</p>
+
+    <div class="measure-pattern">
+      <div class="mp-left">
+        <div class="mp-name">ציון ממוצע_[X]</div>
+        <div class="mp-desc">Average score for the selected context. Likely AVERAGE or weighted SUMX ÷ count.</div>
+      </div>
+      <div class="mp-pattern"><span class="pill blue">Aggregation</span></div>
+    </div>
+
+    <div class="measure-pattern">
+      <div class="mp-left">
+        <div class="mp-name">ציון ממוצע כל הנפות_[X]</div>
+        <div class="mp-desc">Same score but with region filter removed — CALCULATE([ציון ממוצע_X], ALL(V_TAV_Regions))</div>
+      </div>
+      <div class="mp-pattern"><span class="pill purple">Context removal</span></div>
+    </div>
+
+    <div class="measure-pattern">
+      <div class="mp-left">
+        <div class="mp-name">אחוז שינוי ציון ממוצע_[X]</div>
+        <div class="mp-desc">% change vs. prior period — DIVIDE(current - prior, ABS(prior)). Likely uses prior day or prior week context.</div>
+      </div>
+      <div class="mp-pattern"><span class="pill orange">Time intelligence</span></div>
+    </div>
+
+    <h3>4.2 Weighted Average (V_TAV_Regions)</h3>
+    <div class="measure-pattern">
+      <div class="mp-left">
+        <div class="mp-name">ממוצע משוקלל</div>
+        <div class="mp-desc">Composite weighted average combining scores from Ituran + Sweeping + GB + Disposal + Complaints for the selected region. The central cross-domain KPI.</div>
+      </div>
+      <div class="mp-pattern"><span class="pill blue">Composite</span></div>
+    </div>
+
+    <h3>4.3 Operational Measures Summary</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Measure</th><th>Table</th><th>Inferred Logic</th><th>Pattern</th></tr></thead>
+        <tbody>
+          <tr><td><code>אחוז שעות שהיה_[X]</code></td><td>Fact tables</td><td>DIVIDE(שהיה, עבודה)</td><td><span class="badge fact">Ratio</span></td></tr>
+          <tr><td><code>אחוז ביצוע מול תכנון</code></td><td>V_TAV_GB_FactDailyRoute</td><td>DIVIDE(כמות פחים שבוצעה, כמות פחים מתוכננת)</td><td><span class="badge fact">Ratio</span></td></tr>
+          <tr><td><code>כמות מסלולים</code></td><td>V_TAV_GB_FactDailyRoute</td><td>COUNTROWS or DISTINCTCOUNT</td><td><span class="badge dim">Count</span></td></tr>
+          <tr><td><code>ממוצע טונג' יומי</code></td><td>TAV_Gr_Fact_GarbageDisposal</td><td>AVERAGEX(dates, SUM(tons))</td><td><span class="badge fact">Aggregation</span></td></tr>
+          <tr><td><code>Measure</code> (fixed avg)</td><td>TAV_Gr_Fact_GarbageDisposal</td><td>Static benchmark value — reference line in chart</td><td><span class="badge ref">Constant</span></td></tr>
+          <tr><td><code>אחוז פניות חורגות</code></td><td>incidents</td><td>DIVIDE(כמות חורגות, כמות פניות)</td><td><span class="badge fact">Ratio</span></td></tr>
+          <tr><td><code>אחוז פניות שנפתחו מחדש</code></td><td>pws_caselogs</td><td>DIVIDE(reopened, total)</td><td><span class="badge fact">Ratio</span></td></tr>
+          <tr><td><code>כמות ארועים</code></td><td>‏‏EventsData</td><td>COUNTROWS</td><td><span class="badge dim">Count</span></td></tr>
+          <tr><td><code>טווח תאריכים</code> variants</td><td>DimDate / Fact tables</td><td>MIN date &amp; " - " &amp; MAX date text concat</td><td><span class="badge meas">Label</span></td></tr>
+          <tr><td><code>כותרת דוח נפתי</code></td><td>V_TAV_Regions</td><td>SELECTEDVALUE(RegionName)</td><td><span class="badge meas">Dynamic label</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════ 5. CALC COLUMNS ══════════ -->
+  <section id="calccols">
+    <h2><span class="sec-num">5</span> Calculated Columns</h2>
+    <div class="callout warning">
+      <div class="icon">⚠️</div>
+      <div>Cannot confirm — DataModel binary inaccessible. The following are <strong>suspected</strong> based on behavior.</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Column</th><th>Table</th><th>Evidence</th><th>Inferred Logic</th></tr></thead>
+        <tbody>
+          <tr><td><code>is_yesterday</code></td><td>DimDate</td><td>Used as boolean slicer toggle on all pages</td><td><code>Date = TODAY() - 1</code></td></tr>
+          <tr><td><code>IsVisable</code></td><td>V_TAV_Regions</td><td>Hidden report-level filter; used for RLS</td><td>Static boolean flag per region row</td></tr>
+          <tr><td><code>טווח תאריכים</code></td><td>DimDate</td><td>Card display with selected range text</td><td>May be measure or calc column depending on context</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════ 6. POWER QUERY ══════════ -->
+  <section id="pq">
+    <h2><span class="sec-num">6</span> Transformations (Power Query)</h2>
+    <div class="callout warning">
+      <div class="icon">⚠️</div>
+      <div>Power Query M scripts are inside the XPress9-compressed DataModel — <strong>not accessible</strong>. Sources are inferred from naming conventions.</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Table</th><th>Inferred Source</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>V_TAV_FactDailyRoute</code></td><td>SQL View — Ituran GPS DB</td><td><code>V_</code> prefix = database View; pre-aggregated to daily level</td></tr>
+          <tr><td><code>V_TAV_Ge_FactDailyRoute</code></td><td>SQL View — GE Devices DB</td><td>Includes polygon analysis pre-calculated at source</td></tr>
+          <tr><td><code>V_TAV_GB_FactDailyRoute</code></td><td>SQL View — GB System DB</td><td>Route execution vs. planning data</td></tr>
+          <tr><td><code>V_TAV_Platforms</code></td><td>SQL View — Ituran DB</td><td>Vehicle master list</td></tr>
+          <tr><td><code>V_TAV_Ge_Devices</code></td><td>SQL View — GE Devices DB</td><td>Cart/device master list</td></tr>
+          <tr><td><code>V_TAV_GB_TrucksInformation</code></td><td>SQL View — GB DB</td><td>Truck info</td></tr>
+          <tr><td><code>V_TAV_Regions</code></td><td>SQL View / Manual</td><td>Region list + IsVisable RLS flag</td></tr>
+          <tr><td><code>TAV_Gr_Fact_GarbageDisposal</code></td><td>SQL Table — Disposal site DB</td><td>No <code>V_</code> prefix — likely direct table, not a view</td></tr>
+          <tr><td><code>incidents</code></td><td>CRM Export / Dataverse</td><td><code>pws_</code> prefix = Power Apps / Dataverse naming convention</td></tr>
+          <tr><td><code>pws_*</code> tables</td><td>CRM / Dataverse</td><td>Lookup tables from Dynamics CRM — GUID-based foreign keys</td></tr>
+          <tr><td><code>‏‏EventsData</code></td><td>Unknown (manual entry?)</td><td>⚠ Suspicious invisible chars in name — may be manual Excel upload</td></tr>
+          <tr><td><code>TAV_Marks / TAV_Recommendations</code></td><td>Manual / Excel</td><td>Scoring rules reference data — likely static upload</td></tr>
+          <tr><td><code>TAV_Users</code></td><td>Manual / AD / SQL</td><td>User-region mapping for RLS — must be kept current</td></tr>
+          <tr><td><code>DimDate</code></td><td>DAX / Power Query</td><td>Custom date table with <code>is_yesterday</code> column</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════ 7. REPORT PAGES ══════════ -->
+  <section id="pages">
+    <h2><span class="sec-num">7</span> Report Layer</h2>
+
+    <h3>Page Architecture</h3>
+    <p>The report follows a <strong>3-tier navigation structure</strong>:</p>
+
+    <div style="display:flex; gap:10px; margin: 16px 0; flex-wrap:wrap">
+      <div style="background:#5b8dee22; border:1px solid #5b8dee44; border-radius:8px; padding:12px 18px; text-align:center">
+        <div style="font-size:11px; color:#5b8dee; font-weight:700; text-transform:uppercase; margin-bottom:4px">Tier 1</div>
+        <div style="color:#fff; font-size:14px; font-weight:600">Management</div>
+        <div style="color:var(--text-muted); font-size:12px">Pages 2–4</div>
+      </div>
+      <div style="display:flex; align-items:center; color:var(--text-muted); font-size:18px">→</div>
+      <div style="background:#3ecf8e22; border:1px solid #3ecf8e44; border-radius:8px; padding:12px 18px; text-align:center">
+        <div style="font-size:11px; color:#3ecf8e; font-weight:700; text-transform:uppercase; margin-bottom:4px">Tier 2</div>
+        <div style="color:#fff; font-size:14px; font-weight:600">Regional</div>
+        <div style="color:var(--text-muted); font-size:12px">Pages 5–7</div>
+      </div>
+      <div style="display:flex; align-items:center; color:var(--text-muted); font-size:18px">→</div>
+      <div style="background:#f59e4222; border:1px solid #f59e4244; border-radius:8px; padding:12px 18px; text-align:center">
+        <div style="font-size:11px; color:#f59e42; font-weight:700; text-transform:uppercase; margin-bottom:4px">Tier 3</div>
+        <div style="color:#fff; font-size:14px; font-weight:600">Operational</div>
+        <div style="color:var(--text-muted); font-size:12px">Pages 8–14</div>
+      </div>
+    </div>
+
+    <div class="page-grid">
+      <div class="page-card">
+        <div class="pg-num">1</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">ראשי</div>
+          <div class="pg-name-en">Main / Home</div>
+          <div class="pg-desc">Navigation page. Page navigator + logo. Entry point for the report.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#5b8dee22; color:#5b8dee">2</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">דוח הנהלה</div>
+          <div class="pg-name-en">Management Report</div>
+          <div class="pg-desc">Multi-domain summary: Ituran + Complaints + Disposal. Score matrix + weighted average KPIs by region.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#5b8dee22; color:#5b8dee">3</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">דוח הנהלה עם טיאוט</div>
+          <div class="pg-name-en">Management + Sweeping</div>
+          <div class="pg-desc">Same as page 2 + sweeping (GE) domain layer added to pivot matrix.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#5b8dee22; color:#5b8dee">4</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">דוח הנהלה עם פינוי אשפה</div>
+          <div class="pg-name-en">Management + Garbage Collection</div>
+          <div class="pg-desc">Same as page 2 + GB collection domain layer added.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#3ecf8e22; color:#3ecf8e">5</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">דוח נפתי</div>
+          <div class="pg-name-en">Regional Report</div>
+          <div class="pg-desc">Per-region detail: vehicle table + complaints table + disposal table. Dual KPI custom visuals for score trends.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#3ecf8e22; color:#3ecf8e">6</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">דוח נפתי עם טיאוט</div>
+          <div class="pg-name-en">Regional + Sweeping</div>
+          <div class="pg-desc">Regional report with sweeping carts layer (GE data table added).</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#3ecf8e22; color:#3ecf8e">7</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">דוח נפתי עם פינוי אשפה</div>
+          <div class="pg-name-en">Regional + Garbage Collection</div>
+          <div class="pg-desc">Regional report with GB garbage collection table added.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#f59e4222; color:#f59e42">8</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">רכבי קבלן</div>
+          <div class="pg-name-en">Contractor Vehicles</div>
+          <div class="pg-desc">Deep-dive: Ituran GPS. Score trend + by-region bar chart + top vehicles chart + full detail table. Slicers: vehicle, license, region, date.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#f59e4222; color:#f59e42">9</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">טיאוט</div>
+          <div class="pg-name-en">Street Sweeping</div>
+          <div class="pg-desc">Deep-dive: GE sweeping carts. Score by contractor (donut) + trend + top polygon-exit carts + full detail table.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#f59e4222; color:#f59e42">10</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">פינוי אשפה</div>
+          <div class="pg-name-en">Garbage Collection</div>
+          <div class="pg-desc">Deep-dive: GB routes. Execution % vs. plan, status donut, per-truck bar chart, route detail table. Empty bin tracking.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#f59e4222; color:#f59e42">11</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">פריקת אשפה</div>
+          <div class="pg-name-en">Garbage Disposal</div>
+          <div class="pg-desc">Deep-dive: disposal site tonnage. Ton trend line + per-weekday breakdown + full disposal record table.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#f59e4222; color:#f59e42">12</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">פניות</div>
+          <div class="pg-name-en">Complaints</div>
+          <div class="pg-desc">CRM complaints: open/closed/overdue KPIs, trend, by-department bar, by-topic bar, full complaint table.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#f5c84222; color:#f5c842">13</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">ארועים</div>
+          <div class="pg-name-en">Events</div>
+          <div class="pg-desc">Sanitation events log. Event count KPI + by-type bar + by-region column + event detail table + scrolling text marquee.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#a78bfa22; color:#a78bfa">14</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">ציונים והמלצות</div>
+          <div class="pg-name-en">Scores &amp; Recommendations</div>
+          <div class="pg-desc">Rule-based scoring reference. Two tables: TAV_Marks (rules + marks) and TAV_Recommendations. Filter by provider.</div>
+        </div>
+      </div>
+      <div class="page-card">
+        <div class="pg-num" style="background:#f26c6c22; color:#f26c6c">15</div>
+        <div class="pg-body">
+          <div class="pg-name-heb">Page 2</div>
+          <div class="pg-name-en">(Draft / Unnamed)</div>
+          <div class="pg-desc">⚠ Unnamed English name. Disposal tonnage analysis with TAV_Regions_Gr. Appears to be an unfinished draft.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Visuals -->
+    <h3 id="visuals">Key Visual Types Used</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Visual Type</th><th>Usage</th><th>Key Pages</th></tr></thead>
+        <tbody>
+          <tr><td>Card</td><td>KPI single-value display (score, count, %)</td><td>All pages</td></tr>
+          <tr><td>pivotTable (Matrix)</td><td>Multi-dimension score comparison by region/date</td><td>Mgmt, Regional, Operational</td></tr>
+          <tr><td>tableEx (Table)</td><td>Full operational detail log per row</td><td>Pages 5–13</td></tr>
+          <tr><td>lineChart</td><td>Score/value trend over time</td><td>Pages 8–13</td></tr>
+          <tr><td>clusteredBarChart</td><td>Score/count comparison by region or vehicle</td><td>Pages 8–12</td></tr>
+          <tr><td>donutChart</td><td>Distribution by category (contractor, status)</td><td>Pages 9, 10</td></tr>
+          <tr><td>clusteredColumnChart</td><td>Count by category (region, weekday)</td><td>Pages 11, 13</td></tr>
+          <tr><td>slicer</td><td>Date / region / vehicle / status filters</td><td>All pages</td></tr>
+          <tr><td>Dual KPI (custom)</td><td>Two measures on joint time axis with trend + hover</td><td>Regional pages (5–7)</td></tr>
+          <tr><td>BCI Calendar (custom)</td><td>Date picker alternative</td><td>Some pages</td></tr>
+          <tr><td>PayPal KPI Donut (custom)</td><td>Double-ring KPI donut</td><td>Operational pages</td></tr>
+          <tr><td>Scrolling Text (custom)</td><td>Marquee text for events/announcements</td><td>Page 13 (Events)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════ 8. LINEAGE ══════════ -->
+  <section id="lineage">
+    <h2><span class="sec-num">8</span> Data Lineage</h2>
+    <div class="lineage-block"><span class="l-root">DimDate.Date</span>
+├── → <span class="l-table">V_TAV_FactDailyRoute</span> [<span class="l-measure">ציון ממוצע_It, שעות עבודה_It, ...</span>]
+│       └── → <span class="l-table">V_TAV_Regions</span>.<span class="l-measure">ממוצע משוקלל</span> (composite KPI)
+│               └── → <span class="l-visual">Cards: ממוצע משוקלל נפתי / כלל הנפות</span>
+│               └── → <span class="l-visual">pivotTable: Management Report score matrix</span>
+│
+├── → <span class="l-table">V_TAV_Ge_FactDailyRoute</span> [<span class="l-measure">ציון ממוצע_Ge, שעות עבודה_Ge, ...</span>]
+│       └── → <span class="l-visual">Cards + Donut + Line + Table: Page "טיאוט"</span>
+│
+├── → <span class="l-table">V_TAV_GB_FactDailyRoute</span> [<span class="l-measure">ציון ממוצע_GB, אחוז ביצוע מול תכנון, ...</span>]
+│       └── → <span class="l-visual">Cards + Donut + Bar: Page "פינוי אשפה"</span>
+│
+├── → <span class="l-table">TAV_Gr_Fact_GarbageDisposal</span> [<span class="l-measure">ציון ממוצע_Gr, סה"כ טונג' אשפה, ...</span>]
+│       └── → <span class="l-visual">Line + Table: Page "פריקת אשפה"</span>
+│
+├── → <span class="l-table">incidents</span> [<span class="l-measure">ציון ממוצע לפניות, כמות פניות, ...</span>]
+│       └── → <span class="l-visual">Cards + Bar + Table: Page "פניות"</span>
+│
+└── → <span class="l-table">‏‏EventsData</span> [<span class="l-measure">כמות ארועים</span>]
+        └── → <span class="l-visual">Card + Bar + Column: Page "ארועים"</span>
+
+<span class="l-root">V_TAV_Regions.RegionName</span> + <span class="l-note">IsVisable (RLS filter)</span>
+├── → all 4 Fact tables (cross-filter → domain measures)
+└── → <span class="l-visual">pivotTable: score matrix by region (all management pages)</span>
+
+<span class="l-root">TAV_Users.RegionName / Mail</span> <span class="l-note">(Row-Level Security)</span>
+└── → <span class="l-table">V_TAV_Regions</span>.RegionName → restricts visible regions per logged-in user
+    └── → propagates to ALL fact tables via V_TAV_Regions relationships
+
+<span class="l-root">V_TAV_Platforms</span> → <span class="l-table">V_TAV_FactDailyRoute</span>
+└── → <span class="l-visual">tableEx: vehicle detail (pages 5–8), slicers: שם רכב / לוחית זיהוי</span>
+
+<span class="l-root">TAV_Providers</span> → <span class="l-table">TAV_Marks</span> + <span class="l-table">TAV_Recommendations</span>
+└── → <span class="l-visual">tableEx: ציונים והמלצות (page 14)</span></div>
+  </section>
+
+  <!-- ══════════ 9. OBSERVATIONS ══════════ -->
+  <section id="observations">
+    <h2><span class="sec-num">9</span> Observations &amp; Patterns</h2>
+
+    <h3>Naming Conventions</h3>
+    <div class="suffix-legend">
+      <div class="suffix-item"><span class="s-code" style="color:#5b8dee">_It</span> Ituran GPS system</div>
+      <div class="suffix-item"><span class="s-code" style="color:#3ecf8e">_Ge</span> GE Devices system</div>
+      <div class="suffix-item"><span class="s-code" style="color:#f59e42">_Gb / _GB</span> GB garbage collection</div>
+      <div class="suffix-item"><span class="s-code" style="color:#f26c6c">_Gr</span> Disposal site (Grabber)</div>
+      <div class="suffix-item"><span class="s-code" style="color:#7a82a0">V_</span> Database View</div>
+      <div class="suffix-item"><span class="s-code" style="color:#a78bfa">pws_</span> Dataverse / CRM</div>
+    </div>
+
+    <h3>Architectural Patterns</h3>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0">
+      <div class="callout success"><div class="icon">✅</div><div><strong>Star schema per domain</strong> — each operational system has Fact + Date + Dimension structure</div></div>
+      <div class="callout success"><div class="icon">✅</div><div><strong>Multi-source federation</strong> — 4 independent operational DBs unified through shared DimDate + V_TAV_Regions</div></div>
+      <div class="callout success"><div class="icon">✅</div><div><strong>RLS implementation</strong> — email-based user routing through TAV_Users → V_TAV_Regions</div></div>
+      <div class="callout success"><div class="icon">✅</div><div><strong>Suffix convention</strong> — consistent _It/_Ge/_Gb/_Gr system clearly identifies data origin</div></div>
+      <div class="callout warning"><div class="icon">⚠️</div><div><strong>Duplicated measure logic</strong> — score triplet (ציון/כל הנפות/% שינוי) repeated 4× — candidate for Calculation Groups</div></div>
+      <div class="callout warning"><div class="icon">⚠️</div><div><strong>Cross-fact visuals</strong> — management pivot tables join 4+ fact tables — potential performance concern</div></div>
+    </div>
+
+    <h3>Time Intelligence Usage</h3>
+    <ul style="color:var(--text-muted); padding-left:20px; line-height:2">
+      <li>Relative date filter at page level (default range) on all operational pages</li>
+      <li><code>is_yesterday</code> toggle — dual-mode: today vs. yesterday data view</li>
+      <li><code>אחוז שינוי</code> measures — prior-period % change (likely previous day)</li>
+      <li>Date hierarchy (Year/Month/Day) used in pivot tables and line charts</li>
+    </ul>
+  </section>
+
+  <!-- ══════════ 10. RISKS ══════════ -->
+  <section id="risks">
+    <h2><span class="sec-num">10</span> Risks &amp; Limitations</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Risk</th><th>Severity</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr class="risk-high"><td>DataModel binary inaccessible</td><td><span class="badge high">High</span></td><td>DAX expressions unavailable — all measure logic is inferred. No relationship cardinality confirmed.</td></tr>
+          <tr class="risk-med"><td><code>‏‏EventsData</code> table name</td><td><span class="badge med">Medium</span></td><td>Table name begins with invisible RTL Unicode marks (<code>\u200f\u200f</code>). Hidden defect causing reference issues in DAX/Power Query.</td></tr>
+          <tr class="risk-med"><td>Duplicate column names</td><td><span class="badge med">Medium</span></td><td><code>שעות_עבודה</code> (underscore) vs <code>שעות עבודה_Ge</code> (space) both exist in <code>V_TAV_Ge_FactDailyRoute</code> — may cause confusion in expressions.</td></tr>
+          <tr class="risk-med"><td>Cross-fact table visuals</td><td><span class="badge med">Medium</span></td><td>Management pivot tables span 4+ fact tables simultaneously — potential performance issues at scale.</td></tr>
+          <tr class="risk-med"><td>RLS complexity</td><td><span class="badge med">Medium</span></td><td>Two-layer RLS (email + IsVisable flag) — risk of data leakage if <code>IsVisable</code> filter is misconfigured or TAV_Users rows are stale.</td></tr>
+          <tr class="risk-med"><td>Orphaned <code>TAV_Regions_CRM</code></td><td><span class="badge med">Medium</span></td><td>Table appears in model diagram but no visuals reference it — may be a legacy artifact increasing model size.</td></tr>
+          <tr class="risk-low"><td>Unnamed <code>Page 2</code></td><td><span class="badge low">Low</span></td><td>English name, no Hebrew label — draft page visible to end users. Should be named or deleted.</td></tr>
+          <tr class="risk-low"><td>Typo in measure name</td><td><span class="badge low">Low</span></td><td>One queryRef shows <code>ממןצע</code> (ן instead of ו) — possible typo in measure name causing silent discrepancy.</td></tr>
+          <tr class="risk-low"><td>Capitalization inconsistency</td><td><span class="badge low">Low</span></td><td><code>ציון ממוצע_GB</code> vs <code>אחוז שינוי ציון ממוצע_Gb</code> — <code>GB</code> vs <code>Gb</code> in same table.</td></tr>
+          <tr class="risk-low"><td>Auto date table co-existence</td><td><span class="badge low">Low</span></td><td><code>LocalDateTable_c2183...</code> auto-generated by Power BI alongside custom <code>DimDate</code> — can cause duplicate date hierarchies.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════ 11. IMPROVEMENTS ══════════ -->
+  <section id="improvements">
+    <h2><span class="sec-num">11</span> Improvement Suggestions</h2>
+
+    <details open>
+      <summary>🏗 Model Structure</summary>
+      <div class="details-body">
+        <ul style="color:var(--text-muted); padding-left:20px; line-height:2.2">
+          <li>Disable / remove <code>LocalDateTable_c2183...</code> — all date hierarchies should route through <code>DimDate</code></li>
+          <li>Rename <code>‏‏EventsData</code> → <code>EventsData</code> — remove the leading invisible Unicode characters</li>
+          <li>Investigate <code>TAV_Regions_CRM</code> — if unused, remove from model to reduce size</li>
+          <li>Consider consolidating <code>V_TAV_Regions</code> / <code>TAV_Regions_CRM</code> / <code>TAV_Regions_Gr</code> into a unified region dimension</li>
+        </ul>
+      </div>
+    </details>
+
+    <details open>
+      <summary>📐 DAX Optimization</summary>
+      <div class="details-body">
+        <ul style="color:var(--text-muted); padding-left:20px; line-height:2.2">
+          <li><strong>Implement Calculation Groups</strong> — the ציון ממוצע / כל הנפות / % שינוי triplet is duplicated 4× across domains. A Calculation Group eliminates this and makes maintenance trivial</li>
+          <li><strong>Single <code>טווח תאריכים</code> measure</strong> — currently duplicated in multiple fact tables as <code>_It</code>, <code>_Gb</code>, <code>_Gr</code> variants. One measure in <code>DimDate</code> using CALCULATE is sufficient</li>
+          <li><strong>Formalize <code>QtyPolygonExit</code></strong> — currently used as an implicit aggregation <code>Sum(V_TAV_FactDailyRoute.QtyPolygonExit)</code> in visuals. Should be a named explicit measure</li>
+        </ul>
+      </div>
+    </details>
+
+    <details open>
+      <summary>🏷 Naming Standardization</summary>
+      <div class="details-body">
+        <ul style="color:var(--text-muted); padding-left:20px; line-height:2.2">
+          <li>Standardize <code>ציון ממוצע_GB</code> → <code>ציון ממוצע_Gb</code> (capitalize consistently throughout <code>V_TAV_GB_FactDailyRoute</code>)</li>
+          <li>Fix typo: <code>ממןצע</code> → <code>ממוצע</code> in affected measure name</li>
+          <li>Standardize <code>שעות_עבודה</code> (underscore) → <code>שעות עבודה_Ge</code> (space + suffix) — or remove the duplicate</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>📄 Documentation Gaps</summary>
+      <div class="details-body">
+        <ul style="color:var(--text-muted); padding-left:20px; line-height:2.2">
+          <li>No measure descriptions in the model — critical for developers. Add descriptions to all measures in Tabular Editor or Power BI Desktop</li>
+          <li>RLS setup documentation missing — <code>TAV_Users</code> population process and <code>IsVisable</code> flag management should be documented separately</li>
+          <li>Scoring algorithm not documented — <code>TAV_Marks</code> defines the rules, but the calculation formula linking marks → weighted average score is not visible</li>
+          <li>Source system refresh schedule unknown — no documentation on data freshness SLAs</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ══════════ APPENDIX A: CUSTOM VISUALS ══════════ -->
+  <section id="customvisuals">
+    <h2><span class="sec-num">A</span> Custom Visuals Inventory</h2>
+    <div class="cv-grid">
+      <div class="cv-card">
+        <div class="cv-name">BCI Calendar</div>
+        <div class="cv-author">by BCI</div>
+        <div class="cv-desc">Custom date picker / calendar visual. Used on some pages as an alternative to the built-in date slicer.</div>
+      </div>
+      <div class="cv-card">
+        <div class="cv-name">Dual KPI</div>
+        <div class="cv-author">by Microsoft</div>
+        <div class="cv-desc">Displays <strong>two measures over a joint timeline</strong>. Line/area chart with trend, hover for historical value, KPI alerts and data freshness icons. Used on regional detail pages (appears as "unknown" type in Layout).</div>
+      </div>
+      <div class="cv-card">
+        <div class="cv-name">PayPal KPI Donut Chart</div>
+        <div class="cv-author">by PayPal ITA</div>
+        <div class="cv-desc">Double-ring donut chart for displaying percentage KPIs. Customizable ring thickness, colors, and font for KPI dashboard use.</div>
+      </div>
+      <div class="cv-card">
+        <div class="cv-name">Scrolling Text Visual</div>
+        <div class="cv-author">Community</div>
+        <div class="cv-desc">Marquee-style scrolling text banner. Used on the Events (ארועים) page for announcement display.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ APPENDIX B: RLS ══════════ -->
+  <section id="rls">
+    <h2><span class="sec-num">B</span> Row-Level Security Configuration</h2>
+
+    <div class="callout info">
+      <div class="icon">🔐</div>
+      <div>RLS is implemented at <strong>two layers</strong>: user-based routing via email, and region visibility flag. Both filters are always active.</div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Scope</th><th>Entity</th><th>Property</th><th>Type</th><th>Visibility</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="badge high">Report</span></td>
+            <td><code>TAV_Users</code></td>
+            <td><code>RegionName</code></td>
+            <td>Advanced</td>
+            <td>Visible</td>
+            <td>Routes each user to their assigned region(s) — primary RLS filter</td>
+          </tr>
+          <tr>
+            <td><span class="badge high">Report</span></td>
+            <td><code>V_TAV_Regions</code></td>
+            <td><code>IsVisable</code></td>
+            <td>Categorical</td>
+            <td><strong>Hidden</strong></td>
+            <td>Filters out regions with IsVisable=false — secondary visibility layer</td>
+          </tr>
+          <tr>
+            <td><span class="badge med">Page</span></td>
+            <td><code>DimDate</code></td>
+            <td><code>Date</code></td>
+            <td>RelativeDate</td>
+            <td>Visible</td>
+            <td>Default date range filter (most pages)</td>
+          </tr>
+          <tr>
+            <td><span class="badge med">Page</span></td>
+            <td><code>TAV_Users</code></td>
+            <td><code>Mail</code></td>
+            <td>Categorical</td>
+            <td>Visible</td>
+            <td>User identity-based data isolation (most pages)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warning" style="margin-top:16px">
+      <div class="icon">⚠️</div>
+      <div><strong>Risk:</strong> If <code>TAV_Users</code> is not kept up-to-date (e.g., user leaves or changes region), data access may be incorrect. The <code>IsVisable</code> flag is hidden from users — misconfiguration could cause silent data exposure or data gaps.</div>
+    </div>
+  </section>
+
+  <div style="height:60px"></div>
+</main>
+
+<script>
+  // Active nav highlighting on scroll
+  const sections = document.querySelectorAll('section[id], div.page-header');
+  const navLinks = document.querySelectorAll('nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + entry.target.id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
