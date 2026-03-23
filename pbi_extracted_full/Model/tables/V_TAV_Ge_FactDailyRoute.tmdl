@@ -1,4 +1,4 @@
-﻿table V_TAV_Ge_FactDailyRoute
+table V_TAV_Ge_FactDailyRoute
 
 	measure 'שעות עבודה_Ge' = SUM(V_TAV_Ge_FactDailyRoute[סה"כ זמן עבודה])/60
 		formatString: #,0

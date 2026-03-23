@@ -1,4 +1,4 @@
-﻿table V_TAV_Ge_Devices
+table V_TAV_Ge_Devices
 
 	measure 'כמות עגלות' = DISTINCTCOUNT(V_TAV_Ge_Devices[DeviceId])
 		formatString: #,0

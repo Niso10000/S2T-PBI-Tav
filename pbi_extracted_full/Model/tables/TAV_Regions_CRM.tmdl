@@ -1,4 +1,4 @@
-﻿table TAV_Regions_CRM
+table TAV_Regions_CRM
 
 	column RegionName
 		dataType: string

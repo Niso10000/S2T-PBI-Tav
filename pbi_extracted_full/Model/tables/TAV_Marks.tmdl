@@ -1,4 +1,4 @@
-﻿table TAV_Marks
+table TAV_Marks
 
 	measure 'ניקוד ציון לפניות 11' = CALCULATE(max(TAV_Marks[Mark]),TAV_Marks[ID]=11)
 		formatString: 0

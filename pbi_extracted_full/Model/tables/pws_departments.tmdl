@@ -1,4 +1,4 @@
-﻿table pws_departments
+table pws_departments
 
 	column pws_gis
 		dataType: string

@@ -1,4 +1,4 @@
-﻿table pws_slastatus
+table pws_slastatus
 
 	column Value
 		dataType: int64

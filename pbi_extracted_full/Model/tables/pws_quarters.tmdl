@@ -1,4 +1,4 @@
-﻿table pws_quarters
+table pws_quarters
 
 	column _owningteam_value
 		dataType: string

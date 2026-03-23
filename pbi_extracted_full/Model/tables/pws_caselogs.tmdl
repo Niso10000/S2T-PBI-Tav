@@ -1,4 +1,4 @@
-﻿table pws_caselogs
+table pws_caselogs
 
 	measure 'כמות פניות שנפתחו מחדש' = DISTINCTCOUNT(pws_caselogs[_pws_caseid_value])
 		formatString: #,0

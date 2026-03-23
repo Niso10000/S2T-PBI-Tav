@@ -1,4 +1,4 @@
-﻿table incidents
+table incidents
 
 	measure 'כמות פניות' = DISTINCTCOUNT(incidents[incidentid])
 		formatString: #,0

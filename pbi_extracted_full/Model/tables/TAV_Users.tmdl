@@ -1,4 +1,4 @@
-﻿table TAV_Users
+table TAV_Users
 
 	measure Me = USERPRINCIPALNAME()
 

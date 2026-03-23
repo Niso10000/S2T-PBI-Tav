@@ -1,4 +1,4 @@
-﻿table V_TAV_FactDailyRoute
+table V_TAV_FactDailyRoute
 
 	measure 'שעות עבודה_It' = SUM('V_TAV_FactDailyRoute'[SumWorkMinutes])/60
 		formatString: #,0

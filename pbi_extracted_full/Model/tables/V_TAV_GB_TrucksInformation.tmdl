@@ -1,4 +1,4 @@
-﻿table V_TAV_GB_TrucksInformation
+table V_TAV_GB_TrucksInformation
 
 	column dtTruckStatusDate
 		dataType: string

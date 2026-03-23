@@ -1,4 +1,4 @@
-﻿table V_TAV_GB_FactDailyRoute
+table V_TAV_GB_FactDailyRoute
 
 	measure 'כמות פחים מתוכננת' = sum(V_TAV_GB_FactDailyRoute[istationCnt])
 		formatString: #,0

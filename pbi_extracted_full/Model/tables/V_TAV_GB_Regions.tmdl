@@ -1,4 +1,4 @@
-﻿table V_TAV_GB_Regions
+table V_TAV_GB_Regions
 
 	column iRegionId
 		dataType: int64

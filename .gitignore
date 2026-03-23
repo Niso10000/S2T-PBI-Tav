@@ -1,5 +1,5 @@
-# Power BI source file (large binary — commit intentionally if needed)
-# ___דוח תברואה.pbix
+# Power BI source file (large binary — contains raw server names, do not commit to public repo)
+___*.pbix
 
 # Extracted PBIX internals (raw binary/intermediate files)
 pbix_extracted/contents/
@@ -11,3 +11,9 @@ pbix_extracted/datamodel_utf16.txt
 # pbix_extracted/*.py  → tracked
 # pbix_extracted/layout.json → tracked
 # pbix_extracted/visuals_full.txt → tracked
+
+# Redaction utility — run once locally, do not commit
+redact_sensitive.py
+
+# Claude Code local settings (permissions cache — not relevant to repo consumers)
+.claude/settings.local.json

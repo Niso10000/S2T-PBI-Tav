@@ -1,4 +1,4 @@
-﻿table pws_casesubjects
+table pws_casesubjects
 
 	column onholdtime
 		dataType: int64

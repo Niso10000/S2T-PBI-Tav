@@ -1,4 +1,4 @@
-﻿table ‏‏EventsData
+table ‏‏EventsData
 
 	measure 'כמות ארועים' = COUNTROWS('‏‏EventsData')
 		formatString: 0

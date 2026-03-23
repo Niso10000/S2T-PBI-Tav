@@ -1,10 +1,13 @@
 # S2T Technical Documentation — דוח תברואה (Sanitation Report)
 
 > **Source file**: `___דוח תברואה.pbix`
-> **Extracted from**: PBIX ZIP (Layout JSON + DiagramLayout JSON)
-> **DataModel status**: XPress9-compressed binary — DAX expressions NOT directly accessible
+> **Extracted from**: PBIX ZIP (Layout JSON + DiagramLayout JSON) + pbi-tools v1.2.0 full model extraction
+> **DataModel status**: Fully extracted via pbi-tools — DAX measures, Power Query M, and relationships available
 > **Created with**: Power BI Desktop (OnPrem), Release 2023.05, Format v1.28
 > **Analysis date**: 2026-03-22
+>
+> **🔒 Security note**: Infrastructure identifiers have been redacted for public distribution.
+> Placeholders: `<SQL-SERVER>` · `<SQL-DB>` · `<CRM-HOST>` · `<ORG>` · `<SP-SITE>` · `<DIVISION-GUID>` · `<LIST-GUID>`
 
 ---
 

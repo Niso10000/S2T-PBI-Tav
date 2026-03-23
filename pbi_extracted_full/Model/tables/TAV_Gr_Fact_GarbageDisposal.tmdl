@@ -1,4 +1,4 @@
-﻿table TAV_Gr_Fact_GarbageDisposal
+table TAV_Gr_Fact_GarbageDisposal
 
 	measure 'סהכ משקל אשפה' = sum(TAV_Gr_Fact_GarbageDisposal[משקל נטו])
 		formatString: #,0

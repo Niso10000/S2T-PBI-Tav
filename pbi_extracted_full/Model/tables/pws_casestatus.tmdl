@@ -1,4 +1,4 @@
-﻿table pws_casestatus
+table pws_casestatus
 
 	column Value
 		dataType: int64

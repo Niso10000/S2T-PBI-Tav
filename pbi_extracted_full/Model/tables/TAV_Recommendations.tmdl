@@ -1,4 +1,4 @@
-﻿table TAV_Recommendations
+table TAV_Recommendations
 
 	column ID
 		dataType: int64

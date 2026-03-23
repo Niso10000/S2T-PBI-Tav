@@ -1,4 +1,4 @@
-﻿table TAV_Regions_Gr
+table TAV_Regions_Gr
 
 	column 'שם שכונה'
 		dataType: string

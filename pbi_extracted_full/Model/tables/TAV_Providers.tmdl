@@ -1,4 +1,4 @@
-﻿table TAV_Providers
+table TAV_Providers
 
 	column ProviderID
 		dataType: int64

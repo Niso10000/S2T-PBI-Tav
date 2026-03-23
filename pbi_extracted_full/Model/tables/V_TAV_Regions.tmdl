@@ -1,4 +1,4 @@
-﻿table V_TAV_Regions
+table V_TAV_Regions
 
 	measure 'ממוצע משוקלל כלל הנפות' = CALCULATE([ממוצע משוקלל],REMOVEFILTERS(V_TAV_Regions))
 		formatString: 0

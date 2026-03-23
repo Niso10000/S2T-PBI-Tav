@@ -1,4 +1,4 @@
-﻿table V_TAV_Platforms
+table V_TAV_Platforms
 
 	measure 'שעות עבודה תקופה מקבילה' = CALCULATE([שעות עבודה_It],SAMEPERIODLASTYEAR(V_TAV_FactDailyRoute[Date]))
 
