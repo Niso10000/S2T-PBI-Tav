@@ -1,0 +1,57 @@
+{
+  "name": "0bf820b099f7a63c7012",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 491.47826086956525,
+        "y": 18.782608695652176,
+        "z": 2000,
+        "width": 306.78260869565219,
+        "height": 56.347826086956523,
+        "tabOrder": 1000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "דוחות תברואה",
+                    "textStyle": {
+                      "fontSize": "28pt",
+                      "color": "#666666"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

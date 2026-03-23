@@ -1,0 +1,56 @@
+{
+  "name": "14bd39b378166bc5a19e",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1106.608695652174,
+        "y": 0,
+        "z": 6000,
+        "width": 148.69565217391306,
+        "height": 50.086956521739133,
+        "tabOrder": 8000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "דוח אירועים",
+                    "textStyle": {
+                      "fontSize": "18pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Filter5c25803606c403161f62",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "DimDate"
+          }
+        },
+        "Property": "Date"
+      }
+    },
+    "type": "RelativeDate",
+    "howCreated": 1
+  }
+]

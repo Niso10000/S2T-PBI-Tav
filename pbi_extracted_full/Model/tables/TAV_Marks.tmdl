@@ -1,0 +1,78 @@
+﻿table TAV_Marks
+
+	measure 'ניקוד ציון לפניות 11' = CALCULATE(max(TAV_Marks[Mark]),TAV_Marks[ID]=11)
+		formatString: 0
+
+	measure 'כלל לניקוד פניות 11' = CALCULATE(max(TAV_Marks[Rule_Int])/100,TAV_Marks[ID]=11)
+		formatString: 0.00
+
+		changedProperty = FormatString
+
+	measure 'כלל לניקוד פניות 14' = CALCULATE(max(TAV_Marks[Rule_Int])/100,TAV_Marks[ID]=14)
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ניקוד ציון לפניות 14' = CALCULATE(max(TAV_Marks[Mark]),TAV_Marks[ID]=14)
+		formatString: 0
+
+	measure 'כלל לניקוד גרינט' = CALCULATE(max(TAV_Marks[Rule_Int])/100,TAV_Marks[ID]=15)
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ניקוד ציון לגרינט' = CALCULATE(max(TAV_Marks[Mark]),TAV_Marks[ID]=15)
+		formatString: 0
+
+	column ID
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = User
+
+	column Provider
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Provider
+
+		annotation SummarizationSetBy = Automatic
+
+	column Events
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Events
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rule
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rule_Int
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: Rule_Int
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mark
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAV_Marks-c0fa5823-29d2-46b7-938f-6d07ef9644d6 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<SQL-SERVER>", "<SQL-DB>"),
+				    dbo_TAV_Marks = Source{[Schema="dbo",Item="TAV_Marks"]}[Data]
+				in
+				    dbo_TAV_Marks
+

@@ -1,0 +1,145 @@
+﻿table ‏‏EventsData
+
+	measure 'כמות ארועים' = COUNTROWS('‏‏EventsData')
+		formatString: 0
+
+	column 'תאריך ההודעה'
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: תאריך ההודעה
+
+		variation Variation
+			isDefault
+			relationship: 7529e619-0a28-4d8e-bf59-4ae068e99216
+			defaultHierarchy: LocalDateTable_4b667743-6345-4b03-8a3f-3a8c1245b170.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'תאריך הארוע'
+		dataType: dateTime
+		formatString: Short Date
+		summarizeBy: none
+		sourceColumn: תאריך הארוע
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'שם ארוע'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: שם ארוע
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'סוג ארוע'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: סוג ארוע
+
+		annotation SummarizationSetBy = Automatic
+
+	column משעה
+		dataType: string
+		summarizeBy: none
+		sourceColumn: משעה
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'עד שעה'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: עד שעה
+
+		annotation SummarizationSetBy = Automatic
+
+	column כתובת
+		dataType: string
+		summarizeBy: none
+		sourceColumn: כתובת
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'שם שכונה'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: שם שכונה
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'מנהל נפה'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: מנהל נפה
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'תאור משאבים תבוראתיים נדרשים'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: תאור משאבים תבוראתיים נדרשים
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'מוסר ההודעה'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: מוסר ההודעה
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ארוע ותאריך' = [שם ארוע]&" "&[תאריך הארוע]&" "&[שם שכונה]&","
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column = ""
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column נפה
+		dataType: string
+		summarizeBy: none
+		sourceColumn: נפה
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'איש קשר מטעם הארוע'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: איש קשר מטעם הארוע
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'צפי משתמשים'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: צפי משתמשים
+
+		annotation SummarizationSetBy = Automatic
+
+	column הערות
+		dataType: string
+		summarizeBy: none
+		sourceColumn: הערות
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ‏‏EventsData-ca622675-ac83-492d-81f2-8c8359be8594 = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Tables("https://<ORG>.sharepoint.com/sites/<SP-SITE>/", [Implementation="2.0", ViewMode="All"]),
+				    #"<LIST-GUID>" = Source{[Id="<LIST-GUID>"]}[Items],
+				    #"Filtered Rows" = Table.SelectRows(#"<LIST-GUID>", each ([מוסר ההודעה] <> null)),
+				    #"Expanded נפה" = Table.ExpandListColumn(#"Filtered Rows", "נפה"),
+				    #"Expanded נפה1" = Table.ExpandRecordColumn(#"Expanded נפה", "נפה", {"lookupValue"}, {"נפה.lookupValue"}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Expanded נפה1",{"שם ארוע", "מוסר ההודעה", "תאריך ההודעה", "תאריך הארוע", "סוג ארוע", "משעה", "עד שעה", "כתובת", "שם שכונה", "נפה.lookupValue", "מנהל נפה", "תאור משאבים תבוראתיים נדרשים", "איש קשר מטעם הארוע", "צפי משתמשים", "הערות"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"נפה.lookupValue", "נפה"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

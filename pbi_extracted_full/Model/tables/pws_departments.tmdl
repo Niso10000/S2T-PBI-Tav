@@ -1,0 +1,277 @@
+﻿table pws_departments
+
+	column pws_gis
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_gis
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_divisionid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_divisionid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_overwritefromgis
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_overwritefromgis
+
+		annotation SummarizationSetBy = Automatic
+
+	column _modifiedonbehalfby_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _modifiedonbehalfby_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column statuscode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: statuscode
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_giscode
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_giscode
+
+		annotation SummarizationSetBy = Automatic
+
+	column timezoneruleversionnumber
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: timezoneruleversionnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_gisnapalayer
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_gisnapalayer
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_departmentmanager_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_departmentmanager_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _ownerid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _ownerid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column new_pniot_tzibor
+		dataType: string
+		summarizeBy: none
+		sourceColumn: new_pniot_tzibor
+
+		annotation SummarizationSetBy = Automatic
+
+	column utcconversiontimezonecode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: utcconversiontimezonecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column _createdby_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _createdby_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column versionnumber
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: versionnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_departmentid
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_departmentid
+
+		annotation SummarizationSetBy = Automatic
+
+	column _owningteam_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _owningteam_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _owninguser_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _owninguser_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_code
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedon
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: modifiedon
+
+		variation Variation
+			isDefault
+			relationship: 336e3747-3251-4171-9f7b-957c843495ce
+			defaultHierarchy: LocalDateTable_73a43e6e-cf4b-4060-818d-d1b44cfa7663.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_hrdepartmentid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_hrdepartmentid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_publicreferent_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_publicreferent_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _owningbusinessunit_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _owningbusinessunit_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column overriddencreatedon
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: overriddencreatedon
+
+		variation Variation
+			isDefault
+			relationship: fcadd929-b1be-4538-aeb5-854f97f113e7
+			defaultHierarchy: LocalDateTable_396fc472-a1e2-4eae-80d8-287fcb3fa056.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column _modifiedby_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _modifiedby_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column importsequencenumber
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: importsequencenumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column statecode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: statecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_name
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdon
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: createdon
+
+		variation Variation
+			isDefault
+			relationship: 9a73e75a-a359-484d-8ffa-cb027128bdd5
+			defaultHierarchy: LocalDateTable_a65935a9-6755-4776-b80c-1ae17fbb3dbb.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column _createdonbehalfby_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _createdonbehalfby_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_departmentfrenchname
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_departmentfrenchname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_departmentrussianname
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_departmentrussianname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_departmentenglishname
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_departmentenglishname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_departmentarabicname
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_departmentarabicname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_relevantforqueuessystem
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_relevantforqueuessystem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pws_departments-e4bd4631-ec45-4b19-b75b-3a03cd748430 = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed("https://<CRM-HOST>.api.crm4.dynamics.com/api/data/v9.1", null, [Implementation="2.0"]),
+				    pws_departments_table = Source{[Name="pws_departments",Signature="table"]}[Data]
+				in
+				    pws_departments_table
+
+	annotation PBI_ResultType = Table
+

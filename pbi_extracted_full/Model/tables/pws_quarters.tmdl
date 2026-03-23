@@ -1,0 +1,228 @@
+﻿table pws_quarters
+
+	column _owningteam_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _owningteam_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column utcconversiontimezonecode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: utcconversiontimezonecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_perimeter
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_perimeter
+
+		annotation SummarizationSetBy = Automatic
+
+	column _modifiedby_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _modifiedby_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _ownerid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _ownerid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column importsequencenumber
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: importsequencenumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column _owningbusinessunit_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _owningbusinessunit_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column statecode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: statecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_name
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_overwritefromgis
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_overwritefromgis
+
+		annotation SummarizationSetBy = Automatic
+
+	column timezoneruleversionnumber
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: timezoneruleversionnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column _createdby_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _createdby_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_regionid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_regionid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column statuscode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: statuscode
+
+		annotation SummarizationSetBy = Automatic
+
+	column emailaddress
+		dataType: string
+		summarizeBy: none
+		sourceColumn: emailaddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdon
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: createdon
+
+		variation Variation
+			isDefault
+			relationship: f3202094-c061-478f-becd-c1025a1efeca
+			defaultHierarchy: LocalDateTable_e2bf5ef9-9c5f-46ba-8e46-030a603df040.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_code
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedon
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: modifiedon
+
+		variation Variation
+			isDefault
+			relationship: 3b1a8515-2e3d-4a15-bf0d-5481b93fadb3
+			defaultHierarchy: LocalDateTable_5ba45e96-c879-4eb7-bdbe-19f7c0a909f1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column versionnumber
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: versionnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_contact_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_contact_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _createdonbehalfby_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _createdonbehalfby_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_quarterid
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_quarterid
+
+		annotation SummarizationSetBy = Automatic
+
+	column overriddencreatedon
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: overriddencreatedon
+
+		variation Variation
+			isDefault
+			relationship: 2a97ffd9-8707-4686-8e3a-b9a7f948351f
+			defaultHierarchy: LocalDateTable_647c739c-5bbc-4bbe-aa13-5b2e798469a0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_areaonmeter
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_areaonmeter
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_combinedkey
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_combinedkey
+
+		annotation SummarizationSetBy = Automatic
+
+	column _owninguser_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _owninguser_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _modifiedonbehalfby_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _modifiedonbehalfby_value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pws_quarters-bf5e3d49-09e5-4e32-98b1-bc9459b346e0 = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed("https://<CRM-HOST>.api.crm4.dynamics.com/api/data/v9.1", null, [Implementation="2.0"]),
+				    pws_quarters_table = Source{[Name="pws_quarters",Signature="table"]}[Data]
+				in
+				    pws_quarters_table
+
+	annotation PBI_ResultType = Table
+

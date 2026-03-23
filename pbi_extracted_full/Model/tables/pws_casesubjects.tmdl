@@ -1,0 +1,694 @@
+﻿table pws_casesubjects
+
+	column onholdtime
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: onholdtime
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_firstdepartmentid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_firstdepartmentid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_slafirstreaction
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_slafirstreaction
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_houserangenumbers
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_houserangenumbers
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_externalsubjectnumber
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_externalsubjectnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_sendsmscasecreate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_sendsmscasecreate
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_departmentid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_departmentid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_divisionid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_divisionid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_relevanttodigital
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_relevanttodigital
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_thirddepartmentid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_thirddepartmentid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column modifiedon
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: modifiedon
+
+		variation Variation
+			isDefault
+			relationship: 58a50265-1d06-4693-bcf2-cbb4de1407f5
+			defaultHierarchy: LocalDateTable_11054fbc-1d40-4152-a407-e9ce1a26c858.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column importsequencenumber
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: importsequencenumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_sla
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_sla
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_linecase
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_linecase
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_contact2id_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_contact2id_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column overriddencreatedon
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: overriddencreatedon
+
+		variation Variation
+			isDefault
+			relationship: 4d5ba8fc-0513-4aca-84d4-f1298acf1117
+			defaultHierarchy: LocalDateTable_f23e746f-332d-497d-9a07-b90a93755ea6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_seconddepartmentid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_seconddepartmentid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column lastonholdtime
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: lastonholdtime
+
+		variation Variation
+			isDefault
+			relationship: a83a9299-b981-4890-9504-c3749c3507b7
+			defaultHierarchy: LocalDateTable_15d0e0ed-9611-47d2-98a5-2b365a55bddc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_internet_casesubject_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_internet_casesubject_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_contact1mobilephone
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_contact1mobilephone
+
+		annotation SummarizationSetBy = Automatic
+
+	column _modifiedby_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _modifiedby_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_sendsurvey
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_sendsurvey
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_code
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_dangerousbuildingscode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_dangerousbuildingscode
+
+		annotation SummarizationSetBy = Automatic
+
+	column statuscode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: statuscode
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_primarysuject
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_primarysuject
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_onlineformownerid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_onlineformownerid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column entityimage_timestamp
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: entityimage_timestamp
+
+		annotation SummarizationSetBy = Automatic
+
+	column _owningbusinessunit_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _owningbusinessunit_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_preliminarycheck
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_preliminarycheck
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_pcduplicatecaseduration
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_pcduplicatecaseduration
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_slaeditable_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_slaeditable_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _slaid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _slaid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_picturerequiredforresolving
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_picturerequiredforresolving
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_serviceconvention
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_serviceconvention
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_casesubjectvalidtosubunits
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_casesubjectvalidtosubunits
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_ivrsubjectid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_ivrsubjectid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_unitid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_unitid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_calldocumentation
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_calldocumentation
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_sendsmscasetreat
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_sendsmscasetreat
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_contact2mobilephone
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_contact2mobilephone
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_header
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_header
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_linecaseid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_linecaseid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_footer
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_footer
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_identifiedcustomer
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_identifiedcustomer
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_slaexternal
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_slaexternal
+
+		annotation SummarizationSetBy = Automatic
+
+	column _modifiedonbehalfby_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _modifiedonbehalfby_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_assistancessubjecttype
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_assistancessubjecttype
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_casesubjectid
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_casesubjectid
+
+		annotation SummarizationSetBy = Automatic
+
+	column timezoneruleversionnumber
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: timezoneruleversionnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_choosedepartment
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_choosedepartment
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_information
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_information
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_mainsubjectsupervision
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_mainsubjectsupervision
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_sendsmstocaseowner
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_sendsmstocaseowner
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_smstext
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_smstext
+
+		annotation SummarizationSetBy = Automatic
+
+	column statecode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: statecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_constructionsupervisioncode
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_constructionsupervisioncode
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_forcasetype
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_forcasetype
+
+		annotation SummarizationSetBy = Automatic
+
+	column _createdonbehalfby_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _createdonbehalfby_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_pesticidesjournalrequired
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_pesticidesjournalrequired
+
+		annotation SummarizationSetBy = Automatic
+
+	column _createdby_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _createdby_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column utcconversiontimezonecode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: utcconversiontimezonecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_urgency
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_urgency
+
+		annotation SummarizationSetBy = Automatic
+
+	column versionnumber
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: versionnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_webcasesubject
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_webcasesubject
+
+		annotation SummarizationSetBy = Automatic
+
+	column entityimageid
+		dataType: string
+		summarizeBy: none
+		sourceColumn: entityimageid
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_externalsystemname
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_externalsystemname
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_checkparameter
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_checkparameter
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_durationrange
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_durationrange
+
+		annotation SummarizationSetBy = Automatic
+
+	column _ownerid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _ownerid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdon
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: createdon
+
+		variation Variation
+			isDefault
+			relationship: 2b353586-6f58-4e82-84bd-de8e5cf168c0
+			defaultHierarchy: LocalDateTable_09899a4f-ae40-4236-b6a3-b4933277c37f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_othersubjecssupervision
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_othersubjecssupervision
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_administrationid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_administrationid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_arabicsubject
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_arabicsubject
+
+		annotation SummarizationSetBy = Automatic
+
+	column _slainvokedid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _slainvokedid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _owningteam_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _owningteam_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_duplicatecheck
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_duplicatecheck
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_contact1id_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_contact1id_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column entityimage_url
+		dataType: string
+		summarizeBy: none
+		sourceColumn: entityimage_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column _owninguser_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _owninguser_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_casesubsubjectid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_casesubsubjectid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_sendsmstreatend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_sendsmstreatend
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_omerurl
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_omerurl
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_automaticsubject
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_automaticsubject
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_name
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_reopencasebysurvey
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_reopencasebysurvey
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_sendsurveycreationonlineforms
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_sendsurveycreationonlineforms
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_routebybusinessarea
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_routebybusinessarea
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pws_casesubjects-8a98daa3-8b1e-4cae-a3e6-efb2751256c0 = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed("https://<CRM-HOST>.api.crm4.dynamics.com/api/data/v9.1", null, [Implementation="2.0"]),
+				    pws_casesubjects_table = Source{[Name="pws_casesubjects",Signature="table"]}[Data]
+				in
+				    pws_casesubjects_table
+
+	annotation PBI_ResultType = Table
+

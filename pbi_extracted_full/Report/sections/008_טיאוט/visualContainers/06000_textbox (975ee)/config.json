@@ -1,0 +1,56 @@
+{
+  "name": "975ee88d0491414c1098",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1105.0434782608697,
+        "y": 15.948056217637872,
+        "z": 10000,
+        "width": 137.73913043478262,
+        "height": 48.521739130434788,
+        "tabOrder": 6000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "דוח טיאוט",
+                    "textStyle": {
+                      "fontSize": "20pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

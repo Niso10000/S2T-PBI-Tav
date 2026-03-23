@@ -1,0 +1,57 @@
+{
+  "name": "1967199a0d94d672630d",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1072.6872045197097,
+        "y": 17.217391304347828,
+        "z": 9000,
+        "width": 178.43478260869566,
+        "height": 46.956521739130437,
+        "tabOrder": 9000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "דוח רכבי קבלן",
+                    "textStyle": {
+                      "fontSize": "20pt",
+                      "color": "#252423"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

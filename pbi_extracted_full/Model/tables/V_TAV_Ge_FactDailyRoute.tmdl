@@ -1,0 +1,237 @@
+﻿table V_TAV_Ge_FactDailyRoute
+
+	measure 'שעות עבודה_Ge' = SUM(V_TAV_Ge_FactDailyRoute[סה"כ זמן עבודה])/60
+		formatString: #,0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'שעות שהיה_Ge' = sum(V_TAV_Ge_FactDailyRoute[SumStayMinutes])/60
+		formatString: #,0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'אחוז שעות שהיה_Ge' = DIVIDE([שעות שהיה_Ge],[שעות עבודה_Ge],BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	measure 'כמות עצירות ארוכות_Ge' = sum(V_TAV_Ge_FactDailyRoute[QtyLongStops])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'כמות יציאות מפוליגון_Ge' = sum(V_TAV_Ge_FactDailyRoute[QtyPolygonExit])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'קילומטראז''_Ge' = sum(V_TAV_Ge_FactDailyRoute[Distance])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'כמות עגלות פעילות_Ge' = DISTINCTCOUNT(V_TAV_Ge_FactDailyRoute[DeviceId])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'אחוז עגלות פעילות_Ge' = DIVIDE([כמות עגלות פעילות_Ge],[כמות עגלות],BLANK())
+		formatString: 0.00%;-0.00%;0.00%
+
+		changedProperty = FormatString
+
+	measure 'ממוצע שעות עבודה לעגלה_Ge' = DIVIDE([שעות עבודה_Ge],[כמות עגלות פעילות_Ge]*[כמות ימי עבודה_Ge],BLANK())
+		formatString: #,0.00
+
+		changedProperty = FormatString
+
+	measure 'כמות ימי עבודה_Ge' = DISTINCTCOUNT(V_TAV_Ge_FactDailyRoute[Date])
+		formatString: 0
+
+	measure 'conditinal formatinf Ge' =
+			
+			SWITCH(
+			    true(),
+			    [אחוז עגלות פעילות_Ge]>0.3,"#3CD734",
+			    [אחוז עגלות פעילות_Ge]<=0.3 && [אחוז עגלות פעילות_Ge]>0.2,"#E1C233",
+			    [אחוז עגלות פעילות_Ge]<=0.15,"#A1343C",
+			    "#E1C233"
+			)
+
+	measure 'טווח תאריכים_Ge' = FORMAT(MIN('V_TAV_Ge_FactDailyRoute'[Date]),"DD/MM/YY")&"-"&FORMAT( MAX('V_TAV_Ge_FactDailyRoute'[Date]),"DD/MM/YY")
+
+	measure 'ציון ממוצע_Ge' = AVERAGE(V_TAV_Ge_FactDailyRoute[Mark])
+		formatString: 0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'כמות לחישוב ממוצע משוקלל_Ge' = COUNTROWS(V_TAV_Ge_FactDailyRoute)
+		formatString: 0
+
+	measure 'ציון ממוצע כל הנפות_Ge' = CALCULATE([ציון ממוצע_Ge],REMOVEFILTERS(V_TAV_Regions))
+		formatString: 0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'אחוז שינוי ציון ממוצע_Ge' = DIVIDE([ציון ממוצע_Ge]-[ציון ממוצע כל הנפות_Ge],[ציון ממוצע כל הנפות_Ge],BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeviceId
+		dataType: string
+		summarizeBy: none
+		sourceColumn: DeviceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartTime
+		dataType: dateTime
+		formatString: hh:nn
+		summarizeBy: none
+		sourceColumn: StartTime
+
+		variation Variation
+			isDefault
+			relationship: d1602543-a82f-4182-b79c-43183f2f5fb4
+			defaultHierarchy: LocalDateTable_47a89155-188e-41d2-987d-aa607b473502.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column EndTime
+		dataType: dateTime
+		formatString: hh:nn
+		summarizeBy: none
+		sourceColumn: EndTime
+
+		variation Variation
+			isDefault
+			relationship: fce971ed-da05-4407-a5cd-36327f743445
+			defaultHierarchy: LocalDateTable_0d2d582d-b4f1-4163-b428-ad0f5ef34f82.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column SumWorkMinutes
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: SumWorkMinutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column SumStayMinutes
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: SumStayMinutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Distance
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: Distance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column QtyLongStops
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: QtyLongStops
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyPolygonExit
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: QtyPolygonExit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'סה"כ זמן עבודה' = (V_TAV_Ge_FactDailyRoute[SumStayMinutes])+(V_TAV_Ge_FactDailyRoute[SumWorkMinutes])
+		formatString: 0
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nafa
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Nafa
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'שעות עבודה מחושבות_Ge' = DATEDIFF(V_TAV_Ge_FactDailyRoute[StartTime],V_TAV_Ge_FactDailyRoute[EndTime],HOUR)
+		formatString: 0
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column StayMinutesPrc
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: StayMinutesPrc
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Mark
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column Recommendations
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Recommendations
+
+		annotation SummarizationSetBy = Automatic
+
+	partition V_TAV_Ge_FactDailyRoute-b93f3713-1c78-4aa5-9874-2a911ce72d40 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("<SQL-SERVER>"),
+				    DWH_SEC = Source{[Name="<SQL-DB>"]}[Data],
+				    #"KIKARDOM\yehudit_ei_V_TAV_Ge_FactDailyRoute" = DWH_SEC{[Schema="dbo",Item="V_TAV_Ge_FactDailyRoute"]}[Data]
+				in
+				    #"KIKARDOM\yehudit_ei_V_TAV_Ge_FactDailyRoute"
+
+	annotation PBI_ResultType = Table
+

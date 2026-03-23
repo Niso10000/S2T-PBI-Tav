@@ -1,0 +1,59 @@
+﻿table 'מדדי טיאוט'
+
+	measure כותרת_תאריך = MAX('מדדי טיאוט'[מדדי טיאוט]) & " לפי תאריך"
+
+	measure כותרת_נפה = MAX('מדדי טיאוט'[מדדי טיאוט]) &" לפי נפה"
+
+	measure כותרת_קבלן = MAX('מדדי טיאוט'[מדדי טיאוט]) & " לפי קבלן"
+
+	column 'מדדי טיאוט'
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'מדדי טיאוט-32e2d13c-6176-434b-b7a1-9268b7b4219e' = calculated
+		mode: import
+		source = ```
+				{
+				    ("שעות עבודה", NAMEOF('V_TAV_Ge_FactDailyRoute'[שעות עבודה_Ge]), 0),
+				    ("שעות שהיה", NAMEOF('V_TAV_Ge_FactDailyRoute'[שעות שהיה_Ge]), 1),
+				    ("אחוז שעות שהיה", NAMEOF('V_TAV_Ge_FactDailyRoute'[אחוז שעות שהיה_Ge]), 2),
+				    ("כמות עצירות ארוכות", NAMEOF('V_TAV_Ge_FactDailyRoute'[כמות עצירות ארוכות_Ge]), 3),
+				    ("כמות יציאות מפוליגון", NAMEOF('V_TAV_Ge_FactDailyRoute'[כמות יציאות מפוליגון_Ge]), 4),
+				    ("קילומטרז'", NAMEOF('V_TAV_Ge_FactDailyRoute'[קילומטראז'_Ge]), 5),
+				    ("כמות עגלות פעילות", NAMEOF('V_TAV_Ge_FactDailyRoute'[כמות עגלות פעילות_Ge]), 6),
+				    ("אחוז עגלות פעילות", NAMEOF('V_TAV_Ge_FactDailyRoute'[אחוז עגלות פעילות_Ge]), 7),
+				    ("ממוצע שעות עבודה לעגלה", NAMEOF('V_TAV_Ge_FactDailyRoute'[ממוצע שעות עבודה לעגלה_Ge]), 7)
+				    
+				}
+				```
+
+	annotation PBI_Id = 89ab79fd00754d7e953572230556b5f6
+

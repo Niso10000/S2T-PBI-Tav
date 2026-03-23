@@ -1,0 +1,34 @@
+﻿table TAV_Users
+
+	measure Me = USERPRINCIPALNAME()
+
+	column RegionName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: RegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column UserName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: UserName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mail
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Mail
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAV_Users-d1adab91-31a2-4f96-9ecf-b5bc75391aac = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<SQL-SERVER>", "<SQL-DB>"),
+				    dbo_TAV_Users = Source{[Schema="dbo",Item="TAV_Users"]}[Data]
+				in
+				    dbo_TAV_Users
+

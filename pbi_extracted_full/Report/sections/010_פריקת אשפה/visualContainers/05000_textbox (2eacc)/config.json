@@ -1,0 +1,56 @@
+{
+  "name": "2eacc1dc9518889d899a",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1033.0390920554855,
+        "y": 16.141235813366961,
+        "z": 8000,
+        "width": 209.8360655737705,
+        "height": 48.423707440100884,
+        "tabOrder": 5000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "דוח פריקת אשפה",
+                    "textStyle": {
+                      "fontSize": "20pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

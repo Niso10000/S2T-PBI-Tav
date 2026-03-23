@@ -1,0 +1,793 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 17.610429199525427,
+            "y": 138.88844609927276
+          },
+          "nodeIndex": "V_TAV_Platforms",
+          "size": {
+            "height": 128,
+            "width": 200.24667736757624
+          },
+          "zIndex": 13,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 332.40779377946916
+          },
+          "nodeIndex": "V_TAV_FactDailyRoute",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 2457.3627769935333,
+            "y": 372.24008844887032
+          },
+          "nodeIndex": "מדדי רכבים",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 396.90773725245793,
+            "y": 141.43600207556921
+          },
+          "nodeIndex": "V_TAV_Ge_Devices",
+          "size": {
+            "height": 104,
+            "width": 193.04568078721502
+          },
+          "zIndex": 23,
+          "expandedHeight": 298.72919254658393
+        },
+        {
+          "location": {
+            "x": 357.431009400797,
+            "y": 321.343561075467
+          },
+          "nodeIndex": "V_TAV_Ge_FactDailyRoute",
+          "size": {
+            "height": 353.05341614906831,
+            "width": 260.67701863354068
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 689.34163419508832,
+            "y": 4.40260729988136
+          },
+          "nodeIndex": "DimDate",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 18,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 2453.8920654729127,
+            "y": 545.41954057981832
+          },
+          "nodeIndex": "מדדי טיאוט",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 2146.5708095120835,
+            "y": 361.55070852773309
+          },
+          "nodeIndex": "‏‏EventsData",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 1059.358426966292,
+            "y": 359.99999999999994
+          },
+          "nodeIndex": "incidents",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 1204,
+            "y": 0
+          },
+          "nodeIndex": "pws_departments",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 950.58560255579619,
+            "y": 1.5967076189463754
+          },
+          "nodeIndex": "pws_quarters",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 21
+        },
+        {
+          "location": {
+            "x": 1473.71797752809,
+            "y": 5.3932584269662946
+          },
+          "nodeIndex": "pws_casestatus",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1480.2146067415731,
+            "y": 164.46741573033711
+          },
+          "nodeIndex": "pws_slastatus",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1729.3779951100244,
+            "y": 2.9339853300733481
+          },
+          "nodeIndex": "pws_casesubjects",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 2127.7650366748162,
+            "y": 156.96821515892424
+          },
+          "nodeIndex": "TAV_Marks",
+          "size": {
+            "height": 143.31540342298285,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 3053.3790702971951,
+            "y": 19.160491427356526
+          },
+          "nodeIndex": "V_TAV_GB_TrucksInformation",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 3018.2046181415058,
+            "y": 311.35798569454357
+          },
+          "nodeIndex": "V_TAV_GB_FactDailyRoute",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 3340.5959496096025,
+            "y": 27.144029522088413
+          },
+          "nodeIndex": "V_TAV_GB_Regions",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 2446.8305623471883,
+            "y": 155.50122249388767
+          },
+          "nodeIndex": "TAV_Recommendations",
+          "size": {
+            "height": 143.31540342298285,
+            "width": 234
+          },
+          "zIndex": 22
+        },
+        {
+          "location": {
+            "x": 2309.5760391198041,
+            "y": 0
+          },
+          "nodeIndex": "TAV_Providers",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1352.828864523379,
+            "y": 359.5429178878951
+          },
+          "nodeIndex": "pws_caselogs",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 232.56872635913271,
+            "y": 0
+          },
+          "nodeIndex": "V_TAV_Regions",
+          "size": {
+            "height": 124,
+            "width": 188.50639123455926
+          },
+          "zIndex": 24
+        },
+        {
+          "location": {
+            "x": 755.77336026363469,
+            "y": 370.43616759555948
+          },
+          "nodeIndex": "TAV_Regions_CRM",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 9.5802457136782664
+          },
+          "nodeIndex": "TAV_Users",
+          "size": {
+            "height": 104,
+            "width": 182.90535619371593
+          },
+          "zIndex": 25,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 3744.7,
+            "y": 0
+          },
+          "nodeIndex": "TAV_Gr_Fact_GarbageDisposal",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4148.8,
+            "y": 332
+          },
+          "nodeIndex": "TAV_Regions_Gr",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 62.628873823491368,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 1,
+      "scrollPosition": {
+        "x": 0,
+        "y": 33
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 32.970786516853948,
+            "y": 169.56404494382022
+          },
+          "nodeIndex": "V_TAV_Platforms",
+          "size": {
+            "height": 145.74382022471909,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 177.51235955056177,
+            "y": 341.55056179775283
+          },
+          "nodeIndex": "V_TAV_FactDailyRoute",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 331.19550561797757,
+            "y": 0
+          },
+          "nodeIndex": "DimDate",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 25.905617977528081,
+            "y": 0
+          },
+          "nodeIndex": "V_TAV_Regions",
+          "size": {
+            "height": 124,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Ituran",
+      "zoomValue": 84.92366412213741,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 2,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 225,
+            "y": 319
+          },
+          "nodeIndex": "V_TAV_Ge_FactDailyRoute",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 123,
+            "y": 124
+          },
+          "nodeIndex": "V_TAV_Ge_Devices",
+          "size": {
+            "height": 174,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 398,
+            "y": 0
+          },
+          "nodeIndex": "DimDate",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 116,
+            "y": 0
+          },
+          "nodeIndex": "V_TAV_Regions",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0,
+          "expandedHeight": 224
+        }
+      ],
+      "name": "Genio",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 3,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 83.956521739130437,
+            "y": 0
+          },
+          "nodeIndex": "DimDate",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 351.91304347826076,
+            "y": 208.9130434782609
+          },
+          "nodeIndex": "‏‏EventsData",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 401.47826086956513,
+            "y": 2.8260869565217348
+          },
+          "nodeIndex": "V_TAV_Regions",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0,
+          "expandedHeight": 224
+        }
+      ],
+      "name": "ארועים",
+      "zoomValue": 76.666666666666671,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 4,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 602.47826086956525,
+            "y": 0
+          },
+          "nodeIndex": "pws_casestatus",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "pws_casesubjects",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 852.658695652174,
+            "y": 0.054347826086939222
+          },
+          "nodeIndex": "pws_departments",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 292.23043478260871,
+            "y": 0
+          },
+          "nodeIndex": "pws_quarters",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 602.841304347826,
+            "y": 149.3195652173913
+          },
+          "nodeIndex": "pws_slastatus",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 317.87173913043483,
+            "y": 319.4782608695653
+          },
+          "nodeIndex": "incidents",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 631.94565217391323,
+            "y": 323.204347826087
+          },
+          "nodeIndex": "pws_caselogs",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1567.0685234399918,
+            "y": 14.669926650366753
+          },
+          "nodeIndex": "DimDate",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1138.5623471882643,
+            "y": 462.10268948655266
+          },
+          "nodeIndex": "V_TAV_Regions",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 1,
+          "expandedHeight": 224
+        },
+        {
+          "location": {
+            "x": 1113.6234718826408,
+            "y": 166.12469437652817
+          },
+          "nodeIndex": "TAV_Regions_CRM",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 9
+        }
+      ],
+      "name": "CRM",
+      "zoomValue": 68.166666666666657,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 5,
+      "scrollPosition": {
+        "x": 0,
+        "y": 13
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 18.260869565217391,
+            "y": 0
+          },
+          "nodeIndex": "V_TAV_GB_TrucksInformation",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 303.32608695652192,
+            "y": 323.80434782608688
+          },
+          "nodeIndex": "V_TAV_GB_FactDailyRoute",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 577.56521739130426,
+            "y": 0
+          },
+          "nodeIndex": "DimDate",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 848.09433962264154,
+            "y": 128.77358490566036
+          },
+          "nodeIndex": "V_TAV_GB_Regions",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 849.5094339622641,
+            "y": 0
+          },
+          "nodeIndex": "V_TAV_Regions",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0,
+          "expandedHeight": 224
+        }
+      ],
+      "name": "פח חכם",
+      "zoomValue": 70.666666666666671,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 6,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 298.26086956521738,
+            "y": 226.60869565217391
+          },
+          "nodeIndex": "TAV_Gr_Fact_GarbageDisposal",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": -105,
+            "y": -45
+          },
+          "nodeIndex": "DimDate",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 591.96226415094327,
+            "y": 178.11320754716982
+          },
+          "nodeIndex": "TAV_Regions_Gr",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 879.22641509433959,
+            "y": 0
+          },
+          "nodeIndex": "V_TAV_Regions",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "גרינט",
+      "zoomValue": 70.666666666666671,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "CRM",
+  "defaultDiagram": "All tables"
+}

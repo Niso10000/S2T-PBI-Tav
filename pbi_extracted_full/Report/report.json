@@ -1,0 +1,124 @@
+{
+  "id": 17278270,
+  "layoutOptimization": 0,
+  "publicCustomVisuals": [
+    "bciCalendarCC0FA2BFE4B54EE1ACCFE383B9B1DE61",
+    "payPalKPIDonutChart55A431AB15A540ED924ACD72ED8D259F",
+    "PBI_CV_3C80B1F2_09AF_4123_8E99_C3CBC46B23E0",
+    "ScrollingTextVisual1448795304508"
+  ],
+  "reportId": 5926322,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "id": 49283250,
+        "items": [
+          {
+            "id": 156537457,
+            "path": "bciCalendarCC0FA2BFE4B54EE1ACCFE383B9B1DE61.pbiviz.json",
+            "resourcePackageId": 49283250,
+            "resourcePackageItemBlobInfoId": 153750914,
+            "type": 5
+          }
+        ],
+        "name": "bciCalendarCC0FA2BFE4B54EE1ACCFE383B9B1DE61",
+        "type": 0
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "id": 49283251,
+        "items": [
+          {
+            "id": 156537458,
+            "path": "payPalKPIDonutChart55A431AB15A540ED924ACD72ED8D259F.pbiviz.json",
+            "resourcePackageId": 49283251,
+            "resourcePackageItemBlobInfoId": 153750916,
+            "type": 5
+          }
+        ],
+        "name": "payPalKPIDonutChart55A431AB15A540ED924ACD72ED8D259F",
+        "type": 0
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "id": 49283252,
+        "items": [
+          {
+            "id": 156537459,
+            "path": "PBI_CV_3C80B1F2_09AF_4123_8E99_C3CBC46B23E0.pbiviz.json",
+            "resourcePackageId": 49283252,
+            "resourcePackageItemBlobInfoId": 153750918,
+            "type": 5
+          }
+        ],
+        "name": "PBI_CV_3C80B1F2_09AF_4123_8E99_C3CBC46B23E0",
+        "type": 0
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "id": 49283253,
+        "items": [
+          {
+            "id": 156537460,
+            "path": "ScrollingTextVisual1448795304508.pbiviz.json",
+            "resourcePackageId": 49283253,
+            "resourcePackageItemBlobInfoId": 153750920,
+            "type": 5
+          }
+        ],
+        "name": "ScrollingTextVisual1448795304508",
+        "type": 0
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "id": 49283254,
+        "items": [
+          {
+            "name": "____-______11041655685038143.jpg",
+            "path": "____-______11041655685038143.jpg",
+            "type": 100
+          },
+          {
+            "name": "Custom7106413644967366.json",
+            "path": "Custom7106413644967366.json",
+            "type": 201
+          },
+          {
+            "name": "clean_city_b1_(1)8957741345825707.jpg",
+            "path": "clean_city_b1_(1)8957741345825707.jpg",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "id": 49283255,
+        "items": [
+          {
+            "id": 156537467,
+            "name": "CY22SU03",
+            "path": "BaseThemes/CY22SU03.json",
+            "resourcePackageId": 49283255,
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "theme": "Custom7106413644967366.json"
+}

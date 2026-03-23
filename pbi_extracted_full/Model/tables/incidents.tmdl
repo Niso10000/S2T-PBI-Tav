@@ -1,0 +1,354 @@
+﻿table incidents
+
+	measure 'כמות פניות' = DISTINCTCOUNT(incidents[incidentid])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'כמות פניות חורגות' = CALCULATE([כמות פניות],incidents[pws_slastatus]=1)
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'כמות פניות פתוחות' = CALCULATE([כמות פניות],incidents[statecode]=0)
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'כמות פניות סגורות' = CALCULATE([כמות פניות],incidents[statecode]<>0)
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'כמות פניות מתגלגלות' = CALCULATE([כמות פניות],incidents[pws_noofcaserollings]<> BLANK())
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'אחוז פניות חורגות' = DIVIDE([כמות פניות חורגות],[כמות פניות],BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	measure 'אחוז פניות חורגות לפי יום נפה' =
+			DIVIDE(
+			    sumx(
+			SUMMARIZE(incidents,incidents[createdon],incidents[_pws_departmentid_value],"כמות פניות חורגות",[כמות פניות חורגות]),
+			[כמות פניות חורגות]),
+			sumx(
+			SUMMARIZE(incidents,incidents[createdon],incidents[_pws_departmentid_value],"כמות פניות",[כמות פניות]),
+			[כמות פניות])
+			,BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	measure 'ציון לפניות' =
+			100-
+			if([אחוז פניות חורגות לפי יום נפה]>[כלל לניקוד פניות 11],[ניקוד ציון לפניות 11])-
+			if([אחוז פניות שנפתחו מחדש לפי יום נפה]>[כלל לניקוד פניות 14],[ניקוד ציון לפניות 14])
+		formatString: 0
+
+	measure 'ציון ממוצע לפניות' = AVERAGEx(SUMMARIZE(incidents,incidents[createdon],incidents[_pws_departmentid_value]),[ציון לפניות])
+		formatString: 0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ציון ממוצע כל הנפות לפניות' = CALCULATE([ציון ממוצע לפניות],REMOVEFILTERS(V_TAV_Regions))
+		formatString: 0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'כמות לחישוב ממוצע משוקלל_פניות' = COUNTROWS(SUMMARIZE(incidents,incidents[createdon],incidents[_pws_departmentid_value]))
+		formatString: 0
+
+	measure 'אחוז שינוי ציון ממוצע לפניות' = DIVIDE([ציון ממוצע לפניות]-[ציון ממוצע כל הנפות לפניות],[ציון ממוצע כל הנפות לפניות],BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	column pws_acceptorigin
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_acceptorigin
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_duplicatecase
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_duplicatecase
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_divisionid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_divisionid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_administrationid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_administrationid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_casesubjectid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_casesubjectid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column incidentid
+		dataType: string
+		summarizeBy: none
+		sourceColumn: incidentid
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_neighborhoodid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_neighborhoodid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column caseorigincode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: caseorigincode
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_caseorigincode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_caseorigincode
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdon
+		dataType: dateTime
+		formatString: Short Date
+		summarizeBy: none
+		sourceColumn: createdon
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column pws_casenumber
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_casenumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_closereasonid2_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_closereasonid2_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_urgency
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_urgency
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_returncase
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_returncase
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_siteid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_siteid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_noofcaserollings
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_noofcaserollings
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_resolvedbyexpiredtime
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: pws_resolvedbyexpiredtime
+
+		variation Variation
+			isDefault
+			relationship: 6faca76b-b41d-4349-bd27-e60a443a2bd0
+			defaultHierarchy: LocalDateTable_92c1a875-6773-4436-8b5e-8bb5aa231848.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column statecode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: statecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_duplicationdetected
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		summarizeBy: none
+		sourceColumn: pws_duplicationdetected
+
+		annotation SummarizationSetBy = Automatic
+
+	column _slaid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _slaid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_quaterid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_quaterid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_caseduration
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: pws_caseduration
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column description
+		dataType: string
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_streetid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_streetid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column ticketnumber
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ticketnumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column casetypecode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: casetypecode
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_slastatus
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: pws_slastatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_sla
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_sla
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_administration_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_administration_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_casetype
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_casetype
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_departmentid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_departmentid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_closedateincident
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: pws_closedateincident
+
+		variation Variation
+			isDefault
+			relationship: aac8a022-dfe4-451c-b2cf-c89a79813702
+			defaultHierarchy: LocalDateTable_376564fd-9870-41c8-bbfe-6a55d926196e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_status
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: pws_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'סוג פניה' = if(incidents[pws_casetype]=2,"פניות מוקד","פניות ציבור")
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition incidents-ff9a3b7d-db6b-4f20-9056-6d4aafe52469 = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed("https://<CRM-HOST>.api.crm4.dynamics.com/api/data/v9.1/incidents?$select=incidentid,pws_contactid,description,_pws_streetid_value,pws_noofcaserollings,pws_status,pws_returncase,_pws_quaterid_value,_pws_casesubjectid_value,_pws_siteid_value,casetypecode,pws_caseduration,pws_caseorigincode,pws_casetype,_pws_neighborhoodid_value,statecode,ticketnumber,createdon,_pws_administration_value,pws_slastatus,_pws_administrationid_value,pws_casenumber,pws_closedateincident,_pws_departmentid_value,pws_acceptorigin,caseorigincode,_pws_divisionid_value,pws_duplicatecase,pws_duplicationdetected,pws_resolvedbyexpiredtime,pws_closedateincident,pws_urgency,pws_sla,_slaid_value,_pws_closereasonid2_value&$filter=(pws_casetype eq 2 or pws_casetype eq 3) and _pws_divisionid_value eq '<DIVISION-GUID>' and createdon ge 2022-01-01", null, [Implementation="2.0"]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"createdon", type datetime}}),
+				    #"Extracted Date" = Table.TransformColumns(#"Changed Type",{{"createdon", DateTime.Date, type date}})
+				in
+				    #"Extracted Date"
+
+	annotation PBI_ResultType = Table
+

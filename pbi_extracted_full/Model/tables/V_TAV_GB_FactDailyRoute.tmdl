@@ -1,0 +1,231 @@
+﻿table V_TAV_GB_FactDailyRoute
+
+	measure 'כמות פחים מתוכננת' = sum(V_TAV_GB_FactDailyRoute[istationCnt])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'כמות פחים שבוצעה' = sum(V_TAV_GB_FactDailyRoute[istationCompleteCnt])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'אחוז ביצוע מול תכנון' = DIVIDE([כמות פחים שבוצעה],[כמות פחים מתוכננת],BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	measure 'ציון ממוצע_GB' = AVERAGE(V_TAV_GB_FactDailyRoute[Mark])
+		formatString: 0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'טווח תאריכים_Gb' = FORMAT(MIN('V_TAV_GB_FactDailyRoute'[RouteDate]),"DD/MM/YY")&"-"&FORMAT( MAX('V_TAV_GB_FactDailyRoute'[RouteDate]),"DD/MM/YY")
+
+	measure 'כמות מסלולים' = DISTINCTCOUNT(V_TAV_GB_FactDailyRoute[iRouteId])
+		formatString: 0
+
+	measure 'כמות פחים ריקים שרוקנו' = sum(V_TAV_GB_FactDailyRoute[QtyEmptyBins])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'כמות לחישוב ממוצע משוקלל_Gb' = COUNTROWS(V_TAV_Gb_FactDailyRoute)
+		formatString: 0
+
+	measure 'ציון ממוצע כל הנפות_Gb' = CALCULATE([ציון ממוצע_Gb],REMOVEFILTERS(V_TAV_Regions))
+		formatString: 0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'אחוז שינוי ציון ממוצע_Gb' = DIVIDE([ציון ממוצע_Gb]-[ציון ממוצע כל הנפות_Gb],[ציון ממוצע כל הנפות_Gb],BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	measure 'אחוז פחים ריקים שרוקנו' = DIVIDE([כמות פחים ריקים שרוקנו],[כמות פחים שבוצעה],BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	column iDriverId
+		dataType: int64
+		formatString: 0
+		summarizeBy: count
+		sourceColumn: iDriverId
+
+		annotation SummarizationSetBy = Automatic
+
+	column RouteDate
+		dataType: dateTime
+		formatString: Short Date
+		summarizeBy: none
+		sourceColumn: RouteDate
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column nvDriverName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nvDriverName
+
+		annotation SummarizationSetBy = Automatic
+
+	column iRegionId
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: iRegionId
+
+		annotation SummarizationSetBy = Automatic
+
+	column nvRouteStatusName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nvRouteStatusName
+
+		annotation SummarizationSetBy = Automatic
+
+	column iTruckId
+		dataType: int64
+		formatString: 0
+		summarizeBy: count
+		sourceColumn: iTruckId
+
+		annotation SummarizationSetBy = Automatic
+
+	column nvTruckNumber
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nvTruckNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column istationCnt
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: istationCnt
+
+		annotation SummarizationSetBy = Automatic
+
+	column istationCompleteCnt
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: istationCompleteCnt
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyEmptyBins
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: QtyEmptyBins
+
+		annotation SummarizationSetBy = Automatic
+
+	column nvRegionName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nvRegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mark
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column iNeighborhoodId
+		dataType: string
+		summarizeBy: none
+		sourceColumn: iNeighborhoodId
+
+		annotation SummarizationSetBy = Automatic
+
+	column nvNeighborhoodName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nvNeighborhoodName
+
+		annotation SummarizationSetBy = Automatic
+
+	column iRouteId
+		dataType: int64
+		formatString: 0
+		summarizeBy: count
+		sourceColumn: iRouteId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Recommendation
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Recommendation
+
+		annotation SummarizationSetBy = Automatic
+
+	column nSumWeightPerc
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: nSumWeightPerc
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BeginTime
+		dataType: dateTime
+		formatString: hh:nn
+		summarizeBy: none
+		sourceColumn: BeginTime
+
+		variation Variation
+			isDefault
+			relationship: d9452418-7292-4f64-bcb0-bfd5d94b5d0f
+			defaultHierarchy: LocalDateTable_274d9a01-71ff-44e8-bf9f-08301dea7f29.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column EndTime
+		dataType: dateTime
+		formatString: hh:nn
+		summarizeBy: none
+		sourceColumn: EndTime
+
+		variation Variation
+			isDefault
+			relationship: 26014d9a-28b0-4da5-9cc1-22d2842962c7
+			defaultHierarchy: LocalDateTable_1428724f-7c88-46a4-a670-443dd7ab49aa.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition V_TAV_GB_FactDailyRoute-d1393175-f739-4c57-995e-99e764765a78 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<SQL-SERVER>", "<SQL-DB>"),
+				    dbo_V_TAV_GB_FactDailyRoute = Source{[Schema="dbo",Item="V_TAV_GB_FactDailyRoute"]}[Data]
+				in
+				    dbo_V_TAV_GB_FactDailyRoute
+
+	annotation PBI_ResultType = Table
+

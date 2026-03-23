@@ -1,0 +1,52 @@
+﻿table 'מדדי רכבים'
+
+	measure כותרת =
+			" פילוח תאריכים לפי "
+			&MAX('מדדי רכבים'[מדדי רכבים])
+
+	column 'מדדי רכבים'
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'מדדי רכבים Order'
+
+		relatedColumnDetails
+			groupByColumn: 'מדדי רכבים Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'מדדי רכבים Fields'
+		isHidden
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'מדדי רכבים Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'מדדי רכבים Order'
+		isHidden
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'מדדי רכבים-c08632e7-ce4b-4319-b86a-c53140ef4203' = calculated
+		mode: import
+		source =
+				{
+				    ("אחוז שעות שהיה", NAMEOF('V_TAV_FactDailyRoute'[אחוז שעות שהיה_It]), 0),
+				    ("כמות נהיגה מסוכנת", NAMEOF('V_TAV_FactDailyRoute'[כמות נהיגה מסוכנת_It]), 1),
+				    ("כמות חריגות מפוליגון", NAMEOF('V_TAV_FactDailyRoute'[כמות יציאות מפוליגון_It]), 2),
+				    ("שעות עבודה נטו", NAMEOF('V_TAV_FactDailyRoute'[שעות עבודה נטו]), 3),
+				     ("כמות עצירות", NAMEOF('V_TAV_FactDailyRoute'[כמות עצירות_It]), 4),
+				     ("כמות חריגות מהירות", NAMEOF('V_TAV_FactDailyRoute'[כמות חריגות מהירות_It]), 5)
+				}
+
+	annotation PBI_Id = c117229425d5421c9fcd193b35367800
+

@@ -1,0 +1,66 @@
+{
+  "name": "c47a5e650d07731767ac",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 6.3602484472049685,
+        "y": 7.9503105590062111,
+        "z": 8000,
+        "width": 84.273291925465841,
+        "height": 81.093167701863351,
+        "tabOrder": 0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "image",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "imageUrl": {
+              "expr": {
+                "ResourcePackageItem": {
+                  "PackageName": "RegisteredResources",
+                  "PackageType": 1,
+                  "ItemName": "____-______11041655685038143.jpg"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "visualLink": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'PageNavigation'"
+                }
+              }
+            },
+            "navigationSection": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ReportSection'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

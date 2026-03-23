@@ -1,0 +1,223 @@
+{
+  "name": "b6b40cd49fe39572a404",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 9.557522123893806,
+        "y": 348.84955752212392,
+        "z": 1000,
+        "width": 1252.0353982300885,
+        "height": 339.2920353982301
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "tableEx",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "TAV_Gr_Fact_GarbageDisposal.תאריך"
+        },
+        {
+          "queryRef": "TAV_Gr_Fact_GarbageDisposal.נהג"
+        },
+        {
+          "queryRef": "TAV_Gr_Fact_GarbageDisposal.מס' רכב"
+        },
+        {
+          "queryRef": "TAV_Gr_Fact_GarbageDisposal.שכונה"
+        },
+        {
+          "queryRef": "TAV_Gr_Fact_GarbageDisposal.סה\"כ משקל אשפה"
+        },
+        {
+          "queryRef": "TAV_Gr_Fact_GarbageDisposal.סה\"כ טונג' אשפה"
+        },
+        {
+          "queryRef": "TAV_Gr_Fact_GarbageDisposal.ממוצע טונג' יומי"
+        },
+        {
+          "queryRef": "TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ממוצע טונג' אשפה"
+        },
+        {
+          "queryRef": "Sum(TAV_Regions_Gr.ממוצע טונג' אשפה יומי)"
+        },
+        {
+          "queryRef": "DimDate.Date"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "t",
+          "Entity": "TAV_Gr_Fact_GarbageDisposal",
+          "Type": 0
+        },
+        {
+          "Name": "t1",
+          "Entity": "TAV_Regions_Gr",
+          "Type": 0
+        },
+        {
+          "Name": "d",
+          "Entity": "DimDate",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "נהג"
+          },
+          "Name": "TAV_Gr_Fact_GarbageDisposal.נהג"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "מס' רכב"
+          },
+          "Name": "TAV_Gr_Fact_GarbageDisposal.מס' רכב"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "שכונה"
+          },
+          "Name": "TAV_Gr_Fact_GarbageDisposal.שכונה"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "סהכ משקל אשפה"
+          },
+          "Name": "TAV_Gr_Fact_GarbageDisposal.סה\"כ משקל אשפה"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "סה\"כ טונג' אשפה"
+          },
+          "Name": "TAV_Gr_Fact_GarbageDisposal.סה\"כ טונג' אשפה"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "ממוצע טונג' יומי"
+          },
+          "Name": "TAV_Gr_Fact_GarbageDisposal.ממוצע טונג' יומי"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "תאריך"
+          },
+          "Name": "TAV_Gr_Fact_GarbageDisposal.תאריך"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "אחוז שינוי ממוצע טונג' אשפה"
+          },
+          "Name": "TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ממוצע טונג' אשפה"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t1"
+                  }
+                },
+                "Property": "ממוצע טונג' אשפה יומי"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(TAV_Regions_Gr.ממוצע טונג' אשפה יומי)"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "d"
+              }
+            },
+            "Property": "Date"
+          },
+          "Name": "DimDate.Date"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "t"
+                }
+              },
+              "Property": "תאריך"
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "80.656705979968D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DimDate.Date"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,256 @@
+﻿relationship 1e80c5af-14ae-4ad4-b580-93e85852dc27
+	joinOnDateBehavior: datePartOnly
+	fromColumn: V_TAV_FactDailyRoute.StartTime
+	toColumn: LocalDateTable_f9992319-8053-4ac3-8df3-a1fce1bd495f.Date
+
+relationship 644e2d7a-4a31-43f1-b5ec-58b514d7d3c9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: V_TAV_FactDailyRoute.EndTime
+	toColumn: LocalDateTable_5e458376-cac3-4498-910b-c7c888ead787.Date
+
+relationship 81133f5f-7d2a-4eda-8c09-0adbc381469d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: V_TAV_Platforms.Date
+	toColumn: LocalDateTable_42a7f608-9d95-45da-aff5-f0056044b19b.Date
+
+relationship 58f5c258-40ea-4fbb-9fbc-6fc5c899d762
+	fromColumn: V_TAV_FactDailyRoute.PlatformId
+	toColumn: V_TAV_Platforms.PlatformId
+
+relationship d1602543-a82f-4182-b79c-43183f2f5fb4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: V_TAV_Ge_FactDailyRoute.StartTime
+	toColumn: LocalDateTable_47a89155-188e-41d2-987d-aa607b473502.Date
+
+relationship fce971ed-da05-4407-a5cd-36327f743445
+	joinOnDateBehavior: datePartOnly
+	fromColumn: V_TAV_Ge_FactDailyRoute.EndTime
+	toColumn: LocalDateTable_0d2d582d-b4f1-4163-b428-ad0f5ef34f82.Date
+
+relationship 29ab41f5-c588-4e51-ac83-e921fed8e97f
+	fromColumn: V_TAV_Ge_FactDailyRoute.DeviceId
+	toColumn: V_TAV_Ge_Devices.DeviceId
+
+relationship 6395e613-ba74-4cec-9d7c-1ef01ed60b87
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.'Start of Year'
+	toColumn: LocalDateTable_0199c9c1-697b-4af9-be1a-bf4b52597602.Date
+
+relationship 4d724e46-f5a5-40a0-abe3-4bd106f2d124
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.'End of Year'
+	toColumn: LocalDateTable_9796ac35-f239-4545-92d9-0c568161a7dc.Date
+
+relationship c4f7d492-d47e-4425-ac98-da650c6e193d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.'Start of Month'
+	toColumn: LocalDateTable_8d37bc61-0985-4f68-aef0-53841b89dbb0.Date
+
+relationship a21f6a9b-035d-486f-80c9-05c95fb75e37
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.'End of Month'
+	toColumn: LocalDateTable_9aff2382-9712-41e5-bc58-f2a9962fbcc0.Date
+
+relationship eccc814b-b25d-468e-b5f3-73488bcbc8be
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.'Start of Quarter'
+	toColumn: LocalDateTable_fea17c33-3b22-4e21-b9e8-3ba29c594b59.Date
+
+relationship 9bc1d806-af18-4bae-b922-b70c4ff13a31
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.'End of Quarter'
+	toColumn: LocalDateTable_abc06107-73f0-40da-8b23-e7602b2e7e3d.Date
+
+relationship 9790b838-d77d-4c36-9f83-aaec9007428a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.'Start of Week'
+	toColumn: LocalDateTable_88f4e26c-bba7-43bd-8a0e-5a312c3df2ff.Date
+
+relationship 395a7233-0ecf-4697-baab-6ae9644cb5ff
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.'End of Week'
+	toColumn: LocalDateTable_eb2b5b44-4c3b-483d-a6fe-463e84ff7581.Date
+
+relationship afd20dab-083b-48f3-b7f4-9ce61813163e
+	fromColumn: V_TAV_Ge_FactDailyRoute.Date
+	toColumn: DimDate.Date
+
+relationship adabe294-ad93-4ea9-a9a2-411be05bf4f6
+	fromColumn: V_TAV_FactDailyRoute.Date
+	toColumn: DimDate.Date
+
+relationship 7529e619-0a28-4d8e-bf59-4ae068e99216
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ‏‏EventsData.'תאריך ההודעה'
+	toColumn: LocalDateTable_4b667743-6345-4b03-8a3f-3a8c1245b170.Date
+
+relationship e5be28db-6beb-45a3-9b64-bb9cb4bc9d8c
+	fromColumn: ‏‏EventsData.'תאריך הארוע'
+	toColumn: DimDate.Date
+
+relationship 6faca76b-b41d-4349-bd27-e60a443a2bd0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: incidents.pws_resolvedbyexpiredtime
+	toColumn: LocalDateTable_92c1a875-6773-4436-8b5e-8bb5aa231848.Date
+
+relationship aac8a022-dfe4-451c-b2cf-c89a79813702
+	joinOnDateBehavior: datePartOnly
+	fromColumn: incidents.pws_closedateincident
+	toColumn: LocalDateTable_376564fd-9870-41c8-bbfe-6a55d926196e.Date
+
+relationship f3202094-c061-478f-becd-c1025a1efeca
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pws_quarters.createdon
+	toColumn: LocalDateTable_e2bf5ef9-9c5f-46ba-8e46-030a603df040.Date
+
+relationship 3b1a8515-2e3d-4a15-bf0d-5481b93fadb3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pws_quarters.modifiedon
+	toColumn: LocalDateTable_5ba45e96-c879-4eb7-bdbe-19f7c0a909f1.Date
+
+relationship 2a97ffd9-8707-4686-8e3a-b9a7f948351f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pws_quarters.overriddencreatedon
+	toColumn: LocalDateTable_647c739c-5bbc-4bbe-aa13-5b2e798469a0.Date
+
+relationship 336e3747-3251-4171-9f7b-957c843495ce
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pws_departments.modifiedon
+	toColumn: LocalDateTable_73a43e6e-cf4b-4060-818d-d1b44cfa7663.Date
+
+relationship fcadd929-b1be-4538-aeb5-854f97f113e7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pws_departments.overriddencreatedon
+	toColumn: LocalDateTable_396fc472-a1e2-4eae-80d8-287fcb3fa056.Date
+
+relationship 9a73e75a-a359-484d-8ffa-cb027128bdd5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pws_departments.createdon
+	toColumn: LocalDateTable_a65935a9-6755-4776-b80c-1ae17fbb3dbb.Date
+
+relationship 2375d36d-e37d-4e19-ad91-abf14c2ee1d0
+	fromColumn: incidents._pws_quaterid_value
+	toColumn: pws_quarters.pws_quarterid
+
+relationship df76e4df-36d9-4cd4-be49-96d4b9798f41
+	fromColumn: incidents._pws_departmentid_value
+	toColumn: pws_departments.pws_departmentid
+
+relationship e56614f4-aeee-45b3-9f8a-26aa423d8bc5
+	fromColumn: incidents.pws_status
+	toColumn: pws_casestatus.Value
+
+relationship a7e39c6c-05e9-416b-936b-2d75e6101282
+	fromColumn: incidents.pws_slastatus
+	toColumn: pws_slastatus.Value
+
+relationship 6d8f0d45-1cb4-47a2-aa80-ccbffa7eb2ad
+	fromColumn: incidents.createdon
+	toColumn: DimDate.Date
+
+relationship 58a50265-1d06-4693-bcf2-cbb4de1407f5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pws_casesubjects.modifiedon
+	toColumn: LocalDateTable_11054fbc-1d40-4152-a407-e9ce1a26c858.Date
+
+relationship 4d5ba8fc-0513-4aca-84d4-f1298acf1117
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pws_casesubjects.overriddencreatedon
+	toColumn: LocalDateTable_f23e746f-332d-497d-9a07-b90a93755ea6.Date
+
+relationship a83a9299-b981-4890-9504-c3749c3507b7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pws_casesubjects.lastonholdtime
+	toColumn: LocalDateTable_15d0e0ed-9611-47d2-98a5-2b365a55bddc.Date
+
+relationship 2b353586-6f58-4e82-84bd-de8e5cf168c0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pws_casesubjects.createdon
+	toColumn: LocalDateTable_09899a4f-ae40-4236-b6a3-b4933277c37f.Date
+
+relationship e9f464cb-ec42-4b59-b70f-04d56cf87a64
+	fromColumn: incidents._pws_casesubjectid_value
+	toColumn: pws_casesubjects.pws_casesubjectid
+
+relationship da5317bc-95fa-4aa4-8ab0-dc0aa4b6f065
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.Date
+	toColumn: LocalDateTable_c2183593-e23f-4533-ae69-79dacc2faad1.Date
+
+relationship 7db25c0f-643a-45fd-a8c1-30305dc7f885
+	fromColumn: V_TAV_GB_FactDailyRoute.nvTruckNumber
+	toColumn: V_TAV_GB_TrucksInformation.nvTruckNumber
+
+relationship 7f336999-d444-4469-9bb8-ff12ffbf753b
+	fromColumn: V_TAV_GB_FactDailyRoute.RouteDate
+	toColumn: DimDate.Date
+
+relationship 1672cd05-fd53-4739-b524-61e61cdc1e69
+	fromColumn: V_TAV_GB_FactDailyRoute.iRegionId
+	toColumn: V_TAV_GB_Regions.iRegionId
+
+relationship edccc993-0ac3-4fd0-a9cf-10eca84645a3
+	fromColumn: TAV_Marks.Provider
+	toColumn: TAV_Providers.Provider
+
+relationship 413acb4c-1738-446e-a1af-e5f03eeb475c
+	fromColumn: TAV_Recommendations.Provider
+	toColumn: TAV_Providers.Provider
+
+relationship b8b129c2-be4b-4770-add3-6536e9ced2d0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: pws_caselogs.createdon
+	toColumn: LocalDateTable_b09e7703-291a-4151-b3b7-472a6e5fc844.Date
+
+relationship 1f43f15b-d9d4-45af-ae5e-59a975b28d21
+	fromColumn: pws_caselogs._pws_caseid_value
+	toColumn: incidents.incidentid
+
+relationship 6464ca3b-f572-4e5d-8079-c76706a628ee
+	fromColumn: V_TAV_Platforms.RegionName
+	toColumn: V_TAV_Regions.RegionName
+
+relationship fe9c32e3-d9b7-468c-a5a2-fcaf181fe6b4
+	fromColumn: V_TAV_Ge_Devices.RegionName
+	toColumn: V_TAV_Regions.RegionName
+
+relationship 93096c37-77ad-4edf-929f-84295e3a4bed
+	fromColumn: TAV_Regions_CRM.RegionName
+	toColumn: V_TAV_Regions.RegionName
+
+relationship 012f1c85-aceb-4e97-b4cb-da30f58a663d
+	fromColumn: pws_departments.pws_name
+	toColumn: TAV_Regions_CRM.DepartmentName
+
+relationship 9b028b5f-b4e0-4dfd-8622-5893b6532d46
+	fromColumn: V_TAV_GB_Regions.RegionName
+	toColumn: V_TAV_Regions.RegionName
+
+relationship 3b54cea4-92eb-452d-9813-cf05ff6c4390
+	crossFilteringBehavior: bothDirections
+	fromColumn: TAV_Users.RegionName
+	toColumn: V_TAV_Regions.RegionName
+
+relationship f81be966-f78d-4daf-baf2-2fb5d565cbfa
+	fromColumn: TAV_Gr_Fact_GarbageDisposal.תאריך
+	toColumn: DimDate.Date
+
+relationship 6a5fcbf6-62b6-4dd5-9787-f6726172e5b7
+	fromColumn: TAV_Regions_Gr.RegionName
+	toColumn: V_TAV_Regions.RegionName
+
+relationship 5af049ff-30d6-43b5-9b75-652728f5461b
+	crossFilteringBehavior: bothDirections
+	fromColumn: TAV_Gr_Fact_GarbageDisposal.שכונה
+	toColumn: TAV_Regions_Gr.'שם שכונה'
+
+relationship d9452418-7292-4f64-bcb0-bfd5d94b5d0f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: V_TAV_GB_FactDailyRoute.BeginTime
+	toColumn: LocalDateTable_274d9a01-71ff-44e8-bf9f-08301dea7f29.Date
+
+relationship 26014d9a-28b0-4da5-9cc1-22d2842962c7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: V_TAV_GB_FactDailyRoute.EndTime
+	toColumn: LocalDateTable_1428724f-7c88-46a4-a670-443dd7ab49aa.Date
+

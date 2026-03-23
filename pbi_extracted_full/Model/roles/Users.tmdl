@@ -1,0 +1,7 @@
+﻿role Users
+	modelPermission: read
+
+	tablePermission TAV_Users = [Mail] = USERPRINCIPALNAME()
+
+	annotation PBI_Id = c0f74833b5ad4e4fb7abbe845cf89e14
+

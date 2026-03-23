@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Filter1f609059dde00717a114",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "DimDate"
+          }
+        },
+        "Property": "Date"
+      }
+    },
+    "type": "RelativeDate",
+    "howCreated": 1
+  },
+  {
+    "name": "Filterf171f59457f8da014188",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "TAV_Users"
+          }
+        },
+        "Property": "Mail"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 1,
+    "objects": {}
+  }
+]

@@ -1,0 +1,82 @@
+﻿table V_TAV_Regions
+
+	measure 'ממוצע משוקלל כלל הנפות' = CALCULATE([ממוצע משוקלל],REMOVEFILTERS(V_TAV_Regions))
+		formatString: 0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ממוצע משוקלל' =
+			DIVIDE(
+			[ציון ממוצע_It]*[כמות לחישוב ממוצע משוקלל_It]
+			//+[ציון ממוצע_Ge]*[כמות לחישוב ממוצע משוקלל_Ge]
+			//+[ציון ממוצע_GB]*[כמות לחישוב ממוצע משוקלל_Gb]
+			+[ציון ממוצע לפניות]*[כמות לחישוב ממוצע משוקלל_פניות]
+			+[ציון ממוצע_Gr]*[כמות לחישוב ממוצע משוקלל_Gr],
+			[כמות כוללת לחישוב ממוצע משוקלל],BLANK())
+		formatString: 0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'כמות כוללת לחישוב ממוצע משוקלל' = [כמות לחישוב ממוצע משוקלל_It]+[כמות לחישוב ממוצע משוקלל_Ge]+[כמות לחישוב ממוצע משוקלל_Gb]+[כמות לחישוב ממוצע משוקלל_פניות]+[כמות לחישוב ממוצע משוקלל_Gr]
+		formatString: 0
+
+	measure 'אחוז שינוי ממוצע משוקלל' =
+			
+			DIVIDE([ממוצע משוקלל]-[ממוצע משוקלל כלל הנפות],[ממוצע משוקלל כלל הנפות],
+			BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	measure 'כותרת דוח נפתי' = "דוח נפתי- " & SELECTEDVALUE(V_TAV_Regions[RegionName])
+
+	measure 'ללא טיאוט ממוצע משוקלל' =
+			DIVIDE(
+			[ציון ממוצע_It]*[כמות לחישוב ממוצע משוקלל_It]
+			-- +[ציון ממוצע_Ge]*[כמות לחישוב ממוצע משוקלל_Ge]
+			+[ציון ממוצע_GB]*[כמות לחישוב ממוצע משוקלל_Gb]
+			+[ציון ממוצע לפניות]*[כמות לחישוב ממוצע משוקלל_פניות]
+			+[ציון ממוצע_Gr]*[כמות לחישוב ממוצע משוקלל_Gr],
+			[כמות כוללת לחישוב ממוצע משוקלל],BLANK())
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RegionName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: RegionName
+		sortByColumn: num
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column num
+		dataType: string
+		summarizeBy: none
+		sourceColumn: num
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsVisable
+		dataType: string
+		summarizeBy: none
+		sourceColumn: IsVisable
+
+		annotation SummarizationSetBy = Automatic
+
+	partition V_TAV_Regions-8cdd5e45-b77a-4604-a3a0-26d1fdeab142 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<SQL-SERVER>", "<SQL-DB>"),
+				    dbo_V_TAV_Regions = Source{[Schema="dbo",Item="V_TAV_Regions"]}[Data]
+				in
+				    dbo_V_TAV_Regions
+
+	annotation PBI_ResultType = Table
+

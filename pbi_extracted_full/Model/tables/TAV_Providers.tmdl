@@ -1,0 +1,26 @@
+﻿table TAV_Providers
+
+	column ProviderID
+		dataType: int64
+		formatString: 0
+		summarizeBy: count
+		sourceColumn: ProviderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Provider
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Provider
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAV_Providers-2ec55b9b-51d4-4d6e-89ff-f7f7acd846a5 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<SQL-SERVER>", "<SQL-DB>"),
+				    dbo_TAV_Providers = Source{[Schema="dbo",Item="TAV_Providers"]}[Data]
+				in
+				    dbo_TAV_Providers
+

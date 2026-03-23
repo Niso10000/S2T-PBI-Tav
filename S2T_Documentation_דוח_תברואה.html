@@ -1037,62 +1037,124 @@
   <section id="measures">
     <h2><span class="sec-num">4</span> Measures (DAX)</h2>
 
-    <div class="callout warning">
-      <div class="icon">⚠️</div>
-      <div>DAX expressions are <strong>not accessible</strong> — DataModel is XPress9-compressed. All logic below is <strong>inferred</strong> from measure names, display names, and visual usage patterns.</div>
+    <div class="callout success">
+      <div class="icon">✅</div>
+      <div>All DAX measures extracted using <strong>pbi-tools v1.2.0</strong> from the live DataModel. Code below is <strong>exact source</strong> — not inferred.</div>
     </div>
 
-    <h3>4.1 Scoring Pattern — Repeated Across 4 Systems</h3>
-    <p>Every domain implements the same three-measure triplet. This pattern is duplicated 4× (It, Ge, Gb, Gr) plus complaints:</p>
+    <h3>4.1 Central KPI — Weighted Average (V_TAV_Regions)</h3>
+    <p>The core cross-domain score compositing Ituran + Complaints + Disposal. Sweeping (Ge) and Collection (Gb) are currently <strong>commented out</strong> (pending data quality validation):</p>
+    <div class="lineage-block"><span class="l-measure">ממוצע משוקלל</span> =
+DIVIDE(
+    [ציון ממוצע_It] * [כמות לחישוב ממוצע משוקלל_It]
+    // + [ציון ממוצע_Ge] * [כמות לחישוב ממוצע משוקלל_Ge]   <span class="l-note">← commented out</span>
+    // + [ציון ממוצע_GB] * [כמות לחישוב ממוצע משוקלל_Gb]   <span class="l-note">← commented out</span>
+    + [ציון ממוצע לפניות] * [כמות לחישוב ממוצע משוקלל_פניות]
+    + [ציון ממוצע_Gr] * [כמות לחישוב ממוצע משוקלל_Gr],
+    [כמות כוללת לחישוב ממוצע משוקלל],
+    BLANK()
+)
 
-    <div class="measure-pattern">
-      <div class="mp-left">
-        <div class="mp-name">ציון ממוצע_[X]</div>
-        <div class="mp-desc">Average score for the selected context. Likely AVERAGE or weighted SUMX ÷ count.</div>
-      </div>
-      <div class="mp-pattern"><span class="pill blue">Aggregation</span></div>
-    </div>
+<span class="l-measure">אחוז שינוי ממוצע משוקלל</span> =
+DIVIDE([ממוצע משוקלל] - [ממוצע משוקלל כלל הנפות],
+       [ממוצע משוקלל כלל הנפות], BLANK())</div>
 
-    <div class="measure-pattern">
-      <div class="mp-left">
-        <div class="mp-name">ציון ממוצע כל הנפות_[X]</div>
-        <div class="mp-desc">Same score but with region filter removed — CALCULATE([ציון ממוצע_X], ALL(V_TAV_Regions))</div>
-      </div>
-      <div class="mp-pattern"><span class="pill purple">Context removal</span></div>
-    </div>
+    <h3>4.2 Disposal Tonnage (TAV_Gr_Fact_GarbageDisposal)</h3>
+    <div class="lineage-block"><span class="l-measure">ממוצע טונג' יומי</span> =
+DIVIDE(
+    SUMX(
+        SUMMARIZE(TAV_Gr_Fact_GarbageDisposal,
+            TAV_Gr_Fact_GarbageDisposal[תאריך],
+            TAV_Gr_Fact_GarbageDisposal[שכונה],
+            "סהכ טונג' אשפה", [סה"כ טונג' אשפה]
+        ),
+        [סהכ טונג' אשפה]
+    ),
+    [כמות ימים מוצגים],
+    BLANK()
+)
 
-    <div class="measure-pattern">
-      <div class="mp-left">
-        <div class="mp-name">אחוז שינוי ציון ממוצע_[X]</div>
-        <div class="mp-desc">% change vs. prior period — DIVIDE(current - prior, ABS(prior)). Likely uses prior day or prior week context.</div>
-      </div>
-      <div class="mp-pattern"><span class="pill orange">Time intelligence</span></div>
-    </div>
+<span class="l-measure">ציון Gr</span> =
+IF(ISBLANK([אחוז שינוי ממוצע טונג' אשפה]) = FALSE,
+    100
+    - IF([אחוז שינוי ממוצע טונג' אשפה] &lt; [כלל לניקוד גרינט], [ניקוד ציון לגרינט], 0),
+    BLANK()
+)
 
-    <h3>4.2 Weighted Average (V_TAV_Regions)</h3>
-    <div class="measure-pattern">
-      <div class="mp-left">
-        <div class="mp-name">ממוצע משוקלל</div>
-        <div class="mp-desc">Composite weighted average combining scores from Ituran + Sweeping + GB + Disposal + Complaints for the selected region. The central cross-domain KPI.</div>
-      </div>
-      <div class="mp-pattern"><span class="pill blue">Composite</span></div>
-    </div>
+<span class="l-measure">ממוצע קבוע לטונג' אשפה יומית</span> =  <span class="l-note">← benchmark reference line</span>
+DIVIDE(
+    SUMX(
+        SUMMARIZE(TAV_Gr_Fact_GarbageDisposal,
+            TAV_Gr_Fact_GarbageDisposal[תאריך],
+            TAV_Gr_Fact_GarbageDisposal[שכונה],
+            "ממוצע טונג'", SUM(TAV_Regions_Gr[ממוצע טונג' אשפה יומי])
+        ),
+        [ממוצע טונג' אשפה יומי]
+    ),
+    [כמות ימים מוצגים], BLANK()
+)</div>
 
-    <h3>4.3 Operational Measures Summary</h3>
+    <h3>4.3 Complaints Scoring (incidents + pws_caselogs)</h3>
+    <div class="lineage-block"><span class="l-measure">אחוז פניות חורגות לפי יום נפה</span> =
+DIVIDE(
+    SUMX(
+        SUMMARIZE(incidents, incidents[createdon], incidents[_pws_departmentid_value],
+            "כמות פניות חורגות", [כמות פניות חורגות]),
+        [כמות פניות חורגות]
+    ),
+    SUMX(
+        SUMMARIZE(incidents, incidents[createdon], incidents[_pws_departmentid_value],
+            "כמות פניות", [כמות פניות]),
+        [כמות פניות]
+    ),
+    BLANK()
+)
+
+<span class="l-measure">ציון לפניות</span> =
+100
+- IF([אחוז פניות חורגות לפי יום נפה]  &gt; [כלל לניקוד פניות 11], [ניקוד ציון לפניות 11])
+- IF([אחוז פניות שנפתחו מחדש לפי יום נפה] &gt; [כלל לניקוד פניות 14], [ניקוד ציון לפניות 14])
+
+<span class="l-measure">אחוז פניות שנפתחו מחדש לפי יום נפה</span> =  <span class="l-note">← in pws_caselogs</span>
+DIVIDE(
+    SUMX(SUMMARIZE(incidents, incidents[createdon], incidents[_pws_departmentid_value],
+        "כמות שנפתחו מחדש", [כמות פניות שנפתחו מחדש]), [כמות פניות שנפתחו מחדש]),
+    SUMX(SUMMARIZE(incidents, incidents[createdon], incidents[_pws_departmentid_value],
+        "כמות פניות", [כמות פניות]), [כמות פניות]),
+    BLANK()
+)
+
+<span class="l-measure">conditinal formatinf Ge</span> =  <span class="l-note">← conditional color for cart activity %</span>
+SWITCH(TRUE(),
+    [אחוז עגלות פעילות_Ge] &gt; 0.3,  "#3CD734",
+    [אחוז עגלות פעילות_Ge] &lt;= 0.3 &amp;&amp; [אחוז עגלות פעילות_Ge] &gt; 0.2, "#E1C233",
+    [אחוז עגלות פעילות_Ge] &lt;= 0.15, "#A1343C",
+    "#E1C233"
+)</div>
+
+    <h3>4.4 All Measures — Inventory</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Measure</th><th>Table</th><th>Inferred Logic</th><th>Pattern</th></tr></thead>
+        <thead><tr><th>Measure</th><th>Table</th><th>Has DAX</th><th>Pattern</th></tr></thead>
         <tbody>
-          <tr><td><code>אחוז שעות שהיה_[X]</code></td><td>Fact tables</td><td>DIVIDE(שהיה, עבודה)</td><td><span class="badge fact">Ratio</span></td></tr>
-          <tr><td><code>אחוז ביצוע מול תכנון</code></td><td>V_TAV_GB_FactDailyRoute</td><td>DIVIDE(כמות פחים שבוצעה, כמות פחים מתוכננת)</td><td><span class="badge fact">Ratio</span></td></tr>
-          <tr><td><code>כמות מסלולים</code></td><td>V_TAV_GB_FactDailyRoute</td><td>COUNTROWS or DISTINCTCOUNT</td><td><span class="badge dim">Count</span></td></tr>
-          <tr><td><code>ממוצע טונג' יומי</code></td><td>TAV_Gr_Fact_GarbageDisposal</td><td>AVERAGEX(dates, SUM(tons))</td><td><span class="badge fact">Aggregation</span></td></tr>
-          <tr><td><code>Measure</code> (fixed avg)</td><td>TAV_Gr_Fact_GarbageDisposal</td><td>Static benchmark value — reference line in chart</td><td><span class="badge ref">Constant</span></td></tr>
-          <tr><td><code>אחוז פניות חורגות</code></td><td>incidents</td><td>DIVIDE(כמות חורגות, כמות פניות)</td><td><span class="badge fact">Ratio</span></td></tr>
-          <tr><td><code>אחוז פניות שנפתחו מחדש</code></td><td>pws_caselogs</td><td>DIVIDE(reopened, total)</td><td><span class="badge fact">Ratio</span></td></tr>
-          <tr><td><code>כמות ארועים</code></td><td>‏‏EventsData</td><td>COUNTROWS</td><td><span class="badge dim">Count</span></td></tr>
-          <tr><td><code>טווח תאריכים</code> variants</td><td>DimDate / Fact tables</td><td>MIN date &amp; " - " &amp; MAX date text concat</td><td><span class="badge meas">Label</span></td></tr>
-          <tr><td><code>כותרת דוח נפתי</code></td><td>V_TAV_Regions</td><td>SELECTEDVALUE(RegionName)</td><td><span class="badge meas">Dynamic label</span></td></tr>
+          <tr><td><code>ממוצע משוקלל</code></td><td>V_TAV_Regions</td><td><span class="badge yes">Yes</span></td><td><span class="badge fact">Composite KPI</span></td></tr>
+          <tr><td><code>אחוז שינוי ממוצע משוקלל</code></td><td>V_TAV_Regions</td><td><span class="badge yes">Yes</span></td><td><span class="badge fact">DIVIDE / change</span></td></tr>
+          <tr><td><code>ללא טיאוט ממוצע משוקלל</code></td><td>V_TAV_Regions</td><td><span class="badge yes">Yes</span></td><td><span class="badge fact">Composite (excl. Ge)</span></td></tr>
+          <tr><td><code>ממוצע טונג' יומי</code></td><td>TAV_Gr_Fact_GarbageDisposal</td><td><span class="badge yes">Yes</span></td><td><span class="badge fact">SUMX / SUMMARIZE</span></td></tr>
+          <tr><td><code>ציון Gr</code></td><td>TAV_Gr_Fact_GarbageDisposal</td><td><span class="badge yes">Yes</span></td><td><span class="badge fact">Score 100-deduction</span></td></tr>
+          <tr><td><code>ממוצע קבוע לטונג' אשפה יומית</code></td><td>TAV_Gr_Fact_GarbageDisposal</td><td><span class="badge yes">Yes</span></td><td><span class="badge ref">Benchmark line</span></td></tr>
+          <tr><td><code>אחוז פניות חורגות לפי יום נפה</code></td><td>incidents</td><td><span class="badge yes">Yes</span></td><td><span class="badge fact">DIVIDE / SUMMARIZE</span></td></tr>
+          <tr><td><code>ציון לפניות</code></td><td>incidents</td><td><span class="badge yes">Yes</span></td><td><span class="badge fact">Score 100-deduction</span></td></tr>
+          <tr><td><code>אחוז פניות שנפתחו מחדש לפי יום נפה</code></td><td>pws_caselogs</td><td><span class="badge yes">Yes</span></td><td><span class="badge fact">DIVIDE / SUMMARIZE</span></td></tr>
+          <tr><td><code>conditinal formatinf Ge</code></td><td>V_TAV_Ge_FactDailyRoute</td><td><span class="badge yes">Yes</span></td><td><span class="badge meas">SWITCH color</span></td></tr>
+          <tr><td><code>שעות עבודה_It / _Ge</code></td><td>Fact tables</td><td><span class="badge no">Simple agg</span></td><td><span class="badge dim">SUM</span></td></tr>
+          <tr><td><code>אחוז שעות שהיה_It / _Ge</code></td><td>Fact tables</td><td><span class="badge no">Simple agg</span></td><td><span class="badge fact">DIVIDE ratio</span></td></tr>
+          <tr><td><code>כמות פחים מתוכננת / שבוצעה</code></td><td>V_TAV_GB_FactDailyRoute</td><td><span class="badge no">Simple agg</span></td><td><span class="badge dim">SUM</span></td></tr>
+          <tr><td><code>אחוז ביצוע מול תכנון</code></td><td>V_TAV_GB_FactDailyRoute</td><td><span class="badge no">Simple agg</span></td><td><span class="badge fact">DIVIDE ratio</span></td></tr>
+          <tr><td><code>כמות ארועים</code></td><td>‏‏EventsData</td><td><span class="badge no">Simple agg</span></td><td><span class="badge dim">COUNTROWS</span></td></tr>
+          <tr><td><code>טווח תאריכים</code> (×5 variants)</td><td>DimDate / Fact tables</td><td><span class="badge no">Simple agg</span></td><td><span class="badge meas">MIN &amp; MAX label</span></td></tr>
+          <tr><td><code>ניקוד ציון לפניות 11/14</code></td><td>TAV_Marks</td><td><span class="badge no">Simple agg</span></td><td><span class="badge ref">Config value</span></td></tr>
+          <tr><td><code>כלל לניקוד פניות 11/14</code></td><td>TAV_Marks</td><td><span class="badge no">Simple agg</span></td><td><span class="badge ref">Threshold config</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -1101,50 +1163,125 @@
   <!-- ══════════ 5. CALC COLUMNS ══════════ -->
   <section id="calccols">
     <h2><span class="sec-num">5</span> Calculated Columns</h2>
-    <div class="callout warning">
-      <div class="icon">⚠️</div>
-      <div>Cannot confirm — DataModel binary inaccessible. The following are <strong>suspected</strong> based on behavior.</div>
+    <div class="callout success">
+      <div class="icon">✅</div>
+      <div>DataModel fully extracted with <strong>pbi-tools</strong>. After scanning all 55 table TMDL files — <strong>zero DAX calculated columns were found</strong>. All columns are source columns loaded directly from SQL views or OData.</div>
     </div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Column</th><th>Table</th><th>Evidence</th><th>Inferred Logic</th></tr></thead>
+        <thead><tr><th>Column</th><th>Table</th><th>Type</th><th>Note</th></tr></thead>
         <tbody>
-          <tr><td><code>is_yesterday</code></td><td>DimDate</td><td>Used as boolean slicer toggle on all pages</td><td><code>Date = TODAY() - 1</code></td></tr>
-          <tr><td><code>IsVisable</code></td><td>V_TAV_Regions</td><td>Hidden report-level filter; used for RLS</td><td>Static boolean flag per region row</td></tr>
-          <tr><td><code>טווח תאריכים</code></td><td>DimDate</td><td>Card display with selected range text</td><td>May be measure or calc column depending on context</td></tr>
+          <tr><td><code>IsVisable</code></td><td>V_TAV_Regions</td><td><span class="badge no">Source column</span></td><td>Boolean RLS flag — set in SQL View, not calculated in DAX</td></tr>
+          <tr><td><code>לוחית זיהוי</code></td><td>V_TAV_FactDailyRoute</td><td><span class="badge warn">Renamed</span></td><td>Source column "Plate" renamed to Hebrew in Power Query step</td></tr>
+          <tr><td><code>לוחית רישוי</code></td><td>V_TAV_Platforms</td><td><span class="badge warn">Renamed</span></td><td>Source column "Plate" renamed in Power Query step</td></tr>
+          <tr><td><code>כמות עצירות</code></td><td>V_TAV_FactDailyRoute</td><td><span class="badge warn">Renamed</span></td><td>Source column "QtyIdling" renamed to Hebrew in Power Query</td></tr>
+          <tr><td><code>createdon</code></td><td>incidents</td><td><span class="badge warn">Transformed</span></td><td>datetime → date type conversion in Power Query (DateTime.Date)</td></tr>
+          <tr><td>All <code>DimDate</code> columns</td><td>DimDate</td><td><span class="badge meas">PQ Generated</span></td><td>Fully generated in Power Query M script (Year, Month, Quarter, Week, offsets…)</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="callout info">
+      <div class="icon">ℹ️</div>
+      <div>Business logic (scores, thresholds, ratios) is implemented entirely as <strong>DAX Measures</strong>, not calculated columns. This is a clean design choice — measures are recalculated per filter context, which is more performant.</div>
     </div>
   </section>
 
   <!-- ══════════ 6. POWER QUERY ══════════ -->
   <section id="pq">
     <h2><span class="sec-num">6</span> Transformations (Power Query)</h2>
-    <div class="callout warning">
-      <div class="icon">⚠️</div>
-      <div>Power Query M scripts are inside the XPress9-compressed DataModel — <strong>not accessible</strong>. Sources are inferred from naming conventions.</div>
+    <div class="callout success">
+      <div class="icon">✅</div>
+      <div>Power Query M code fully extracted with <strong>pbi-tools</strong>. Real source below — not inferred. Server: <code><SQL-SERVER></code>, Database: <code>DWH</code>.</div>
     </div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Table</th><th>Inferred Source</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td><code>V_TAV_FactDailyRoute</code></td><td>SQL View — Ituran GPS DB</td><td><code>V_</code> prefix = database View; pre-aggregated to daily level</td></tr>
-          <tr><td><code>V_TAV_Ge_FactDailyRoute</code></td><td>SQL View — GE Devices DB</td><td>Includes polygon analysis pre-calculated at source</td></tr>
-          <tr><td><code>V_TAV_GB_FactDailyRoute</code></td><td>SQL View — GB System DB</td><td>Route execution vs. planning data</td></tr>
-          <tr><td><code>V_TAV_Platforms</code></td><td>SQL View — Ituran DB</td><td>Vehicle master list</td></tr>
-          <tr><td><code>V_TAV_Ge_Devices</code></td><td>SQL View — GE Devices DB</td><td>Cart/device master list</td></tr>
-          <tr><td><code>V_TAV_GB_TrucksInformation</code></td><td>SQL View — GB DB</td><td>Truck info</td></tr>
-          <tr><td><code>V_TAV_Regions</code></td><td>SQL View / Manual</td><td>Region list + IsVisable RLS flag</td></tr>
-          <tr><td><code>TAV_Gr_Fact_GarbageDisposal</code></td><td>SQL Table — Disposal site DB</td><td>No <code>V_</code> prefix — likely direct table, not a view</td></tr>
-          <tr><td><code>incidents</code></td><td>CRM Export / Dataverse</td><td><code>pws_</code> prefix = Power Apps / Dataverse naming convention</td></tr>
-          <tr><td><code>pws_*</code> tables</td><td>CRM / Dataverse</td><td>Lookup tables from Dynamics CRM — GUID-based foreign keys</td></tr>
-          <tr><td><code>‏‏EventsData</code></td><td>Unknown (manual entry?)</td><td>⚠ Suspicious invisible chars in name — may be manual Excel upload</td></tr>
-          <tr><td><code>TAV_Marks / TAV_Recommendations</code></td><td>Manual / Excel</td><td>Scoring rules reference data — likely static upload</td></tr>
-          <tr><td><code>TAV_Users</code></td><td>Manual / AD / SQL</td><td>User-region mapping for RLS — must be kept current</td></tr>
-          <tr><td><code>DimDate</code></td><td>DAX / Power Query</td><td>Custom date table with <code>is_yesterday</code> column</td></tr>
-        </tbody>
-      </table>
-    </div>
+
+    <h3>6.1 SQL Server — Direct Pass-Through (most tables)</h3>
+    <p>The majority of tables are simple direct reads from SQL Views on <code><SQL-SERVER>\DWH</code>. No transformations in Power Query — all logic is in the SQL View at source:</p>
+    <div class="lineage-block"><span class="l-note">-- Pattern used by: TAV_Gr_Fact_GarbageDisposal, TAV_Marks, TAV_Providers,</span>
+<span class="l-note">--   TAV_Recommendations, TAV_Regions_CRM, TAV_Regions_Gr, TAV_Users,</span>
+<span class="l-note">--   V_TAV_GB_FactDailyRoute, V_TAV_GB_Regions, V_TAV_Regions, and others</span>
+
+let
+    Source = <span class="l-root">Sql.Database</span>(<span class="l-table">"<SQL-SERVER>"</span>, <span class="l-table">"<SQL-DB>"</span>),
+    dbo_V_TAV_Regions = Source{[Schema=<span class="l-table">"dbo"</span>, Item=<span class="l-table">"V_TAV_Regions"</span>]}[Data]
+in
+    dbo_V_TAV_Regions</div>
+
+    <h3>6.2 SQL Server with Column Rename (3 tables)</h3>
+    <div class="lineage-block"><span class="l-note">-- V_TAV_FactDailyRoute — renames English columns to Hebrew</span>
+let
+    Source = <span class="l-root">Sql.Databases</span>(<span class="l-table">"<SQL-SERVER>"</span>),
+    DWH_SEC = Source{[Name=<span class="l-table">"<SQL-DB>"</span>]}[Data],
+    data = DWH_SEC{[Schema=<span class="l-table">"dbo"</span>, Item=<span class="l-table">"V_TAV_FactDailyRoute"</span>]}[Data],
+    <span class="l-measure">#"Renamed Columns"</span> = Table.RenameColumns(data, {
+        {<span class="l-table">"Plate"</span>,     <span class="l-table">"לוחית זיהוי"</span>},
+        {<span class="l-table">"QtyIdling"</span>, <span class="l-table">"כמות עצירות"</span>}
+    })
+in
+    <span class="l-measure">#"Renamed Columns"</span>
+
+<span class="l-note">-- V_TAV_Platforms — renames Plate to Hebrew</span>
+    <span class="l-measure">#"Renamed Columns"</span> = Table.RenameColumns(data, {{<span class="l-table">"Plate"</span>, <span class="l-table">"לוחית רישוי"</span>}})</div>
+
+    <h3>6.3 OData / Dynamics CRM (incidents)</h3>
+    <p>Connects to Jerusalem CRM (<code><CRM-HOST>.api.crm4.dynamics.com</code>) via OData v9.1. Applies date type conversion and filters by division GUID:</p>
+    <div class="lineage-block">let
+    Source = <span class="l-root">OData.Feed</span>(
+        <span class="l-table">"https://<CRM-HOST>.api.crm4.dynamics.com/api/data/v9.1/incidents"</span>
+        <span class="l-note">&amp; "?$select=incidentid,pws_status,pws_slastatus,createdon,_pws_departmentid_value,..."</span>
+        <span class="l-note">&amp; "&amp;$filter=(pws_casetype eq 2 or pws_casetype eq 3)"</span>
+        <span class="l-note">&amp; " and _pws_divisionid_value eq '<DIVISION-GUID>'"</span>
+        <span class="l-note">&amp; " and createdon ge 2022-01-01"</span>,
+        null, [Implementation="2.0"]
+    ),
+    <span class="l-measure">#"Changed Type"</span>    = Table.TransformColumnTypes(Source, {{"createdon", type datetime}}),
+    <span class="l-measure">#"Extracted Date"</span>  = Table.TransformColumns(#"Changed Type", {{"createdon", DateTime.Date, type date}})
+in
+    <span class="l-measure">#"Extracted Date"</span></div>
+
+    <h3>6.4 OData — pws_casestatus (Option Set expansion)</h3>
+    <p>Reads a GlobalOptionSet definition and expands nested records to extract Hebrew status labels, filtering out Arabic entries:</p>
+    <div class="lineage-block">let
+    Source = <span class="l-root">OData.Feed</span>(<span class="l-table">"https://<CRM-HOST>.crm4.dynamics.com/.../GlobalOptionSetDefinitions(feb2cbe5-...)"</span>),
+    Options    = Source[Options],
+    <span class="l-measure">#"Expanded Label"</span>  = Table.ExpandRecordColumn(Options, "Label", {...}),
+    <span class="l-measure">#"Renamed Columns"</span>= Table.RenameColumns(..., {{"Label.LocalizedLabels.Label", <span class="l-table">"סטטוס"</span>}}),
+    <span class="l-measure">#"Filtered Rows"</span>  = Table.SelectRows(#"Renamed Columns",
+        each ([סטטוס] &lt;&gt; <span class="l-table">"بالمعالجة"</span> and [סטטוס] &lt;&gt; <span class="l-table">"نهاية المعالجة"</span>))  <span class="l-note">← removes Arabic entries</span>
+in
+    <span class="l-measure">#"Filtered Rows"</span></div>
+
+    <h3>6.5 SharePoint List (EventsData)</h3>
+    <div class="lineage-block">let
+    Source = <span class="l-root">SharePoint.Tables</span>(
+        <span class="l-table">"https://<ORG>.sharepoint.com/sites/<SP-SITE>/"</span>
+    ),
+    list     = Source{[Id=<span class="l-table">"<LIST-GUID>"</span>]}[Items],
+    filtered = Table.SelectRows(list, each ([מוסר ההודעה] &lt;&gt; null)),
+    expanded = Table.ExpandListColumn(filtered, "נפה"),          <span class="l-note">← multi-value column</span>
+    lookup   = Table.ExpandRecordColumn(expanded, "נפה", {"lookupValue"}, {"נפה.lookupValue"}),
+    cols     = Table.SelectColumns(lookup, {"שם ארוע", "מוסר ההודעה", "תאריך ההודעה",
+                   "תאריך הארוע", "סוג ארוע", "משעה", "עד שעה", "כתובת",
+                   "שם שכונה", "נפה.lookupValue", "מנהל נפה", "הערות"}),
+    renamed  = Table.RenameColumns(cols, {{"נפה.lookupValue", <span class="l-table">"נפה"</span>}})
+in
+    renamed</div>
+
+    <h3>6.6 DimDate — Custom M Script</h3>
+    <p>Fully generated date table in Power Query. Dynamic range (current year ± 2), fiscal year start = July, week start = Monday:</p>
+    <div class="lineage-block">let
+    Today          = <span class="l-root">Date.From</span>(DateTime.LocalNow()),
+    FromYear       = Date.Year(Today) - 2,
+    ToYear         = Date.Year(Today),
+    StartofFiscalYear = 7,        <span class="l-note">← July = fiscal year start</span>
+    firstDayofWeek    = Day.Monday,
+    Source = List.Dates(#date(FromYear,1,1),
+        Duration.Days(#date(ToYear,12,31) - #date(FromYear,1,1)) + 1,
+        #duration(1,0,0,0)),
+    <span class="l-note">-- ... adds Year, Month, Quarter, Week, Day Offset, Month Offset,</span>
+    <span class="l-note">--     Year Offset, Quarter Offset, Year-Month label, Fiscal Year/Quarter/Month</span>
+    #"Final Table" = ...
+in
+    #"Final Table"</div>
   </section>
 
   <!-- ══════════ 7. REPORT PAGES ══════════ -->
@@ -1157,19 +1294,19 @@
     <div style="display:flex; gap:10px; margin: 16px 0; flex-wrap:wrap">
       <div style="background:#5b8dee22; border:1px solid #5b8dee44; border-radius:8px; padding:12px 18px; text-align:center">
         <div style="font-size:11px; color:#5b8dee; font-weight:700; text-transform:uppercase; margin-bottom:4px">Tier 1</div>
-        <div style="color:#fff; font-size:14px; font-weight:600">Management</div>
+        <div style="color:var(--text); font-size:14px; font-weight:600">Management</div>
         <div style="color:var(--text-muted); font-size:12px">Pages 2–4</div>
       </div>
       <div style="display:flex; align-items:center; color:var(--text-muted); font-size:18px">→</div>
       <div style="background:#3ecf8e22; border:1px solid #3ecf8e44; border-radius:8px; padding:12px 18px; text-align:center">
         <div style="font-size:11px; color:#3ecf8e; font-weight:700; text-transform:uppercase; margin-bottom:4px">Tier 2</div>
-        <div style="color:#fff; font-size:14px; font-weight:600">Regional</div>
+        <div style="color:var(--text); font-size:14px; font-weight:600">Regional</div>
         <div style="color:var(--text-muted); font-size:12px">Pages 5–7</div>
       </div>
       <div style="display:flex; align-items:center; color:var(--text-muted); font-size:18px">→</div>
       <div style="background:#f59e4222; border:1px solid #f59e4244; border-radius:8px; padding:12px 18px; text-align:center">
         <div style="font-size:11px; color:#f59e42; font-weight:700; text-transform:uppercase; margin-bottom:4px">Tier 3</div>
-        <div style="color:#fff; font-size:14px; font-weight:600">Operational</div>
+        <div style="color:var(--text); font-size:14px; font-weight:600">Operational</div>
         <div style="color:var(--text-muted); font-size:12px">Pages 8–14</div>
       </div>
     </div>
@@ -1496,46 +1633,50 @@
   <section id="rls">
     <h2><span class="sec-num">B</span> Row-Level Security Configuration</h2>
 
-    <div class="callout info">
-      <div class="icon">🔐</div>
-      <div>RLS is implemented at <strong>two layers</strong>: user-based routing via email, and region visibility flag. Both filters are always active.</div>
+    <div class="callout success">
+      <div class="icon">✅</div>
+      <div>RLS roles extracted with <strong>pbi-tools</strong>. Exact DAX filter expressions below.</div>
     </div>
 
+    <h3>Roles (2)</h3>
+    <div class="lineage-block"><span class="l-root">role</span> <span class="l-measure">Managers</span>
+    modelPermission: read
+    <span class="l-note">← No row filter — sees all data</span>
+
+<span class="l-root">role</span> <span class="l-measure">Users</span>
+    modelPermission: read
+    tablePermission <span class="l-table">TAV_Users</span> = <span class="l-measure">[Mail] = USERPRINCIPALNAME()</span>
+    <span class="l-note">← Filters TAV_Users to rows where Mail = logged-in user's UPN</span>
+    <span class="l-note">← V_TAV_Regions joined bidirectionally → all fact tables filtered by region automatically</span></div>
+
+    <h3>Filter Chain</h3>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Scope</th><th>Entity</th><th>Property</th><th>Type</th><th>Visibility</th><th>Purpose</th></tr></thead>
+        <thead><tr><th>Scope</th><th>Entity</th><th>DAX Filter</th><th>Effect</th></tr></thead>
         <tbody>
           <tr>
-            <td><span class="badge high">Report</span></td>
+            <td><span class="badge high">Role: Users</span></td>
             <td><code>TAV_Users</code></td>
-            <td><code>RegionName</code></td>
-            <td>Advanced</td>
-            <td>Visible</td>
-            <td>Routes each user to their assigned region(s) — primary RLS filter</td>
+            <td><code>[Mail] = USERPRINCIPALNAME()</code></td>
+            <td>User sees only their own row in TAV_Users</td>
           </tr>
           <tr>
-            <td><span class="badge high">Report</span></td>
+            <td><span class="badge med">Cascade</span></td>
             <td><code>V_TAV_Regions</code></td>
-            <td><code>IsVisable</code></td>
-            <td>Categorical</td>
-            <td><strong>Hidden</strong></td>
-            <td>Filters out regions with IsVisable=false — secondary visibility layer</td>
+            <td>bidirectional join on <code>RegionName</code></td>
+            <td>Region list filtered to user's assigned region(s)</td>
           </tr>
           <tr>
-            <td><span class="badge med">Page</span></td>
-            <td><code>DimDate</code></td>
-            <td><code>Date</code></td>
-            <td>RelativeDate</td>
-            <td>Visible</td>
-            <td>Default date range filter (most pages)</td>
+            <td><span class="badge med">Cascade</span></td>
+            <td>All Fact tables</td>
+            <td>via <code>V_TAV_Regions.RegionName</code></td>
+            <td>All operational data scoped to user's region(s)</td>
           </tr>
           <tr>
-            <td><span class="badge med">Page</span></td>
-            <td><code>TAV_Users</code></td>
-            <td><code>Mail</code></td>
-            <td>Categorical</td>
-            <td>Visible</td>
-            <td>User identity-based data isolation (most pages)</td>
+            <td><span class="badge low">Source column</span></td>
+            <td><code>V_TAV_Regions</code></td>
+            <td><code>IsVisable</code> (boolean from SQL)</td>
+            <td>Additional visibility flag set at source — not a DAX role filter</td>
           </tr>
         </tbody>
       </table>

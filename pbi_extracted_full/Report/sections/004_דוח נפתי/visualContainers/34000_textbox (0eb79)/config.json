@@ -1,0 +1,57 @@
+{
+  "name": "0eb79e8b019d460fc14f",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1171.3665943600868,
+        "y": 546.63774403470723,
+        "z": 34000,
+        "width": 68.720173535791758,
+        "height": 39.045553145336228,
+        "tabOrder": 34000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "CRM",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

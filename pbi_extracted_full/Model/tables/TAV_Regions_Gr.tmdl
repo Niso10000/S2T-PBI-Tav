@@ -1,0 +1,37 @@
+﻿table TAV_Regions_Gr
+
+	column 'שם שכונה'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: שם שכונה
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ממוצע טונג'' אשפה יומי'
+		dataType: double
+		formatString: #,0
+		summarizeBy: sum
+		sourceColumn: ממוצע טונג' אשפה יומי
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column RegionName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: RegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAV_Regions_Gr-51e80b31-fb3f-456c-8bdb-d04fa37ccb23 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<SQL-SERVER>", "<SQL-DB>"),
+				    dbo_TAV_Regions_Gr = Source{[Schema="dbo",Item="TAV_Regions_Gr"]}[Data]
+				in
+				    dbo_TAV_Regions_Gr
+

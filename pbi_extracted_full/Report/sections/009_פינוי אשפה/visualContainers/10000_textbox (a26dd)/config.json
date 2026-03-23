@@ -1,0 +1,56 @@
+{
+  "name": "a26ddf3e42bb892c8565",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1063.7515527950311,
+        "y": 15.900621118012422,
+        "z": 10000,
+        "width": 193.98757763975155,
+        "height": 46.111801242236027,
+        "tabOrder": 10000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "דוח פינוי אשפה",
+                    "textStyle": {
+                      "fontSize": "20pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

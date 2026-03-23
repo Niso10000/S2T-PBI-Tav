@@ -1,0 +1,110 @@
+﻿table V_TAV_Ge_Devices
+
+	measure 'כמות עגלות' = DISTINCTCOUNT(V_TAV_Ge_Devices[DeviceId])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	column ContractorId
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ContractorId
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContractorName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ContractorName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeviceId
+		dataType: string
+		summarizeBy: none
+		sourceColumn: DeviceId
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeviceName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: DeviceName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column engine
+		dataType: string
+		summarizeBy: none
+		sourceColumn: engine
+
+		annotation SummarizationSetBy = Automatic
+
+	column battery
+		dataType: string
+		summarizeBy: none
+		sourceColumn: battery
+
+		annotation SummarizationSetBy = Automatic
+
+	column satellites
+		dataType: string
+		summarizeBy: none
+		sourceColumn: satellites
+
+		annotation SummarizationSetBy = Automatic
+
+	column gsm
+		dataType: string
+		summarizeBy: none
+		sourceColumn: gsm
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContractorName_N
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ContractorName_N
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsActive
+		dataType: string
+		summarizeBy: none
+		sourceColumn: IsActive
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nafa
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Nafa
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: RegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition V_TAV_Ge_Devices-3c1e18aa-c9b9-4592-b323-a8fbd8cb499e = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("<SQL-SERVER>"),
+				    DWH_SEC = Source{[Name="<SQL-DB>"]}[Data],
+				    #"KIKARDOM\yehudit_ei_V_TAV_Ge_Devices" = DWH_SEC{[Schema="dbo",Item="V_TAV_Ge_Devices"]}[Data]
+				in
+				    #"KIKARDOM\yehudit_ei_V_TAV_Ge_Devices"
+
+	annotation PBI_ResultType = Table
+

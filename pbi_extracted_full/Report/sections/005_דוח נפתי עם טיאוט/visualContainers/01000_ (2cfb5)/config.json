@@ -1,0 +1,78 @@
+{
+  "name": "2cfb5ff52fcd1c93bb43",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "height": 30.499999999999996,
+        "width": 118,
+        "x": 0.30434782608699606,
+        "y": 0,
+        "z": 2000,
+        "tabOrder": 1000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "ציון ממוצע כל הנפות",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "color": "#424346"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "''"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "parentGroupName": "32b4e0354aa55a81fc80"
+}

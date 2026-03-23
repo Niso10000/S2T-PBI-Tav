@@ -1,0 +1,56 @@
+{
+  "name": "7ea99f72c4d451ac1215",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1137.913043478261,
+        "y": 21.913043478260871,
+        "z": 15000,
+        "width": 129.91304347826087,
+        "height": 46.956521739130437,
+        "tabOrder": 16000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "דוח פניות",
+                    "textStyle": {
+                      "fontSize": "20pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

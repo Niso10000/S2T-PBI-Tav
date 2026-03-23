@@ -1,0 +1,79 @@
+﻿model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: he-IL
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBIDesktopVersion = 2.117.984.0 (23.05)
+
+annotation PBI_QueryOrder = ["V_TAV_FactDailyRoute","V_TAV_Platforms","V_TAV_Ge_Devices","V_TAV_Ge_FactDailyRoute","DimDate","‏‏EventsData","incidents","pws_quarters","pws_departments","pws_casestatus","pws_slastatus","pws_casesubjects","TAV_Marks","V_TAV_GB_TrucksInformation","V_TAV_GB_FactDailyRoute","V_TAV_GB_Regions","TAV_Recommendations","TAV_Providers","pws_caselogs","V_TAV_Regions","TAV_Regions_CRM","TAV_Users","TAV_Gr_Fact_GarbageDisposal","TAV_Regions_Gr"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_RemovedChildren = [{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"8c0e8163-3a17-49be-99aa-e4ba2cb23dcf","fromColumnLocalLineageTag":"d4d187bb-faf9-4370-9f83-7a0818e1b711","toTableLocalLineageTag":"7c7f844e-808b-46e1-b0f8-36ffd9272f05","toColumnLocalLineageTag":"c9313608-957a-45cc-a110-449da20d10ad"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"8c0e8163-3a17-49be-99aa-e4ba2cb23dcf","fromColumnLocalLineageTag":"70964e50-b930-416c-9cf3-f73dd4ec7e99","toTableLocalLineageTag":"7c7f844e-808b-46e1-b0f8-36ffd9272f05","toColumnLocalLineageTag":"c9313608-957a-45cc-a110-449da20d10ad"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"8c0e8163-3a17-49be-99aa-e4ba2cb23dcf","fromColumnLocalLineageTag":"c3d422cb-699a-47ff-b93a-ce6cea27e451","toTableLocalLineageTag":"7c7f844e-808b-46e1-b0f8-36ffd9272f05","toColumnLocalLineageTag":"c9313608-957a-45cc-a110-449da20d10ad"}},"objectType":"Relationship"},{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"8c0e8163-3a17-49be-99aa-e4ba2cb23dcf","fromColumnLocalLineageTag":"09d91a4c-3253-4160-baba-dbaa8efff15f","toTableLocalLineageTag":"7c7f844e-808b-46e1-b0f8-36ffd9272f05","toColumnLocalLineageTag":"c9313608-957a-45cc-a110-449da20d10ad"}},"objectType":"Relationship"}]
+
+ref table DateTableTemplate_053f8d9b-3768-4c18-96b3-9f1822b22158
+ref table V_TAV_FactDailyRoute
+ref table LocalDateTable_f9992319-8053-4ac3-8df3-a1fce1bd495f
+ref table LocalDateTable_5e458376-cac3-4498-910b-c7c888ead787
+ref table V_TAV_Platforms
+ref table LocalDateTable_42a7f608-9d95-45da-aff5-f0056044b19b
+ref table 'מדדי רכבים'
+ref table V_TAV_Ge_Devices
+ref table V_TAV_Ge_FactDailyRoute
+ref table LocalDateTable_47a89155-188e-41d2-987d-aa607b473502
+ref table LocalDateTable_0d2d582d-b4f1-4163-b428-ad0f5ef34f82
+ref table DimDate
+ref table LocalDateTable_0199c9c1-697b-4af9-be1a-bf4b52597602
+ref table LocalDateTable_9796ac35-f239-4545-92d9-0c568161a7dc
+ref table LocalDateTable_8d37bc61-0985-4f68-aef0-53841b89dbb0
+ref table LocalDateTable_9aff2382-9712-41e5-bc58-f2a9962fbcc0
+ref table LocalDateTable_fea17c33-3b22-4e21-b9e8-3ba29c594b59
+ref table LocalDateTable_abc06107-73f0-40da-8b23-e7602b2e7e3d
+ref table LocalDateTable_88f4e26c-bba7-43bd-8a0e-5a312c3df2ff
+ref table LocalDateTable_eb2b5b44-4c3b-483d-a6fe-463e84ff7581
+ref table 'מדדי טיאוט'
+ref table ‏‏EventsData
+ref table LocalDateTable_4b667743-6345-4b03-8a3f-3a8c1245b170
+ref table incidents
+ref table LocalDateTable_92c1a875-6773-4436-8b5e-8bb5aa231848
+ref table LocalDateTable_376564fd-9870-41c8-bbfe-6a55d926196e
+ref table pws_quarters
+ref table LocalDateTable_e2bf5ef9-9c5f-46ba-8e46-030a603df040
+ref table LocalDateTable_5ba45e96-c879-4eb7-bdbe-19f7c0a909f1
+ref table LocalDateTable_647c739c-5bbc-4bbe-aa13-5b2e798469a0
+ref table pws_departments
+ref table LocalDateTable_73a43e6e-cf4b-4060-818d-d1b44cfa7663
+ref table LocalDateTable_396fc472-a1e2-4eae-80d8-287fcb3fa056
+ref table LocalDateTable_a65935a9-6755-4776-b80c-1ae17fbb3dbb
+ref table pws_casestatus
+ref table pws_slastatus
+ref table pws_casesubjects
+ref table LocalDateTable_11054fbc-1d40-4152-a407-e9ce1a26c858
+ref table LocalDateTable_f23e746f-332d-497d-9a07-b90a93755ea6
+ref table LocalDateTable_15d0e0ed-9611-47d2-98a5-2b365a55bddc
+ref table LocalDateTable_09899a4f-ae40-4236-b6a3-b4933277c37f
+ref table TAV_Marks
+ref table V_TAV_GB_TrucksInformation
+ref table LocalDateTable_c2183593-e23f-4533-ae69-79dacc2faad1
+ref table V_TAV_GB_FactDailyRoute
+ref table V_TAV_GB_Regions
+ref table TAV_Recommendations
+ref table TAV_Providers
+ref table pws_caselogs
+ref table LocalDateTable_b09e7703-291a-4151-b3b7-472a6e5fc844
+ref table V_TAV_Regions
+ref table TAV_Regions_CRM
+ref table TAV_Users
+ref table TAV_Gr_Fact_GarbageDisposal
+ref table TAV_Regions_Gr
+ref table LocalDateTable_274d9a01-71ff-44e8-bf9f-08301dea7f29
+ref table LocalDateTable_1428724f-7c88-46a4-a670-443dd7ab49aa
+
+ref role Users
+ref role Managers
+
+ref cultureInfo en-US
+

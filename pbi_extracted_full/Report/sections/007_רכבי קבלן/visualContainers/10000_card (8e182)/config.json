@@ -1,0 +1,105 @@
+{
+  "name": "8e182acd9a4979863750",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1055.4698132153617,
+        "y": 53.217391304347828,
+        "z": 10000,
+        "width": 211.30434782608697,
+        "height": 34.434782608695656,
+        "tabOrder": 10000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "card",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "KIKARDOM\\yehudit_ei V_TAV_FactDailyRoute.תאריכים"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "k",
+          "Entity": "V_TAV_FactDailyRoute",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "k"
+              }
+            },
+            "Property": "טווח תאריכים_It"
+          },
+          "Name": "KIKARDOM\\yehudit_ei V_TAV_FactDailyRoute.תאריכים"
+        }
+      ]
+    },
+    "columnProperties": {
+      "KIKARDOM\\yehudit_ei V_TAV_FactDailyRoute.תאריכים": {
+        "displayName": "טווח תאריכים"
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "categoryLabels": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

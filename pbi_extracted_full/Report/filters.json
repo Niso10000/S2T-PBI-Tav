@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Filter4cc128425ffd35f32236",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "TAV_Users"
+          }
+        },
+        "Property": "RegionName"
+      }
+    },
+    "type": "Advanced",
+    "howCreated": 1
+  },
+  {
+    "name": "Filterbdce4c21a5ac03c080b3",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Regions"
+          }
+        },
+        "Property": "IsVisable"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 1,
+    "objects": {},
+    "isHiddenInViewMode": true
+  }
+]

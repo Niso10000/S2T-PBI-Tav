@@ -1,0 +1,57 @@
+{
+  "name": "203d1290b10ac72c9140",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1161.3913043478262,
+        "y": 266.08695652173913,
+        "z": 36000,
+        "width": 89.217391304347828,
+        "height": 39.130434782608695,
+        "tabOrder": 36000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "פח חכם",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

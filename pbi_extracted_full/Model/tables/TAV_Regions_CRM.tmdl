@@ -1,0 +1,25 @@
+﻿table TAV_Regions_CRM
+
+	column RegionName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: RegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartmentName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: DepartmentName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAV_Regions_CRM-f376fb35-b0bf-4632-a015-881ab5d023de = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<SQL-SERVER>", "<SQL-DB>"),
+				    dbo_TAV_Regions_CRM = Source{[Schema="dbo",Item="TAV_Regions_CRM"]}[Data]
+				in
+				    dbo_TAV_Regions_CRM
+

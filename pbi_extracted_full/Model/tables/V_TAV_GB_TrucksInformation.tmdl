@@ -1,0 +1,80 @@
+﻿table V_TAV_GB_TrucksInformation
+
+	column dtTruckStatusDate
+		dataType: string
+		summarizeBy: none
+		sourceColumn: dtTruckStatusDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column iInternalNumber
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: iInternalNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column nMaxVolume
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: nMaxVolume
+
+		annotation SummarizationSetBy = Automatic
+
+	column nMaxWeight
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: nMaxWeight
+
+		annotation SummarizationSetBy = Automatic
+
+	column nvColorName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nvColorName
+
+		annotation SummarizationSetBy = Automatic
+
+	column nvModelName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nvModelName
+
+		annotation SummarizationSetBy = Automatic
+
+	column nvTruckNumber
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nvTruckNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column nvTruckStatusName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nvTruckStatusName
+
+		annotation SummarizationSetBy = Automatic
+
+	column iTruckId
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: iTruckId
+
+		annotation SummarizationSetBy = Automatic
+
+	partition V_TAV_GB_TrucksInformation-e1a0bae7-12c8-441e-afa8-ff6a24565357 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<SQL-SERVER>", "<SQL-DB>"),
+				    dbo_V_TAV_GB_Trucks = Source{[Schema="dbo",Item="V_TAV_GB_Trucks"]}[Data]
+				in
+				    dbo_V_TAV_GB_Trucks
+
+	annotation PBI_ResultType = Table
+

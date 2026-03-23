@@ -1,0 +1,91 @@
+﻿table LocalDateTable_11054fbc-1d40-4152-a407-e9ce1a26c858
+	isHidden
+	showAsVariationsOnly
+
+	column Date
+		isHidden
+		dataCategory: PaddedDateTableDates
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = User
+
+	column Year = YEAR([Date])
+		isHidden
+		dataCategory: Years
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+		annotation TemplateId = Year
+
+	column MonthNo = MONTH([Date])
+		isHidden
+		dataCategory: MonthOfYear
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+		annotation TemplateId = MonthNumber
+
+	column Month = FORMAT([Date], "MMMM")
+		isHidden
+		dataCategory: Months
+		summarizeBy: none
+		sortByColumn: MonthNo
+
+		annotation SummarizationSetBy = User
+
+		annotation TemplateId = Month
+
+	column QuarterNo = INT(([MonthNo] + 2) / 3)
+		isHidden
+		dataCategory: QuarterOfYear
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+		annotation TemplateId = QuarterNumber
+
+	column Quarter = "Qtr " & [QuarterNo]
+		isHidden
+		dataCategory: Quarters
+		summarizeBy: none
+		sortByColumn: QuarterNo
+
+		annotation SummarizationSetBy = User
+
+		annotation TemplateId = Quarter
+
+	column Day = DAY([Date])
+		isHidden
+		dataCategory: DayOfMonth
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+		annotation TemplateId = Day
+
+	hierarchy 'Date Hierarchy'
+
+		level Year
+			column: Year
+
+		level Quarter
+			column: Quarter
+
+		level Month
+			column: Month
+
+		level Day
+			column: Day
+
+		annotation TemplateId = DateHierarchy
+
+	partition LocalDateTable_11054fbc-1d40-4152-a407-e9ce1a26c858-24ea33a9-b170-4b1a-a00c-ea3ec59429b4 = calculated
+		mode: import
+		source = Calendar(Date(Year(MIN('pws_casesubjects'[modifiedon])), 1, 1), Date(Year(MAX('pws_casesubjects'[modifiedon])), 12, 31))
+
+	annotation __PBI_LocalDateTable = true
+

@@ -1,0 +1,129 @@
+﻿table V_TAV_Platforms
+
+	measure 'שעות עבודה תקופה מקבילה' = CALCULATE([שעות עבודה_It],SAMEPERIODLASTYEAR(V_TAV_FactDailyRoute[Date]))
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PlatformId
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: PlatformId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'לוחית רישוי'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: לוחית רישוי
+
+		annotation SummarizationSetBy = Automatic
+
+	column Label
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Label
+
+		annotation SummarizationSetBy = Automatic
+
+	column Symbol
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: Symbol
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerDriverID
+		dataType: int64
+		formatString: 0
+		summarizeBy: count
+		sourceColumn: CustomerDriverID
+
+		annotation SummarizationSetBy = Automatic
+
+	column driverId
+		dataType: int64
+		formatString: 0
+		summarizeBy: count
+		sourceColumn: driverId
+
+		annotation SummarizationSetBy = Automatic
+
+	column Model
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column Make
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Make
+
+		annotation SummarizationSetBy = Automatic
+
+	column BatteryVoltage
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: BatteryVoltage
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 81133f5f-7d2a-4eda-8c09-0adbc381469d
+			defaultHierarchy: LocalDateTable_42a7f608-9d95-45da-aff5-f0056044b19b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsActive
+		dataType: string
+		summarizeBy: none
+		sourceColumn: IsActive
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: RegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area_Desc
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Area_Desc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition V_TAV_Platforms-a6a67460-278e-4a0b-8640-290a4535dfc7 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("<SQL-SERVER>"),
+				    DWH_SEC = Source{[Name="<SQL-DB>"]}[Data],
+				    #"KIKARDOM\yehudit_ei_V_TAV_Platforms" = DWH_SEC{[Schema="dbo",Item="V_TAV_Platforms"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(#"KIKARDOM\yehudit_ei_V_TAV_Platforms",{{"Plate", "לוחית רישוי"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

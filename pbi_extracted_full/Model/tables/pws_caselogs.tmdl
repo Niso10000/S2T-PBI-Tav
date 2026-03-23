@@ -1,0 +1,114 @@
+﻿table pws_caselogs
+
+	measure 'כמות פניות שנפתחו מחדש' = DISTINCTCOUNT(pws_caselogs[_pws_caseid_value])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'אחוז פניות שנפתחו מחדש' = DIVIDE([כמות פניות שנפתחו מחדש],[כמות פניות],BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	measure 'אחוז פניות שנפתחו מחדש לפי יום נפה' =
+			DIVIDE(
+			    sumx(
+			SUMMARIZE(incidents,incidents[createdon],incidents[_pws_departmentid_value],"כמות פניות שנפתחו מחדש",[כמות פניות שנפתחו מחדש]),
+			[כמות פניות שנפתחו מחדש]),
+			sumx(
+			SUMMARIZE(incidents,incidents[createdon],incidents[_pws_departmentid_value],"כמות פניות",[כמות פניות]),
+			[כמות פניות])
+			,BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	column pws_currentstatus
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: pws_currentstatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_currentsubjectid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_currentsubjectid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_prevsubjectid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_prevsubjectid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column statuscode
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: statuscode
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_caseid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_caseid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_prevdepartmentid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_prevdepartmentid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column _pws_currentdepartmentid_value
+		dataType: string
+		summarizeBy: none
+		sourceColumn: _pws_currentdepartmentid_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column createdon
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: createdon
+
+		variation Variation
+			isDefault
+			relationship: b8b129c2-be4b-4770-add3-6536e9ced2d0
+			defaultHierarchy: LocalDateTable_b09e7703-291a-4151-b3b7-472a6e5fc844.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_caselogid
+		dataType: string
+		summarizeBy: none
+		sourceColumn: pws_caselogid
+
+		annotation SummarizationSetBy = Automatic
+
+	column pws_previousstatus
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: pws_previousstatus
+
+		annotation SummarizationSetBy = User
+
+	partition pws_caselogs-04c63703-1456-42a0-815e-f3abd4679b06 = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed("https://<CRM-HOST>.api.crm4.dynamics.com/api/data/v9.1/pws_caselogs?$select=_pws_currentdepartmentid_value,createdon,_pws_currentdepartmentid_value,_pws_prevdepartmentid_value,_pws_caseid_value,statuscode,_pws_currentsubjectid_value,_pws_prevsubjectid_value,pws_currentstatus,_pws_caseid_value,pws_caselogid,pws_previousstatus&$filter= pws_previousstatus eq 14", null, [Implementation="2.0"])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

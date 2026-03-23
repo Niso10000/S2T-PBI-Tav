@@ -1,0 +1,55 @@
+﻿table TAV_Recommendations
+
+	column ID
+		dataType: int64
+		formatString: 0
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Provider
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Provider
+
+		annotation SummarizationSetBy = Automatic
+
+	column Events
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Events
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rule
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rule_Int
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Rule_Int
+
+		annotation SummarizationSetBy = User
+
+	column Recommendation
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Recommendation
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAV_Recommendations-d95fe1cf-c1b7-46ef-8604-46f85e0d96ba = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<SQL-SERVER>", "<SQL-DB>"),
+				    dbo_TAV_Recommendations = Source{[Schema="dbo",Item="TAV_Recommendations"]}[Data]
+				in
+				    dbo_TAV_Recommendations
+

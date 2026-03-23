@@ -1,0 +1,57 @@
+{
+  "name": "5c10b6f703a03ff00990",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1168.24295010846,
+        "y": 99.956616052060753,
+        "z": 33000,
+        "width": 68.720173535791758,
+        "height": 39.045553145336228,
+        "tabOrder": 33000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "איתורן",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

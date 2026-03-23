@@ -1,0 +1,69 @@
+{
+  "name": "9f6fc1b02b88c45e673a",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1076.8695652173915,
+        "y": 25.043478260869566,
+        "z": 15000,
+        "width": 195.6521739130435,
+        "height": 64.173913043478265,
+        "tabOrder": 15000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "כדי לעדכן את נתוני הארועים, יש להיכנס לקישור",
+                    "textStyle": {
+                      "fontSize": "12pt",
+                      "color": "#666666"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "‏‏EventsData",
+                    "textStyle": {
+                      "color": "#666666"
+                    },
+                    "url": "https://<ORG>.sharepoint.com/:l:/s/<SP-SITE>/FM9HiFdyvARArOLLyA1jsnoBAwqjEs1cNln7pxKMi6qnmg?e=bTjhJM"
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

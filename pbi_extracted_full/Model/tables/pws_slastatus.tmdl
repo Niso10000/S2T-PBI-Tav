@@ -1,0 +1,31 @@
+﻿table pws_slastatus
+
+	column Value
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Label.LocalizedLabels.Label'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Label.LocalizedLabels.Label
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pws_slastatus-339f81dd-cca8-4012-b6ff-626568245c43 = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed("https://<CRM-HOST>.crm4.dynamics.com/api/data/v9.1/GlobalOptionSetDefinitions(5d489e86-9b65-48fc-a109-7eb19539c949)", null, [Implementation="2.0"]),
+				    Options = Source[Options],
+				    #"Expanded Label" = Table.ExpandRecordColumn(Options, "Label", {"LocalizedLabels", "UserLocalizedLabel"}, {"Label.LocalizedLabels", "Label.UserLocalizedLabel"}),
+				    #"Expanded Label.LocalizedLabels" = Table.ExpandTableColumn(#"Expanded Label", "Label.LocalizedLabels", {"Label", "LanguageCode", "IsManaged", "MetadataId", "HasChanged"}, {"Label.LocalizedLabels.Label", "Label.LocalizedLabels.LanguageCode", "Label.LocalizedLabels.IsManaged", "Label.LocalizedLabels.MetadataId", "Label.LocalizedLabels.HasChanged"}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Expanded Label.LocalizedLabels",{"Value", "Label.LocalizedLabels.Label"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+

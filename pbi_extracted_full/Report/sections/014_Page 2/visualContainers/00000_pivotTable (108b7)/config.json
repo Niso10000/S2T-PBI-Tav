@@ -1,0 +1,262 @@
+{
+  "name": "108b779a64a95fa404e0",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 9.4674556213017755,
+        "y": 0,
+        "z": 0,
+        "width": 1253.491124260355,
+        "height": 162.84023668639054
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "pivotTable",
+    "projections": {
+      "Rows": [
+        {
+          "queryRef": "DimDate.Date.Variation.Date Hierarchy.Year",
+          "active": true
+        },
+        {
+          "queryRef": "DimDate.Date.Variation.Date Hierarchy.Month"
+        },
+        {
+          "queryRef": "DimDate.Date.Variation.Date Hierarchy.Day"
+        },
+        {
+          "queryRef": "V_TAV_Regions.RegionName"
+        },
+        {
+          "queryRef": "TAV_Gr_Fact_GarbageDisposal.שכונה"
+        }
+      ],
+      "Values": [
+        {
+          "queryRef": "Sum(TAV_Regions_Gr.ממוצע טונג' אשפה יומי)"
+        },
+        {
+          "queryRef": "TAV_Gr_Fact_GarbageDisposal.ממוצע טונג' יומי"
+        },
+        {
+          "queryRef": "TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ממוצע טונג' אשפה"
+        },
+        {
+          "queryRef": "TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "t1",
+          "Entity": "TAV_Regions_Gr",
+          "Type": 0
+        },
+        {
+          "Name": "t",
+          "Entity": "TAV_Gr_Fact_GarbageDisposal",
+          "Type": 0
+        },
+        {
+          "Name": "d",
+          "Entity": "DimDate",
+          "Type": 0
+        },
+        {
+          "Name": "v",
+          "Entity": "V_TAV_Regions",
+          "Type": 0
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "שכונה"
+          },
+          "Name": "TAV_Gr_Fact_GarbageDisposal.שכונה"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t1"
+                  }
+                },
+                "Property": "ממוצע טונג' אשפה יומי"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(TAV_Regions_Gr.ממוצע טונג' אשפה יומי)"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "ממוצע טונג' יומי"
+          },
+          "Name": "TAV_Gr_Fact_GarbageDisposal.ממוצע טונג' יומי"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "אחוז שינוי ממוצע טונג' אשפה"
+          },
+          "Name": "TAV_Gr_Fact_GarbageDisposal.אחוז שינוי ממוצע טונג' אשפה"
+        },
+        {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Source": "d"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Date"
+                  }
+                },
+                "Hierarchy": "Date Hierarchy"
+              }
+            },
+            "Level": "Year"
+          },
+          "Name": "DimDate.Date.Variation.Date Hierarchy.Year"
+        },
+        {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Source": "d"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Date"
+                  }
+                },
+                "Hierarchy": "Date Hierarchy"
+              }
+            },
+            "Level": "Month"
+          },
+          "Name": "DimDate.Date.Variation.Date Hierarchy.Month"
+        },
+        {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Source": "d"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "Date"
+                  }
+                },
+                "Hierarchy": "Date Hierarchy"
+              }
+            },
+            "Level": "Day"
+          },
+          "Name": "DimDate.Date.Variation.Date Hierarchy.Day"
+        },
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "ציון ממוצע_Gr"
+          },
+          "Name": "TAV_Gr_Fact_GarbageDisposal.ציון ממוצע_Gr"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "v"
+              }
+            },
+            "Property": "RegionName"
+          },
+          "Name": "V_TAV_Regions.RegionName"
+        }
+      ]
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "DimDate.Date.Variation.Date Hierarchy.Year"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "DimDate.Date.Variation.Date Hierarchy.Month"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "DimDate.Date.Variation.Date Hierarchy.Day"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "V_TAV_Regions.RegionName"
+            ],
+            "isCollapsed": true
+          },
+          {
+            "queryRefs": [
+              "TAV_Gr_Fact_GarbageDisposal.שכונה"
+            ],
+            "isCollapsed": true
+          }
+        ],
+        "root": {
+          "identityValues": null
+        }
+      }
+    ],
+    "drillFilterOtherVisuals": true
+  }
+}

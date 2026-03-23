@@ -1,0 +1,37 @@
+﻿table pws_casestatus
+
+	column Value
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column סטטוס
+		dataType: string
+		summarizeBy: none
+		sourceColumn: סטטוס
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pws_casestatus-d02339a4-74af-47c5-9417-113dff3abe78 = m
+		mode: import
+		source =
+				let
+				    Source = OData.Feed("https://<CRM-HOST>.crm4.dynamics.com/api/data/v9.1/GlobalOptionSetDefinitions(feb2cbe5-3c91-4e2a-8815-7d6b4b2ee79d)", null, [Implementation="2.0"]),
+				    Options = Source[Options],
+				    #"Expanded Label" = Table.ExpandRecordColumn(Options, "Label", {"LocalizedLabels", "UserLocalizedLabel"}, {"Label.LocalizedLabels", "Label.UserLocalizedLabel"}),
+				    #"Expanded Label.LocalizedLabels" = Table.ExpandTableColumn(#"Expanded Label", "Label.LocalizedLabels", {"Label", "LanguageCode", "IsManaged", "MetadataId", "HasChanged"}, {"Label.LocalizedLabels.Label", "Label.LocalizedLabels.LanguageCode", "Label.LocalizedLabels.IsManaged", "Label.LocalizedLabels.MetadataId", "Label.LocalizedLabels.HasChanged"}),
+				    #"Expanded Label.UserLocalizedLabel" = Table.ExpandRecordColumn(#"Expanded Label.LocalizedLabels", "Label.UserLocalizedLabel", {"Label", "LanguageCode", "IsManaged", "MetadataId", "HasChanged"}, {"Label.UserLocalizedLabel.Label", "Label.UserLocalizedLabel.LanguageCode", "Label.UserLocalizedLabel.IsManaged", "Label.UserLocalizedLabel.MetadataId", "Label.UserLocalizedLabel.HasChanged"}),
+				    #"Expanded Description" = Table.ExpandRecordColumn(#"Expanded Label.UserLocalizedLabel", "Description", {"LocalizedLabels", "UserLocalizedLabel"}, {"Description.LocalizedLabels", "Description.UserLocalizedLabel"}),
+				    #"Expanded Description.LocalizedLabels" = Table.ExpandTableColumn(#"Expanded Description", "Description.LocalizedLabels", {"Label", "LanguageCode", "IsManaged", "MetadataId", "HasChanged"}, {"Description.LocalizedLabels.Label", "Description.LocalizedLabels.LanguageCode", "Description.LocalizedLabels.IsManaged", "Description.LocalizedLabels.MetadataId", "Description.LocalizedLabels.HasChanged"}),
+				    #"Expanded Description.UserLocalizedLabel" = Table.ExpandRecordColumn(#"Expanded Description.LocalizedLabels", "Description.UserLocalizedLabel", {"Label", "LanguageCode", "IsManaged", "MetadataId", "HasChanged"}, {"Description.UserLocalizedLabel.Label", "Description.UserLocalizedLabel.LanguageCode", "Description.UserLocalizedLabel.IsManaged", "Description.UserLocalizedLabel.MetadataId", "Description.UserLocalizedLabel.HasChanged"}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Expanded Description.UserLocalizedLabel",{"Value", "Label.LocalizedLabels.Label"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"Label.LocalizedLabels.Label", "סטטוס"}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Renamed Columns", each ([סטטוס] <> "بالمعالجة" and [סטטוס] <> "نهاية المعالجة"))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+

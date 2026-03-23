@@ -1,0 +1,241 @@
+[
+  {
+    "name": "Filter0db9116e8c159e2768c6",
+    "expression": {
+      "Measure": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_FactDailyRoute"
+          }
+        },
+        "Property": "אחוז שעות שהיה_Ge"
+      }
+    },
+    "type": "Advanced",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 0
+  },
+  {
+    "name": "Filterbc66d688b82010b2c6de",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_FactDailyRoute"
+          }
+        },
+        "Property": "Recommendations"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 1
+  },
+  {
+    "name": "Filterf41e1ca63ab8084759db",
+    "expression": {
+      "Measure": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_FactDailyRoute"
+          }
+        },
+        "Property": "כמות יציאות מפוליגון_Ge"
+      }
+    },
+    "type": "Advanced",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 2
+  },
+  {
+    "name": "Filtera7cf2057243fcbe08a05",
+    "expression": {
+      "Measure": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_FactDailyRoute"
+          }
+        },
+        "Property": "כמות עצירות ארוכות_Ge"
+      }
+    },
+    "type": "Advanced",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 3
+  },
+  {
+    "name": "Filter684ffe22118c47a250c5",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_FactDailyRoute"
+          }
+        },
+        "Property": "Nafa"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 4
+  },
+  {
+    "name": "Filterdd1240574f3a1dc27003",
+    "expression": {
+      "Measure": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_FactDailyRoute"
+          }
+        },
+        "Property": "ציון ממוצע_Ge"
+      }
+    },
+    "type": "Advanced",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 5
+  },
+  {
+    "name": "Filter31616fae5dae167a3328",
+    "expression": {
+      "Measure": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_FactDailyRoute"
+          }
+        },
+        "Property": "קילומטראז'_Ge"
+      }
+    },
+    "type": "Advanced",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 6
+  },
+  {
+    "name": "Filterc8c91f352efa0c4589cd",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_Devices"
+          }
+        },
+        "Property": "DeviceName"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 0,
+    "objects": {},
+    "isHiddenInViewMode": false,
+    "ordinal": 7
+  },
+  {
+    "name": "Filter4c6f8bd3faa29dc56cd2",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_Devices"
+          }
+        },
+        "Property": "ContractorName_N"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 8
+  },
+  {
+    "name": "Filter17ad64e320fe89e2d391",
+    "expression": {
+      "Measure": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_FactDailyRoute"
+          }
+        },
+        "Property": "שעות עבודה_Ge"
+      }
+    },
+    "type": "Advanced",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 9
+  },
+  {
+    "name": "Filter0f862f05406183df34e3",
+    "expression": {
+      "Measure": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_FactDailyRoute"
+          }
+        },
+        "Property": "שעות שהיה_Ge"
+      }
+    },
+    "type": "Advanced",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 10
+  },
+  {
+    "name": "Filter5ccc465459ec2288ffe1",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_FactDailyRoute"
+          }
+        },
+        "Property": "StartTime"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 11
+  },
+  {
+    "name": "Filterac8195c68e54767f5b0b",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_FactDailyRoute"
+          }
+        },
+        "Property": "EndTime"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 12
+  },
+  {
+    "name": "Filterc7757404f27eab0070e6",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Ge_FactDailyRoute"
+          }
+        },
+        "Property": "Date"
+      }
+    },
+    "type": "Categorical",
+    "howCreated": 0,
+    "isHiddenInViewMode": false,
+    "ordinal": 13
+  }
+]

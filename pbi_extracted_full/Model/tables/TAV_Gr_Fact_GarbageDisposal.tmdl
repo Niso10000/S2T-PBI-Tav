@@ -1,0 +1,283 @@
+﻿table TAV_Gr_Fact_GarbageDisposal
+
+	measure 'סהכ משקל אשפה' = sum(TAV_Gr_Fact_GarbageDisposal[משקל נטו])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'סה"כ טונג'' אשפה' = [סהכ משקל אשפה]/1000
+		formatString: #,0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'כמות ימים מוצגים' = DISTINCTCOUNT(TAV_Gr_Fact_GarbageDisposal[תאריך])
+		formatString: 0
+
+	measure 'ממוצע טונג'' יומי' =
+			DIVIDE(
+			sumx(
+			    SUMMARIZE(TAV_Gr_Fact_GarbageDisposal,TAV_Gr_Fact_GarbageDisposal[תאריך],       TAV_Gr_Fact_GarbageDisposal[שכונה],"סהכ טונג' אשפה",[סה"כ טונג' אשפה]),
+			[סהכ טונג' אשפה])
+			,[כמות ימים מוצגים],BLANK())
+		formatString: #,0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'אחוז שינוי ממוצע טונג'' אשפה' = DIVIDE([ממוצע טונג' יומי]-[ממוצע קבוע לטונג' אשפה יומית],[ממוצע קבוע לטונג' אשפה יומית],BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	measure 'ציון Gr' =
+			
+			if(isblank([אחוז שינוי ממוצע טונג' אשפה])=false,
+			100-
+			if([אחוז שינוי ממוצע טונג' אשפה]<[כלל לניקוד גרינט],[ניקוד ציון לגרינט],0), BLANK())
+		formatString: 0
+
+	measure 'ציון ממוצע_Gr' = AVERAGEX(SUMMARIZE(TAV_Gr_Fact_GarbageDisposal,TAV_Gr_Fact_GarbageDisposal[תאריך],TAV_Gr_Fact_GarbageDisposal[שכונה]),[ציון Gr])
+		formatString: 0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'כמות לחישוב ממוצע משוקלל_Gr' = COUNTROWS(SUMMARIZE(TAV_Gr_Fact_GarbageDisposal,TAV_Gr_Fact_GarbageDisposal[תאריך],TAV_Gr_Fact_GarbageDisposal[שכונה]))
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'טווח תאריכים_Gr' = FORMAT(MIN('TAV_Gr_Fact_GarbageDisposal'[תאריך]),"DD/MM/YY")&"-"&FORMAT( MAX(TAV_Gr_Fact_GarbageDisposal[תאריך]),"DD/MM/YY")
+
+	measure 'כמות פריקות' = DISTINCTCOUNT(TAV_Gr_Fact_GarbageDisposal[מס' תעודה])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'ממוצע קבוע לטונג'' אשפה יומית' = ```
+			
+			 DIVIDE(
+			sumx(
+			    SUMMARIZE(TAV_Gr_Fact_GarbageDisposal,TAV_Gr_Fact_GarbageDisposal[תאריך],       TAV_Gr_Fact_GarbageDisposal[שכונה],"ממוצע טונג' אשפה יומי",sum(TAV_Regions_Gr[ממוצע טונג' אשפה יומי])),
+			[ממוצע טונג' אשפה יומי])
+			,[כמות ימים מוצגים],BLANK())
+			```
+		formatString: #,0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ציון ממוצע כל הנפות_Gr' = CALCULATE([ציון ממוצע_Gr],REMOVEFILTERS(V_TAV_Regions))
+		formatString: #,0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'אחוז שינוי ציון ממוצע_Gr' = DIVIDE([ציון ממוצע_Gr]-[ציון ממוצע כל הנפות_Gr],[ציון ממוצע כל הנפות_Gr],BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	column תאריך
+		dataType: dateTime
+		formatString: Short Date
+		summarizeBy: none
+		sourceColumn: תאריך
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column יום
+		dataType: string
+		summarizeBy: none
+		sourceColumn: יום
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'שעת כניסה'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: שעת כניסה
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'שעת יציאה'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: שעת יציאה
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'מס'' תעודה'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: מס' תעודה
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'מס'' רכב'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: מס' רכב
+
+		annotation SummarizationSetBy = Automatic
+
+	column נהג
+		dataType: string
+		summarizeBy: none
+		sourceColumn: נהג
+
+		annotation SummarizationSetBy = Automatic
+
+	column שכונה
+		dataType: string
+		summarizeBy: none
+		sourceColumn: שכונה
+
+		annotation SummarizationSetBy = Automatic
+
+	column מוביל
+		dataType: string
+		summarizeBy: none
+		sourceColumn: מוביל
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'משקל בכניסה'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: משקל בכניסה
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'משקל ביציאה'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: משקל ביציאה
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'משקל נטו'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: משקל נטו
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column קוד_פנימי
+		dataType: string
+		summarizeBy: none
+		sourceColumn: קוד_פנימי
+
+		annotation SummarizationSetBy = Automatic
+
+	column קוד_נהג
+		dataType: string
+		summarizeBy: none
+		sourceColumn: קוד_נהג
+
+		annotation SummarizationSetBy = Automatic
+
+	column קוד_שכונה
+		dataType: string
+		summarizeBy: none
+		sourceColumn: קוד_שכונה
+
+		annotation SummarizationSetBy = Automatic
+
+	column קוד_מוביל
+		dataType: string
+		summarizeBy: none
+		sourceColumn: קוד_מוביל
+
+		annotation SummarizationSetBy = Automatic
+
+	column סוג_מוביל
+		dataType: string
+		summarizeBy: none
+		sourceColumn: סוג_מוביל
+
+		annotation SummarizationSetBy = Automatic
+
+	column סוג_דווח_לוחית_כניסה
+		dataType: string
+		summarizeBy: none
+		sourceColumn: סוג_דווח_לוחית_כניסה
+
+		annotation SummarizationSetBy = Automatic
+
+	column סיבת_דווח_ל_כניסה
+		dataType: string
+		summarizeBy: none
+		sourceColumn: סיבת_דווח_ל_כניסה
+
+		annotation SummarizationSetBy = Automatic
+
+	column סוג_דווח_משקל_כניסה
+		dataType: string
+		summarizeBy: none
+		sourceColumn: סוג_דווח_משקל_כניסה
+
+		annotation SummarizationSetBy = Automatic
+
+	column סיבת_דווח_משקל_כניסה
+		dataType: string
+		summarizeBy: none
+		sourceColumn: סיבת_דווח_משקל_כניסה
+
+		annotation SummarizationSetBy = Automatic
+
+	column סוג_דווח_לוחית_יציאה
+		dataType: string
+		summarizeBy: none
+		sourceColumn: סוג_דווח_לוחית_יציאה
+
+		annotation SummarizationSetBy = Automatic
+
+	column סיבת_דווח_ל_יציאה
+		dataType: string
+		summarizeBy: none
+		sourceColumn: סיבת_דווח_ל_יציאה
+
+		annotation SummarizationSetBy = Automatic
+
+	column סוג_דיווח_משקל_יציאה
+		dataType: string
+		summarizeBy: none
+		sourceColumn: סוג_דיווח_משקל_יציאה
+
+		annotation SummarizationSetBy = Automatic
+
+	column סיבת_דיווח_משקל_יציאה
+		dataType: string
+		summarizeBy: none
+		sourceColumn: סיבת_דיווח_משקל_יציאה
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TAV_Gr_Fact_GarbageDisposal-b1bb2e44-34af-417b-a1d2-c6c60b220069 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<SQL-SERVER>", "<SQL-DB>"),
+				    dbo_V_TAV_Gr_Fact_GarbageDisposal = Source{[Schema="dbo",Item="V_TAV_Gr_Fact_GarbageDisposal"]}[Data]
+				in
+				    dbo_V_TAV_Gr_Fact_GarbageDisposal
+
+	annotation PBI_ResultType = Table
+

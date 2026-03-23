@@ -1,0 +1,63 @@
+﻿table V_TAV_GB_Regions
+
+	column iRegionId
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: iRegionId
+
+		annotation SummarizationSetBy = Automatic
+
+	column nvRegionName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nvRegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column iGarbageAmount
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: iGarbageAmount
+
+		annotation SummarizationSetBy = Automatic
+
+	column iRegionDirectorId
+		dataType: int64
+		formatString: 0
+		summarizeBy: count
+		sourceColumn: iRegionDirectorId
+
+		annotation SummarizationSetBy = Automatic
+
+	column lNeighborhoodString
+		dataType: string
+		summarizeBy: none
+		sourceColumn: lNeighborhoodString
+
+		annotation SummarizationSetBy = Automatic
+
+	column nvRegionDirectorName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nvRegionDirectorName
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionName
+		dataType: string
+		summarizeBy: none
+		sourceColumn: RegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition V_TAV_GB_Regions-3fe33a61-ca61-419c-994c-4323f6423920 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<SQL-SERVER>", "<SQL-DB>"),
+				    dbo_V_TAV_GB_Regions = Source{[Schema="dbo",Item="V_TAV_GB_Regions"]}[Data]
+				in
+				    dbo_V_TAV_GB_Regions
+

@@ -1,0 +1,57 @@
+{
+  "name": "c948c8b15e5f9061da6e",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 1165.1356064578554,
+        "y": 319.43213527043639,
+        "z": 35000,
+        "width": 68.869565217391312,
+        "height": 39.130434782608695,
+        "tabOrder": 35000
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "גרינט",
+                    "textStyle": {
+                      "fontFamily": "Calibri",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "vcObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

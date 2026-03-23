@@ -1,0 +1,29 @@
+{
+  "version": "1.2.0",
+  "author": {
+    "name": "Manny Merino",
+    "email": "merinodev@outlook.com"
+  },
+  "resources": [
+    {
+      "resourceId": "rId0",
+      "sourceType": 5,
+      "file": "resources/bciCalendarCC0FA2BFE4B54EE1ACCFE383B9B1DE61.pbiviz.json"
+    }
+  ],
+  "visual": {
+    "guid": "bciCalendarCC0FA2BFE4B54EE1ACCFE383B9B1DE61",
+    "name": "bciCalendar",
+    "displayName": "BciCalendar",
+    "version": "1.2.0",
+    "description": "BCI Calendar is a Power BI custom visual that allows you to view your aggregated data in a month view.",
+    "supportUrl": "https://github.com/mannymerino/bci-calendar/issues",
+    "gitHubUrl": "https://github.com/mannymerino/bci-calendar",
+    "visualClassName": "Visual"
+  },
+  "metadata": {
+    "pbivizjson": {
+      "resourceId": "rId0"
+    }
+  }
+}

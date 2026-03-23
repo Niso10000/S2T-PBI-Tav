@@ -1,0 +1,309 @@
+﻿table V_TAV_FactDailyRoute
+
+	measure 'שעות עבודה_It' = SUM('V_TAV_FactDailyRoute'[SumWorkMinutes])/60
+		formatString: #,0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'שעות שהיה_It' = SUM('V_TAV_FactDailyRoute'[SumStayMinutes])/60
+		formatString: #,0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'אחוז שעות שהיה_It' = DIVIDE([שעות שהיה_It],[שעות עבודה_It],BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	measure 'טווח תאריכים_It' = FORMAT(MIN('V_TAV_FactDailyRoute'[Date]),"DD/MM/YY")&"-"&FORMAT( MAX('V_TAV_FactDailyRoute'[Date]),"DD/MM/YY")
+
+	measure 'מהירות ממוצעת_It' = DIVIDE([קילומטראז'_It],[שעות עבודה_It],BLANK())
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'כמות עצירות_It' = SUM([כמות עצירות])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+	measure 'כמות נהיגה מסוכנת_It' = SUM(V_TAV_FactDailyRoute[QtyDangerousDriving])
+		formatString: 0
+
+	measure 'כמות יציאות מפוליגון_It' = SUM(V_TAV_FactDailyRoute[QtyPolygonExit])
+		formatString: 0
+
+	measure מהירות_ממוצעת_It = DIVIDE([קילומטראז'_It],[שעות עבודה_It]-[שעות שהיה_It],BLANK())
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'שעות עבודה נטו' = [שעות עבודה_It]-[שעות שהיה_It]
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'כמות חריגות מהירות_It' = SUM(V_TAV_FactDailyRoute[QtyDangerousDriving])
+		formatString: 0
+
+	measure 'קילומטראז''_It' = sum(V_TAV_FactDailyRoute[Distance])
+		formatString: #,0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ציון ממוצע_It' = AVERAGE(V_TAV_FactDailyRoute[Mark])
+		formatString: 0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ציון ממוצע כל הנפות_It' = CALCULATE([ציון ממוצע_It],REMOVEFILTERS(V_TAV_Regions))
+		formatString: 0
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'כמות לחישוב ממוצע משוקלל_It' = COUNTROWS(V_TAV_FactDailyRoute)
+		formatString: 0
+
+	measure 'אחוז שינוי ציון ממוצע_It' = DIVIDE([ציון ממוצע_It]-[ציון ממוצע כל הנפות_It],[ציון ממוצע כל הנפות_It],BLANK())
+		formatString: 0%;-0%;0%
+
+		changedProperty = FormatString
+
+	column PlatformId
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: PlatformId
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'לוחית זיהוי'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: לוחית זיהוי
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column DriverKey
+		dataType: int64
+		formatString: 0
+		summarizeBy: count
+		sourceColumn: DriverKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartTime
+		dataType: dateTime
+		formatString: hh:nn
+		summarizeBy: none
+		sourceColumn: StartTime
+
+		variation Variation
+			isDefault
+			relationship: 1e80c5af-14ae-4ad4-b580-93e85852dc27
+			defaultHierarchy: LocalDateTable_f9992319-8053-4ac3-8df3-a1fce1bd495f.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column StartArea
+		dataType: string
+		summarizeBy: none
+		sourceColumn: StartArea
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartMileage
+		dataType: double
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: StartMileage
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column EndTime
+		dataType: dateTime
+		formatString: hh:nn
+		summarizeBy: none
+		sourceColumn: EndTime
+
+		variation Variation
+			isDefault
+			relationship: 644e2d7a-4a31-43f1-b5ec-58b514d7d3c9
+			defaultHierarchy: LocalDateTable_5e458376-cac3-4498-910b-c7c888ead787.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column EndArea
+		dataType: string
+		summarizeBy: none
+		sourceColumn: EndArea
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndMileage
+		dataType: double
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: EndMileage
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column AvgSpeed
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: AvgSpeed
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SumWorkMinutes
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: SumWorkMinutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column SumStayMinutes
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: SumStayMinutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'כמות עצירות'
+		dataType: int64
+		formatString: #,0
+		summarizeBy: sum
+		sourceColumn: כמות עצירות
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyPolygonExit
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: QtyPolygonExit
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyExceedingSpeed
+		dataType: int64
+		formatString: #,0
+		summarizeBy: sum
+		sourceColumn: QtyExceedingSpeed
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column QtyDangerousDriving
+		dataType: int64
+		formatString: #,0
+		summarizeBy: sum
+		sourceColumn: QtyDangerousDriving
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column קילומטראז = 'V_TAV_FactDailyRoute'[EndMileage]-[StartMileage]
+		formatString: #,0
+		summarizeBy: sum
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Distance
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: Distance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Area
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column StayMinutesPrc
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: StayMinutesPrc
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Mark
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+		sourceColumn: Mark
+
+		annotation SummarizationSetBy = Automatic
+
+	column Recommendations
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Recommendations
+
+		annotation SummarizationSetBy = Automatic
+
+	partition V_TAV_FactDailyRoute-3d815f47-1d0b-4ab3-af9f-15b24e005939 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("<SQL-SERVER>"),
+				    DWH_SEC = Source{[Name="<SQL-DB>"]}[Data],
+				    #"KIKARDOM\yehudit_ei_V_TAV_FactDailyRoute" = DWH_SEC{[Schema="dbo",Item="V_TAV_FactDailyRoute"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(#"KIKARDOM\yehudit_ei_V_TAV_FactDailyRoute",{{"Plate", "לוחית זיהוי"}, {"QtyIdling", "כמות עצירות"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

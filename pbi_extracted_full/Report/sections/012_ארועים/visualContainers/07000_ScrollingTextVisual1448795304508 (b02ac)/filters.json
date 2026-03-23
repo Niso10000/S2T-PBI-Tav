@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Filter3abb0307aa80b2144004",
+    "expression": {
+      "Column": {
+        "Expression": {
+          "SourceRef": {
+            "Entity": "V_TAV_Events"
+          }
+        },
+        "Property": "תאריך הארוע"
+      }
+    },
+    "type": "RelativeDate",
+    "howCreated": 1
+  }
+]

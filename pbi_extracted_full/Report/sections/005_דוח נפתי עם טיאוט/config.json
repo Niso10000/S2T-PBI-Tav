@@ -1,0 +1,59 @@
+{
+  "relationships": [
+    {
+      "source": "46e5a49e65bd75618545",
+      "target": "569589054e910ad8bb29",
+      "type": 1
+    },
+    {
+      "source": "46e5a49e65bd75618545",
+      "target": "4591a7c9f7d19d6b7aec",
+      "type": 3
+    }
+  ],
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "''"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "Literal": {
+                    "Value": "''"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#EEF1F7'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": 1
+}
