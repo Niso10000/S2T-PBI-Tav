@@ -6,26 +6,26 @@
 <title>S2T Documentation — דוח תברואה</title>
 <style>
   :root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --surface2: #222638;
-    --border: #2e3250;
-    --accent: #5b8dee;
-    --accent2: #7c5cfc;
-    --green: #3ecf8e;
-    --yellow: #f5c842;
-    --red: #f26c6c;
-    --orange: #f59e42;
-    --text: #e2e6f0;
-    --text-muted: #7a82a0;
-    --text-dim: #4a5070;
-    --code-bg: #141622;
-    --fact: #5b8dee22;
-    --fact-border: #5b8dee;
-    --dim: #3ecf8e22;
-    --dim-border: #3ecf8e;
-    --ref: #f59e4222;
-    --ref-border: #f59e42;
+    --bg: #f4f6fb;
+    --surface: #ffffff;
+    --surface2: #eef1f8;
+    --border: #dde2ef;
+    --accent: #2563eb;
+    --accent2: #6d45e8;
+    --green: #0b8a60;
+    --yellow: #b45309;
+    --red: #c9303a;
+    --orange: #c2620a;
+    --text: #111827;
+    --text-muted: #4b5673;
+    --text-dim: #9aa3be;
+    --code-bg: #eef2ff;
+    --fact: #dbeafe;
+    --fact-border: #2563eb;
+    --dim: #d1fae5;
+    --dim-border: #0b8a60;
+    --ref: #fef3c7;
+    --ref-border: #c2620a;
     --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
   }
 
@@ -128,7 +128,7 @@
   .page-header h1 {
     font-size: 28px;
     font-weight: 700;
-    color: #fff;
+    color: var(--text);
     margin-bottom: 8px;
   }
 
@@ -175,7 +175,7 @@
   h2 {
     font-size: 20px;
     font-weight: 700;
-    color: #fff;
+    color: var(--text);
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--border);
@@ -217,7 +217,7 @@
     margin-bottom: 12px;
   }
 
-  strong { color: var(--text); }
+  strong { color: var(--text); font-weight: 600; }
 
   /* ── DOMAIN CARDS ── */
   .domain-grid {
@@ -245,7 +245,7 @@
   .domain-card .domain-name {
     font-size: 15px;
     font-weight: 700;
-    color: #fff;
+    color: var(--text);
     margin-bottom: 4px;
   }
 
@@ -271,13 +271,13 @@
     font-family: 'Cascadia Code', 'Fira Code', monospace;
   }
 
-  .pill.blue { background: #5b8dee22; color: #5b8dee; border: 1px solid #5b8dee44; }
-  .pill.green { background: #3ecf8e22; color: #3ecf8e; border: 1px solid #3ecf8e44; }
-  .pill.orange { background: #f59e4222; color: #f59e42; border: 1px solid #f59e4244; }
-  .pill.red { background: #f26c6c22; color: #f26c6c; border: 1px solid #f26c6c44; }
-  .pill.purple { background: #a78bfa22; color: #a78bfa; border: 1px solid #a78bfa44; }
-  .pill.yellow { background: #f5c84222; color: #f5c842; border: 1px solid #f5c84244; }
-  .pill.gray { background: #7a82a022; color: #7a82a0; border: 1px solid #7a82a044; }
+  .pill.blue { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+  .pill.green { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+  .pill.orange { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .pill.red { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+  .pill.purple { background: #ede9fe; color: #5b21b6; border: 1px solid #ddd6fe; }
+  .pill.yellow { background: #fef9c3; color: #713f12; border: 1px solid #fef08a; }
+  .pill.gray { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
 
   /* ── TABLES ── */
   .table-wrap {
@@ -337,26 +337,26 @@
     white-space: nowrap;
   }
 
-  .badge.fact { background: var(--fact); color: var(--fact-border); border: 1px solid var(--fact-border)44; }
-  .badge.dim { background: var(--dim); color: var(--dim-border); border: 1px solid var(--dim-border)44; }
-  .badge.ref { background: var(--ref); color: var(--ref-border); border: 1px solid var(--ref-border)44; }
-  .badge.auto { background: #7a82a022; color: #7a82a0; border: 1px solid #7a82a044; }
-  .badge.meas { background: #a78bfa22; color: #a78bfa; border: 1px solid #a78bfa44; }
-  .badge.yes { background: #3ecf8e22; color: #3ecf8e; }
-  .badge.no { background: #7a82a022; color: #7a82a0; }
-  .badge.warn { background: #f5c84222; color: #f5c842; border: 1px solid #f5c84244; }
-  .badge.high { background: #f26c6c22; color: #f26c6c; border: 1px solid #f26c6c44; }
-  .badge.med { background: #f59e4222; color: #f59e42; border: 1px solid #f59e4244; }
-  .badge.low { background: #3ecf8e22; color: #3ecf8e; border: 1px solid #3ecf8e44; }
+  .badge.fact { background: var(--fact); color: #1e40af; border: 1px solid #bfdbfe; }
+  .badge.dim { background: var(--dim); color: #065f46; border: 1px solid #a7f3d0; }
+  .badge.ref { background: var(--ref); color: #78350f; border: 1px solid #fde68a; }
+  .badge.auto { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+  .badge.meas { background: #ede9fe; color: #5b21b6; border: 1px solid #ddd6fe; }
+  .badge.yes { background: #d1fae5; color: #065f46; }
+  .badge.no { background: #f1f5f9; color: #475569; }
+  .badge.warn { background: #fef9c3; color: #713f12; border: 1px solid #fef08a; }
+  .badge.high { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+  .badge.med { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .badge.low { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
 
   code {
     font-family: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
     font-size: 12px;
     background: var(--code-bg);
-    color: #7dd3fc;
+    color: #1d4ed8;
     padding: 1px 6px;
     border-radius: 4px;
-    border: 1px solid #2e3250;
+    border: 1px solid #bfdbfe;
   }
 
   /* ── CALLOUTS ── */
@@ -371,21 +371,21 @@
   }
 
   .callout.warning {
-    background: #f5c84211;
-    border: 1px solid #f5c84244;
-    color: #f5c842cc;
+    background: #fef9c3;
+    border: 1px solid #fde68a;
+    color: #713f12;
   }
 
   .callout.info {
-    background: #5b8dee11;
-    border: 1px solid #5b8dee44;
-    color: #5b8deebb;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
   }
 
   .callout.success {
-    background: #3ecf8e11;
-    border: 1px solid #3ecf8e44;
-    color: #3ecf8ebb;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #14532d;
   }
 
   .callout .icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
@@ -409,7 +409,7 @@
   .measure-pattern .mp-name {
     font-family: 'Cascadia Code', 'Fira Code', monospace;
     font-size: 13px;
-    color: #7dd3fc;
+    color: #1d4ed8;
     font-weight: 600;
     margin-bottom: 4px;
   }
@@ -458,7 +458,7 @@
   .page-card .pg-name-heb {
     font-size: 15px;
     font-weight: 600;
-    color: #fff;
+    color: var(--text);
     direction: rtl;
     text-align: right;
     margin-bottom: 2px;
@@ -477,28 +477,28 @@
 
   /* ── LINEAGE ── */
   .lineage-block {
-    background: var(--code-bg);
+    background: #f8faff;
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 20px 24px;
     font-family: 'Cascadia Code', 'Fira Code', monospace;
     font-size: 12px;
     line-height: 1.8;
-    color: #c9d1d9;
+    color: #374151;
     overflow-x: auto;
     white-space: pre;
   }
 
-  .lineage-block .l-root { color: #f59e42; font-weight: 700; }
-  .lineage-block .l-table { color: #7dd3fc; }
-  .lineage-block .l-measure { color: #3ecf8e; }
-  .lineage-block .l-visual { color: #a78bfa; }
-  .lineage-block .l-note { color: #7a82a0; }
+  .lineage-block .l-root { color: #c2620a; font-weight: 700; }
+  .lineage-block .l-table { color: #1d4ed8; }
+  .lineage-block .l-measure { color: #0b8a60; }
+  .lineage-block .l-visual { color: #6d45e8; }
+  .lineage-block .l-note { color: #9aa3be; }
 
   /* ── RISK TABLE ── */
-  tr.risk-high td:first-child { color: #f26c6c; }
-  tr.risk-med td:first-child { color: #f59e42; }
-  tr.risk-low td:first-child { color: #3ecf8e; }
+  tr.risk-high td:first-child { color: #991b1b; font-weight: 600; }
+  tr.risk-med td:first-child { color: #92400e; font-weight: 600; }
+  tr.risk-low td:first-child { color: #065f46; font-weight: 600; }
 
   /* ── CUSTOM VISUAL CARDS ── */
   .cv-grid {
@@ -518,7 +518,7 @@
   .cv-card .cv-name {
     font-size: 14px;
     font-weight: 700;
-    color: #fff;
+    color: var(--text);
     margin-bottom: 4px;
   }
 
@@ -537,8 +537,8 @@
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: #3e4260; }
+  ::-webkit-scrollbar-thumb { background: #c5cce3; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #9aa3be; }
 
   /* ── COLLAPSIBLE ── */
   details {
@@ -623,8 +623,8 @@
   <div class="section-label">Structure</div>
   <a href="#overview"><div class="dot"></div> 1. Overview</a>
   <a href="#datamodel"><div class="dot"></div> 2. Data Model</a>
-  <a href="#tables"><div class="dot" style="background:#5b8dee"></div>&nbsp;&nbsp;Tables</a>
-  <a href="#columns"><div class="dot" style="background:#3ecf8e"></div>&nbsp;&nbsp;Columns</a>
+  <a href="#tables"><div class="dot" style="background:#2563eb"></div>&nbsp;&nbsp;Tables</a>
+  <a href="#columns"><div class="dot" style="background:#0b8a60"></div>&nbsp;&nbsp;Columns</a>
   <a href="#relationships"><div class="dot"></div> 3. Relationships</a>
 
   <div class="section-label">Logic</div>
@@ -665,7 +665,7 @@
       </div>
       <div class="meta-card">
         <div class="label">DataModel</div>
-        <div class="value" style="color:#f5c842">⚠ XPress9 Compressed</div>
+        <div class="value" style="color:#92400e">⚠ XPress9 Compressed</div>
       </div>
       <div class="meta-card">
         <div class="label">Analysis Date</div>
@@ -762,10 +762,10 @@
       <h3>2.1 Tables (26 total)</h3>
 
       <div class="suffix-legend">
-        <div class="suffix-item"><span class="s-code" style="color:#5b8dee">Fact</span> <span style="color:var(--text-muted)">Transactional / Event data</span></div>
-        <div class="suffix-item"><span class="s-code" style="color:#3ecf8e">Dim</span> <span style="color:var(--text-muted)">Lookup / Descriptor data</span></div>
-        <div class="suffix-item"><span class="s-code" style="color:#f59e42">Ref</span> <span style="color:var(--text-muted)">Reference / Configuration</span></div>
-        <div class="suffix-item"><span class="s-code" style="color:#a78bfa">Meas</span> <span style="color:var(--text-muted)">Measures-only table (no columns)</span></div>
+        <div class="suffix-item"><span class="s-code" style="color:#1e40af">Fact</span> <span style="color:var(--text-muted)">Transactional / Event data</span></div>
+        <div class="suffix-item"><span class="s-code" style="color:#065f46">Dim</span> <span style="color:var(--text-muted)">Lookup / Descriptor data</span></div>
+        <div class="suffix-item"><span class="s-code" style="color:#78350f">Ref</span> <span style="color:var(--text-muted)">Reference / Configuration</span></div>
+        <div class="suffix-item"><span class="s-code" style="color:#5b21b6">Meas</span> <span style="color:var(--text-muted)">Measures-only table (no columns)</span></div>
       </div>
 
       <div class="table-wrap">
